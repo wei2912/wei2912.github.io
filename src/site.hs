@@ -21,7 +21,6 @@ main = hakyll $ do
         compile sassCompiler
 
     match "_posts/**" $ do
-        route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "_templates/post.html" postCtx
             >>= relativizeUrls
@@ -55,13 +54,21 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     field "id" getPostID `mappend`
+    field "url" setNewURL `mappend`
     defaultContext
     where
+    	title2ID :: String -> String
+    	title2ID = map (toLower . \ x -> if x == ' ' then '_' else x)
         getPostID :: Item a -> Compiler String
         getPostID item = do
             metadata <- getMetadata $ itemIdentifier item
             let title = fromJust $ M.lookup "title" metadata
-            return $ map (toLower . \ x -> if x == ' ' then '_' else x) title
+            return $ title2ID title
+        setNewURL :: Item a -> Compiler String
+        setNewURL item = do
+        	metadata <- getMetadata $ itemIdentifier item
+        	let title = fromJust $ M.lookup "title" metadata
+        	return $ '#' : title2ID title
 
 feedConfig :: FeedConfiguration
 feedConfig = FeedConfiguration

@@ -1,15 +1,18 @@
-module Hakyll.Web.CompileSass where
+module Hakyll.Web.CompileSass
+( sassCompiler
+, scssCompiler
+) where
 
 import Hakyll
 
-compilerWithFlags :: [String] -> Compiler (Item String)
-compilerWithFlags flags =
+compileWith :: [String] -> Compiler (Item String)
+compileWith flags =
 	getResourceString
 		>>= withItemBody (unixFilter "sass" flags)
 		>>= return . fmap compressCss
 
 sassCompiler :: Compiler (Item String)
-sassCompiler = compilerWithFlags ["-s"]
+sassCompiler = compileWith ["-s"]
 
 scssCompiler :: Compiler (Item String)
-scssCompiler = compilerWithFlags ["-s", "-scss"]
+scssCompiler = compileWith ["-s", "-scss"]
