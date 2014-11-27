@@ -151,11 +151,13 @@ This algorithm, while a bit hard to comprehend, is inherently elegant and simple
 
 I hope this has showed you how elegant Haskell could be and why many programmers like working in it.
 
-These 2 readings here explain very well why Haskell matters, and why programmers like Haskell:
+There's a lot more to Haskell than this (such as Monads) which make solving other real-life problems quite elegant as well.
+
+These 2 readings here explain very well why Haskell matters, and why many programmers like Haskell:
 
 * [Why Haskell matters](https://www.haskell.org/haskellwiki/Why_Haskell_matters)
 * [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
 
-You may also wish to follow [bitemyapp's guide](https://github.com/bitemyapp/learnhaskell) to learn haskell.
+You may also wish to follow [bitemyapp's guide](https://github.com/bitemyapp/learnhaskell) to learn Haskell.
 
 Feel free to contact me (look to the left for my contact details) if you have any questions or suggestions about this document. Alternatively, you can find me at [#haskell@Freenode](irc://chat.freenode.net/#haskell) under the nick "wei2912".
