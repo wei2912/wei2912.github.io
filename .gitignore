@@ -3,4 +3,6 @@
 bin/
 _site/
 _cache/
+travis_rsa
+travis_rsa.pub
 
