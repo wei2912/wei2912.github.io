@@ -2,7 +2,7 @@ language: haskell
 ghc: 7.8.3
 
 before_install:
-  - openssl aes-256-cbc -K $encrypted_68787bd95177_key -iv $encrypted_68787bd95177_iv -in travis_rsa.enc -out travis_rsa -d
+  - openssl aes-256-cbc -K $encrypted_68787bd95177_key -iv $encrypted_68787bd95177_iv -in travis_rsa.enc -out ~/.ssh/id_rsa -d
 install: scripts/installdep.sh
 script: scripts/build.sh
 deploy: scripts/deploy.sh
