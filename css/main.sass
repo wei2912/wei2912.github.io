@@ -1,0 +1,231 @@
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif
+$monospace: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal
+
+$main-text: #777
+$heading1: #222
+$heading2: #393939
+$heading3: #494949
+$link: #39c
+
+body
+    color: $main-text
+    font: $sans-serif
+    font-weight: 300
+    padding: 50px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    margin: 0 0 20px
+
+p,
+ul,
+ol,
+table,
+pre,
+dl
+    margin: 0 0 20px
+
+h1,
+h2,
+h3
+    line-height: 1.1
+
+h1
+    font-size: 28px
+    color: $heading1
+
+h2
+    color: $heading2
+
+h3,
+h4,
+h5,
+h6
+    color: $heading3
+
+a
+    color: $link
+    font-weight: 400
+    text-decoration: none
+
+.wrapper
+    margin: 0 auto
+    width: 860px
+
+blockquote
+    border-left: 1px solid #e5e5e5
+    font-style: italic
+    margin: 0
+    padding: 0 0 0 20px
+
+code,
+pre
+    color: #333
+    font-family: $monospace
+    font-size: 12px
+
+pre
+    background: #fdf6e3
+    border: 1px solid #e5e5e5
+    border-radius: 5px
+    overflow-x: auto
+    padding: 8px 15px
+
+code
+    padding: 1px
+
+table
+    border-collapse: collapse
+    width: 100%
+
+th,
+td
+    border-bottom: 1px solid #e5e5e5
+    padding: 5px 10px
+    text-align: left
+
+dt
+    color: #444
+    font-weight: 700
+
+th
+    color: #444
+
+img
+    max-width: 100%
+
+header
+    float: left
+    position: fixed
+    width: 270px
+
+strong
+    color: #222
+    font-weight: 700
+
+section
+    width: 500px
+    float: right
+    padding-bottom: 50px
+
+small
+    font-size: 11px
+
+hr
+    border: 0
+    background: #e5e5e5
+    height: 1px
+    margin: 0 0 20px
+
+footer
+    width: 270px
+    float: left
+    position: fixed
+    bottom: 50px
+
+@media print, screen and (max-width: 960px)
+    div.wrapper
+        width: auto
+        margin: 0
+    
+    header, section, footer
+        float: none
+        position: static
+        width: auto
+    
+    header
+        padding-right: 320px
+    
+    section
+        border: 1px solid #e5e5e5
+        border-width: 1px 0
+        padding: 20px 0
+        margin: 0 0 20px
+    
+    header a small
+        display: inline
+    
+    header ul
+        position: absolute
+        right: 50px
+        top: 52px
+
+@media print, screen and (max-width: 720px)
+    body
+        word-wrap: break-word
+    
+    header
+        padding: 0
+    
+    header ul, header p.view
+        position: static
+    
+    pre, code
+        word-wrap: normal
+
+@media print, screen and (max-width: 480px)
+    body
+        padding: 15px
+    
+    header ul
+        display: none
+
+@media print
+    body
+        padding: 0.4in
+        font-size: 12pt
+        color: #444
+
+/* Site specific stuff */
+
+header, footer
+    p
+        margin: 0 0 5px
+
+// Solarized Light
+
+.sourceCode
+    // KeyWordTok
+    .kw
+        color: #268BD2
+    // DataTypeTok
+    .dt
+        color: #268BD2
+
+    // DecValTok (decimal value), BaseNTok, FloatTok
+    .dv,
+    .bn,
+    .fl
+        color: #D33682
+
+    // CharTok
+    .ch
+        color: #DC322F
+
+    // StringTok
+    .st
+        color: #2AA198
+
+    // CommentTok
+    .co
+        color: #93A1A1
+    // OtherTok
+    .ot
+        color: #A57800
+    // AlertTok
+    .al
+        color: #CB4B16
+        font-weight: bold
+    // FunctionTok
+    .fu
+        color: #268BD2
+    // RegionMarkerTok
+    .re
+    // ErrorTok
+    .er
+        color: #D30102
+        font-weight: bold
