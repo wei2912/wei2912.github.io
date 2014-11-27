@@ -5,5 +5,5 @@ mkdir bin
 ghc -o bin/site --make -O -threaded src/*.hs
 
 # build site
-./bin/site build
-
+git clone https://github.com/wei2912/wei2912.github.io _site/
+bin/site build
