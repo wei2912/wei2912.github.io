@@ -1,6 +1,6 @@
 *.hi
 *.o
-src/site
+bin/
 _site/
 _cache/
 
