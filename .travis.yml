@@ -6,5 +6,5 @@ before_install:
 
 install: scripts/install.sh
 script: scripts/build.sh
-deploy: scripts/deploy.sh
+after_success: scripts/deploy.sh
 after_script: scripts/clean.sh
