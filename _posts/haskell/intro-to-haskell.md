@@ -5,9 +5,9 @@ date: 2014-11-27
 
 [Haskell](https://www.haskell.org/platform/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in Haskell.
 
-This document assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
+This post assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
 
-Also, this document is not intended to teach Haskell. This document is intended to explain the code just briefly, such that the reader understands what the code is doing.
+Also, this post is not intended to teach Haskell. This post is intended to explain the code just briefly, such that the reader understands what the code is doing.
 
 If you wish to try out the code, download [main.hs](/res/intro-to-haskell/main.hs) and run `ghci main.hs`. You'll need GHC installed. Then, you can evaluate stuff and see what you get.
 
@@ -102,7 +102,7 @@ fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
 This time round, we define `fibs` as a list of integers. We then prepend `0` and `1` to `zipWith (+) fibs (tail fibs)`.
 
-What does `zipWith` do? It takes a function and applies them to the values of both of the lists. The implementation of this is out of the scope of this document (but is quite trivial for any beginner in Haskell to implement).
+What does `zipWith` do? It takes a function and applies them to the values of both of the lists. The implementation of this is out of the scope of this post (but is quite trivial for any beginner in Haskell to implement).
 
 Take a look at this trace:
 
@@ -160,4 +160,4 @@ These 2 readings here explain very well why Haskell matters, and why many progra
 
 You may also wish to follow [bitemyapp's guide](https://github.com/bitemyapp/learnhaskell) to learn Haskell.
 
-Feel free to contact me (look to the left for my contact details) if you have any questions or suggestions about this document. Alternatively, you can find me at [#haskell@Freenode](irc://chat.freenode.net/#haskell) under the nick "wei2912".
+Feel free to contact me (look to the left for my contact details) if you have any questions or suggestions about this post. Alternatively, you can find me at [#haskell@Freenode](irc://chat.freenode.net/#haskell) under the nick "wei2912".
