@@ -37,19 +37,20 @@ Here, `iterate` takes in a function, an element, and returns a list of elements.
 
 The `:` operator is known as the cons operator. It appends an element to a list of the same type. In here, we prepend `x` to `iterate f (f x)`.
 
-If you were paying close attention, you may realize that I appear to have made a typo in `pow *`. This is not the case. Haskell allows the use of [partially applied functions](https://en.wikipedia.org/wiki/Partial_application).
-
-If you don't understand what that is, don't worry. Just take it as a function that takes in a number and multiplies it by 3.
+If you were paying close attention, you may realize that I appear to have made a typo in `pow *`. This is not the case. Haskell allows the use of [partially applied functions](https://en.wikipedia.org/wiki/Partial_application). If you don't understand what that is, don't worry. Just take it as a function that takes in a number and multiplies it by 3.
 
 It's hard to see what this function does if you're not familiar with recursion. Let's look at a trace.
 
-      iterate (3 *) 1
-    = 1 : iterate (3 *) (3 * 1)
-    = 1 : 3 : iterate (3 *) (3 * 3)
-    = 1 : 3 : 9 : iterate (3 *) (3 * 9)
+      pows 3
+    = iterate (3 *) 1
+    = 1 : iterate (3 *) 3
+    = 1 : 3 : iterate (3 *) 9
+    = 1 : 3 : 9 : iterate (3 *) 27
     = ...
 
-We can see that we'll get a list of powers of 3.
+We can see that we'll get a list of powers of 3. How this comes about is that we prepend the current value to the list, apply our function to the current value to get a new value, and then apply `iterate (3 *)` to the new value.
+
+We get a list of the powers of 3.
 
 But wait! Wouldn't that go on infinitely? In Haskell, executing `pows 3` would have given us an infinite list of the powers of 3 (try it and see what happens!). Notice that the list will keep on growing. That looks like a horrible thing.
 
