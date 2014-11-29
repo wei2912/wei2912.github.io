@@ -20,9 +20,9 @@ pows :: Integer -> [Integer]
 pows pow = iterate (pow *) 1
 ```
 
-In here, we define a function that takes in an integer and returns a list of integers (that's what the first line shows: a type signature).
+In here, we define a function that takes in an **integer** and returns a **list of integers** (that's what the first line shows: a type signature).
 
-In Haskell, parameters are separated by spaces (not enclosed in brackets and seperated by commas, for those of you familiar with C-style languages). The first and only parameter we take in is `pow`.
+In Haskell, parameters are separated by **spaces** (not enclosed in brackets and seperated by commas, for those of you familiar with C-style languages). The first and only parameter we take in is named as `pow`.
 
 Here, we return the result of `iterate (pow *) 1`. What does that function do? Let's look at the definition of `iterate`.
 
@@ -31,11 +31,11 @@ iterate :: (a -> a) -> a -> [a]
 iterate f x = x : iterate f (f x)
 ```
 
-The type signature on the first line uses what we call polymorphic types, which allow for any type. A function which takes in one parameter and returns something is denoted by `(a -> a)`. As you can see from the use of "a" as both input and output, the two types have to be the same.
+The type signature on the first line uses what we call **polymorphic types**, which allow for *any* type. A function which takes in one parameter and returns something is denoted by `(a -> a)`. As you can see from the use of "a" as both input and output, the two types have to be the same.
 
-Here, `iterate` takes in a function, an element, and returns a list of elements. All of these have to be the same type.
+Here, `iterate` takes in a **function**, an **element**, and returns a **list of elements**. All of these have to be the *same type*.
 
-The `:` operator is known as the cons operator. It appends an element to a list of the same type. In here, we prepend `x` to `iterate f (f x)`.
+The `:` operator is known as the **cons** operator. It prepends an element to a list of the *same type*. In here, we prepend `x` to `iterate f (f x)`.
 
 If you were paying close attention, you may realize that I appear to have made a typo in `pow *`. This is not the case. Haskell allows the use of [partially applied functions](https://en.wikipedia.org/wiki/Partial_application). If you don't understand what that is, don't worry. Just take it as a function that takes in a number and multiplies it by 3.
 
@@ -43,12 +43,16 @@ It's hard to see what this function does if you're not familiar with recursion. 
 
       pows 3
     = iterate (3 *) 1
-    = 1 : iterate (3 *) 3
-    = 1 : 3 : iterate (3 *) 9
-    = 1 : 3 : 9 : iterate (3 *) 27
+    = 1 : iterate (3 *) 3           -- 3 * 1
+    = 1 : 3 : iterate (3 *) 9       -- 3 * 3
+    = 1 : 3 : 9 : iterate (3 *) 27  -- 3 * 9
     = ...
 
-We can see that we'll get a list of powers of 3. How this comes about is that we prepend the current value to the list, apply our function to the current value to get a new value, and then apply `iterate (3 *)` to the new value.
+We can see that we'll get a list of powers of 3. How this comes about is that we go through the following steps:
+
+1) Prepend the current value to the list
+2) Apply `(3 *)` to the current value to get a new value.
+3) Apply `iterate (3 *)` to the new value.
 
 We get a list of the powers of 3.
 
@@ -82,17 +86,24 @@ and get:
 
 The elegance of this solution is the fact that we easily did this with recursion, in a rather "mathematical" way.
 
-Furthermore, we need not repeat the same code multiple times so as to create variations of the code that filtered elements the way we did. That would have been a rather hackish solution. This ability to reuse functions like this grants us a lot of power in Haskell and allows us to reason about code in a very powerful way.
+If you try to write the above two functions in an imperative programming language, you'll see that you will need to write the following:
+
+1) a function that takes in the number of powers to generate
+2) a function that takes in the upper bound of the powers
+
+and a lot more for other purposes.
+
+The ability to reuse functions like this grants us a lot of power in Haskell and allows us to reason about code in a very powerful way.
 
 ## Fibonacci Numbers
 
-Fibonacci numbers start with 0 and 1. Each number is the sum of the previous two numbers. In this example, we'll handle only positive integers.
+Fibonacci numbers start with 0 and 1. Each number is the **sum of the previous two numbers**. In this example, we'll handle only *positive* integers.
 
 Here's how the sequence looks like:
 
     0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 ...
 
-As you can see, the third number, 1, is the sum of 0 and 1. The fourth number, 2 is the sum of 1 and 1. This sequence goes on forever.
+As you can see, the *third* number, 1, is the sum of 0 and 1. The *fourth* number, 2 is the sum of 1 and 1. This sequence goes on forever.
 
 On to the code:
 
@@ -101,16 +112,16 @@ fibs :: [Integer]
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 ```
 
-This time round, we define `fibs` as a list of integers. We then prepend `0` and `1` to `zipWith (+) fibs (tail fibs)`.
+This time round, we define `fibs` as a **list of integers**. We then *prepend* `0` and `1` to `zipWith (+) fibs (tail fibs)`.
 
-What does `zipWith` do? It takes a function and applies them to the values of both of the lists. The implementation of this is out of the scope of this post (but is quite trivial for any beginner in Haskell to implement).
+What does `zipWith` do? It takes a **function** and applies them to the **values of both of the lists**. The implementation of this is out of the scope of this post (but is quite trivial for any beginner in Haskell to implement).
 
-Take a look at this trace:
+Looking at the trace should gain some inspiration as to how this works:
 
-    zipWith (+) [1, 2, 3] [4, 5, 6] -- 1 + 4
-    = 5 : zipWith (+) [2, 3] [5, 6] -- 2 + 5
-    = 5 : 7 : zipWith (+) [3] [6]   -- 3 + 6
-    = 5 : 7 : 9 : zipwith (+) [] []
+    zipWith (+) [1, 2, 3] [4, 5, 6]   -- 1 + 4
+    = 5 : zipWith (+) [2, 3] [5, 6]   -- 2 + 5
+    = 5 : 7 : zipWith (+) [3] [6]     -- 3 + 6
+    = 5 : 7 : 9 : zipwith (+) [] []   -- return []
     = [5, 7, 9]
 
 Now that `zipWith` is sorted, we see that we pass in `fibs` and `tail fibs`. What's `tail fibs`? Take a look at this graphical representation:
@@ -119,7 +130,7 @@ Now that `zipWith` is sorted, we see that we pass in `fibs` and `tail fibs`. Wha
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
      ^
 
-The top line denotes the elements that make up the tail of a list while the bottom carat denotes the head. To put it in words, the head is the first element of the list, while the tail is everything after the head.
+The top line denotes the elements that make up the **tail** while the bottom carat denotes the **head**. To put it in words, the *head* is the **first element of the list**, while the *tail* is **everything after the head**.
 
 `zipWith (+) fibs (tail fibs)` is still a mystery to us. What could it possibly mean? Let's look at `fibs` and `tail fibs` first (with the values that we already know):
 
