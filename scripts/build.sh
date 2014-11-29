@@ -13,4 +13,4 @@ git clone https://github.com/wei2912/wei2912.github.io _site/ || exit 1
 bin/site build || exit 1
 
 echo "* Built site."
-ls -r _site/
+ls -R _site/
