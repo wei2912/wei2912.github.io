@@ -72,7 +72,7 @@ postCtx =
 
 feedConfig :: FeedConfiguration
 feedConfig = FeedConfiguration
-    { feedTitle       = "wei2912's blog"
+    { feedTitle       = "wei2912’s blog"
     , feedDescription = "A website where I throw in some stuff which may be useful to others."
     , feedAuthorName  = "Wei En (wei2912)"
     , feedAuthorEmail = "wei2912.supp0rt@gmail.com"
