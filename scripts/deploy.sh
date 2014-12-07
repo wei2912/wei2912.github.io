@@ -1,6 +1,17 @@
 #!/bin/bash
 
+if [ "$TRAVIS_PULL_REQUEST" != "false" ];
+then
+  echo "* Skipping deploy for pull request"
+  exit 0
+fi
+
 echo "* Start of deploy process"
+
+echo "* Decrypting SSH key..."
+openssl aes-256-cbc -K $encrypted_68787bd95177_key -iv $encrypted_68787bd95177_iv -in travis_rsa.enc -out travis_rsa -d
+chmod 700 travis_rsa
+cp travis_rsa ~/.ssh/id_rsa
 
 cd _site/
 git config user.email "weien1292@gmail.com"
