@@ -41,12 +41,14 @@ If you were paying close attention, you may realize that I appear to have made a
 
 It's hard to see what this function does if you're not familiar with recursion. Let's look at a trace.
 
-      pows 3
-    = iterate (3 *) 1
-    = 1 : iterate (3 *) 3           -- 3 * 1
-    = 1 : 3 : iterate (3 *) 9       -- 3 * 3
-    = 1 : 3 : 9 : iterate (3 *) 27  -- 3 * 9
-    = ...
+```
+  pows 3
+= iterate (3 *) 1
+= 1 : iterate (3 *) 3           -- 3 * 1
+= 1 : 3 : iterate (3 *) 9       -- 3 * 3
+= 1 : 3 : 9 : iterate (3 *) 27  -- 3 * 9
+= ...
+```
 
 We can see that we'll get a list of powers of 3. How this comes about is that we go through the following steps:
 
@@ -62,7 +64,9 @@ But we can still do stuff with an infinite list, thanks to laziness. We need not
 
 That means that from our infinite list:
 
-    [1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683, ...]
+```
+[1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683, ...]
+```
 
 We can do stuff like get the first 5 powers of 3:
 
@@ -72,7 +76,9 @@ take 5 (pows 3)
 
 and get:
 
-    [1, 3, 9, 27, 81]
+```
+[1, 3, 9, 27, 81]
+```
 
 or maybe get all powers of 2 below 10:
 
@@ -82,7 +88,9 @@ takeWhile (< 100) (pows 2)
 
 and get:
 
-    [1, 2, 4, 8, 16, 32, 64]
+```
+[1, 2, 4, 8, 16, 32, 64]
+```
 
 The elegance of this solution is the fact that we easily did this with recursion, in a rather "mathematical" way.
 
@@ -101,7 +109,9 @@ Fibonacci numbers start with 0 and 1. Each number is the **sum of the previous t
 
 Here's how the sequence looks like:
 
-    0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 ...
+```
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 ...
+```
 
 As you can see, the *third* number, 1, is the sum of 0 and 1. The *fourth* number, 2 is the sum of 1 and 1. This sequence goes on forever.
 
@@ -118,42 +128,52 @@ What does `zipWith` do? It takes a **function** and applies them to the **values
 
 Looking at the trace should gain some inspiration as to how this works:
 
-    zipWith (+) [1, 2, 3] [4, 5, 6]   -- 1 + 4
-    = 5 : zipWith (+) [2, 3] [5, 6]   -- 2 + 5
-    = 5 : 7 : zipWith (+) [3] [6]     -- 3 + 6
-    = 5 : 7 : 9 : zipwith (+) [] []   -- return []
-    = [5, 7, 9]
+```
+zipWith (+) [1, 2, 3] [4, 5, 6]   -- 1 + 4
+= 5 : zipWith (+) [2, 3] [5, 6]   -- 2 + 5
+= 5 : 7 : zipWith (+) [3] [6]     -- 3 + 6
+= 5 : 7 : 9 : zipwith (+) [] []   -- return []
+= [5, 7, 9]
+```
 
 Now that `zipWith` is sorted, we see that we pass in `fibs` and `tail fibs`. What's `tail fibs`? Take a look at this graphical representation:
 
-        +--+--+--+--+--+--+--+--+
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-     ^
+```
+    +--+--+--+--+--+--+--+--+
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+ ^
+```
 
 The top line denotes the elements that make up the **tail** while the bottom carat denotes the **head**. To put it in words, the *head* is the **first element of the list**, while the *tail* is **everything after the head**.
 
 `zipWith (+) fibs (tail fibs)` is still a mystery to us. What could it possibly mean? Let's look at `fibs` and `tail fibs` first (with the values that we already know):
 
-      0 1 ...
-    + 1 ...
-    ---------
-      1 
+```
+  0 1 ...
++ 1 ...
+---------
+  1
+```
 
 The first line is `fibs` and the second line is `tail fibs`. Adding up the numbers on the first column, 0 and 1, gives us 1, our third number. We append this to the list.
 
 When we evaluate the fourth number, here's what our list looks like:
 
-      0 1 1 ...
-    + 1 1 ...
-    ---------
-      1 2
+```
+  0 1 1 ...
++ 1 1 ...
+---------
+  1 2
+```
 
 We get the fourth number, 2, and it's appended to the list. Now, for the fifth number:
 
-      0 1 1 2 ...
-    + 1 1 2 ...
-    ---------
-      1 2 3
+```
+  0 1 1 2 ...
++ 1 1 2 ...
+---------
+  1 2 3
+```
 
 We get 3. This continues, eventually building up a list of Fibonacci numbers.
 
