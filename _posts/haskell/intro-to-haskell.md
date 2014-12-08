@@ -327,7 +327,7 @@ The comment shows how the `(+)` function is being applied to the values of the l
   0 1 ...
 + 1 ...
 ---------
-  1 
+  1
 ```
 
 The first line is `fibs` and the second line is `tail fibs`. Adding up the numbers on the first column, 0 and 1, gives us 1, our third number. We append this to the list.
