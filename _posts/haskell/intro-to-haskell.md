@@ -5,11 +5,11 @@ date: 2014-11-27
 
 **Note: I've written an edited revision so as to explain things in a gentler way.**
 
-[Haskell](https://www.haskell.org/platform/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in Haskell.
+[Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in Haskell.
 
 This post assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
 
-If you wish to try out the code, download [main.hs](/res/intro-to-haskell/main.hs) and run `ghci main.hs`. You'll need GHC installed. Then, you can evaluate stuff and see what you get.
+You'll need the [Glasgow Haskell Compiler](https://www.haskell.org/ghc/) installed (you can get it as part of [Haskell Platform](https://www.haskell.org/platform/)). Then, you'll be able to evaluate stuff and see what you get.
 
 ## Basics
 
