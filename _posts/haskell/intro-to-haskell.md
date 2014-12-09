@@ -3,7 +3,7 @@ title: Introduction to Haskell
 date: 2014-11-27
 ---
 
-**Note: I've written an edited revision so as to explain things in a gentler way.**
+**Revision 3**
 
 [Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in Haskell.
 
