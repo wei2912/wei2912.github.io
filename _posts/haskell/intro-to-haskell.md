@@ -399,7 +399,9 @@ Afterwards, we apply `f` to `a` and `b`, then prepend our value to `zipWith f as
 
 However, there's still a second equation. Underscores are a way for us to dispose unneeded values. The last clause catches everything that doesn't fit the first equation and returns an empty list.
 
-But why do we need a catchall? As it turns out, the head of an empty list is undefined. Hence, `(a:as)` will only match lists with at least one element. Our catchall ensures that the function doesn't error out when we exhaust both lists. Instead, it returns an empty list. This is what we call the `base case` of a recursive function, as all other calls to the recursive function gets reduced to this.
+But why do we need a catchall? As it turns out, the head of an empty list is undefined. Hence, `(a:as)` will only match lists with at least one element. Our catchall ensures that the function doesn't error out when we exhaust both lists. Instead, it returns an empty list.
+
+This is what we call the `base case` of a recursive function, as all other calls to the recursive function gets reduced to this. It's also the reason why `zipWith` terminates while `iterate` doesn't.
 
 While we now know what the function is doing, we still have no idea how it works. Looking at the trace should gain some inspiration as to how this works:
 
