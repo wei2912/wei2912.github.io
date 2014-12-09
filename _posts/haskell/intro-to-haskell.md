@@ -5,7 +5,7 @@ date: 2014-11-27
 
 **Revision 3**
 
-[Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in Haskell.
+[Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it.
 
 This post assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
 
@@ -122,6 +122,8 @@ Prelude> :load main.hs
 Ok, modules loaded: Main.
 *Main> addByThree 10
 13
+*Main> add 10 20
+30
 ```
 
 **Protip**: You can also use `ghci main.hs` directly. Another nifty thing is that you can reload a file by `:reload main.hs`.
