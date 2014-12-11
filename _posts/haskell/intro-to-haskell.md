@@ -184,7 +184,7 @@ In our equations, we specified that `id x = x`. This function just returns the v
 
 ### Higher Order functions
 
-Higher order functions are functions that can take in other functions and return functions (isn't this mind blowing?).
+Higher order functions are functions that can take in or return other functions (isn't this mind blowing?).
 
 A function which takes in one parameter and returns something of the same type is denoted by `a -> a`. Likewise, a function that takes in a function and returns something of the same type is `(a -> a) -> a`.
 
