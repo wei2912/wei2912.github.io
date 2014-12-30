@@ -3,7 +3,7 @@ title: Introduction to Haskell
 date: 2014-11-27
 ---
 
-**Revision 3**
+**Revision 3.1**
 
 [Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it.
 
@@ -320,8 +320,6 @@ and get:
 The elegance of this solution lies in the fact that we easily did this with recursion, in a rather terse, clear and "mathematical" way.
 
 The ability to reuse functions like this grants us a lot of power in Haskell and allows us to reason about code in a very powerful way.
-
-If we tried to write this in a strict language, the list will be strictly evaluated and the function would never terminate. Hence, we'll need to write seperate functions that would terminate the generation of powers. That'd be messy.
 
 ## Fibonacci Numbers
 
