@@ -2,6 +2,9 @@
 title: Home
 ---
 
+<h1>List of Posts</h1>
+
 $for(posts)$
-	$body$
+	<h2><a href="$url$">$title$</a></h2>
+	<p>$snippet$</p>
 $endfor$

@@ -20,25 +20,29 @@ main = hakyll $ do
         route $ setExtension "css"
         compile sassCompiler
 
-    match "_posts/**" $ do
+    match "posts/**" $ do
+        route $ setExtension ".html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "_templates/post.html" postCtx
+            >>= loadAndApplyTemplate "templates/post.html" postCtx
+            >>= saveSnapshot "content"
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "_posts/**"
+            posts <- recentFirst =<<
+                loadAllSnapshots "posts/**" "content"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "_templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-    match "_templates/**" $ compile templateCompiler
+    match "templates/**" $ compile templateCompiler
 
     create ["atom.xml"] $ do
         route idRoute
@@ -47,22 +51,13 @@ main = hakyll $ do
                     postCtx `mappend`
                     bodyField "description"
 
-            posts <- fmap (take 10) . recentFirst =<< loadAll "_posts/**"
+            posts <- fmap (take 10) . recentFirst =<< loadAll "posts/**"
             renderAtom feedConfig feedCtx posts
 
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
-    field "url" getNewURL `mappend`
     defaultContext
-    where
-    	quote :: String -> String
-    	quote = map (toLower . \ x -> if x == ' ' then '_' else x)
-        getNewURL :: Item a -> Compiler String
-        getNewURL item = do
-        	metadata <- getMetadata $ itemIdentifier item
-        	let title = fromJust $ M.lookup "title" metadata
-        	return $ "/posts/" ++ quote title
 
 feedConfig :: FeedConfiguration
 feedConfig = FeedConfiguration

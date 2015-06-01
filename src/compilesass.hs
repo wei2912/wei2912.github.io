@@ -7,9 +7,9 @@ import Hakyll
 
 compileWith :: [String] -> Compiler (Item String)
 compileWith flags =
-	getResourceString
-		>>= withItemBody (unixFilter "sass" flags)
-		>>= return . fmap compressCss
+    getResourceString
+        >>= withItemBody (unixFilter "sass" flags)
+        >>= return . fmap compressCss
 
 sassCompiler :: Compiler (Item String)
 sassCompiler = compileWith ["-s"]

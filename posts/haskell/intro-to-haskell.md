@@ -1,6 +1,7 @@
 ---
 title: Introduction to Haskell
 date: 2014-11-27
+snippet: <a href="https://www.haskell.org/">Haskell</a> is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it.
 ---
 
 **Revision 3.1**
