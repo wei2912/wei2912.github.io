@@ -1,5 +1,6 @@
 language: haskell
 ghc: "7.10"
+sudo: false
 
 install: scripts/install.sh
 script: scripts/build.sh
