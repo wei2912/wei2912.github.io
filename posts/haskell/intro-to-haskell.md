@@ -1,12 +1,8 @@
 ---
 title: Introduction to Haskell
 date: 2014-11-27
-snippet: <a href="https://www.haskell.org/">Haskell</a> is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it.
+snippet: <a href="https://www.haskell.org/">Haskell</a> is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it. This post introduces the reader to the world of Haskell.
 ---
-
-**Revision 3.1**
-
-[Haskell](https://www.haskell.org/) is a pure functional programming language that comes with lazy evaluation. Its elegance is why many programmers like writing code in it.
 
 This post assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
 
@@ -181,7 +177,7 @@ The function `id` can take in any type.
 
 As you can see from the use of `a` as both input and output, the two types have to be the same (interesting fact: polymorphic types are lowercase while "normal" types are uppercase).
 
-In our equations, we specified that `id x = x`. This function just returns the value it was passed into, hence the reason why it's called the **id**entity function.
+In our equations, we specified that `id x = x`. This function just returns the value it was passed into, hence the reason why it's called the *id*entity function.
 
 ### Higher Order functions
 

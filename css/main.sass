@@ -1,17 +1,22 @@
-$sans-serif: "Helvetica Neue", Helvetica, sans-serif
-$monospace: "Deja Vu Sans Mono", monospace 
+$sans-serif: 'Roboto', sans-serif
+$serif: 'PT Serif', serif
+$monospace: 'Droid Sans Mono', monospace 
 
-$main-text: #777
+$main-text: #000
 $heading1: #222
 $heading2: #393939
 $heading3: #494949
 $link: #39c
+$background: #FEFEFE
 
 body
+    background: $background
     color: $main-text
-    font-family: $sans-serif
+    font-family: $serif
     font-weight: 300
+    margin: 1em auto 2em
     padding: 50px
+    width: 720px
 
 h1,
 h2,
@@ -19,6 +24,8 @@ h3,
 h4,
 h5,
 h6
+    font-family: $sans-serif
+    font-weight: 200
     margin: 0 0 20px
 
 p,
@@ -35,26 +42,24 @@ h3
     line-height: 1.1
 
 h1
-    font-size: 28px
+    font-size: 48px
     color: $heading1
 
 h2
+    font-size: 28px
     color: $heading2
 
 h3,
 h4,
 h5,
 h6
+    font-size: 20px
     color: $heading3
 
 a
     color: $link
     font-weight: 400
     text-decoration: none
-
-.wrapper
-    margin: 0 auto
-    width: 860px
 
 blockquote
     border-left: 1px solid #e5e5e5
@@ -98,19 +103,9 @@ th
 img
     max-width: 100%
 
-header
-    float: left
-    position: fixed
-    width: 270px
-
 strong
     color: #222
     font-weight: 700
-
-section
-    width: 500px
-    float: right
-    padding-bottom: 50px
 
 small
     font-size: 11px
@@ -121,48 +116,14 @@ hr
     height: 1px
     margin: 0 0 20px
 
-footer
-    width: 270px
-    float: left
-    position: fixed
-    bottom: 50px
-
 @media print, screen and (max-width: 960px)
-    div.wrapper
+    body
         width: auto
         margin: 0
-    
-    header, section, footer
-        float: none
-        position: static
-        width: auto
-    
-    header
-        padding-right: 320px
-    
-    section
-        border: 1px solid #e5e5e5
-        border-width: 1px 0
-        padding: 20px 0
-        margin: 0 0 20px
-    
-    header a small
-        display: inline
-    
-    header ul
-        position: absolute
-        right: 50px
-        top: 52px
 
 @media print, screen and (max-width: 720px)
     body
         word-wrap: break-word
-    
-    header
-        padding: 0
-    
-    header ul, header p.view
-        position: static
     
     pre, code
         word-wrap: normal
@@ -170,21 +131,12 @@ footer
 @media print, screen and (max-width: 480px)
     body
         padding: 15px
-    
-    header ul
-        display: none
 
 @media print
     body
         padding: 0.4in
         font-size: 12pt
         color: #444
-
-/* Site specific stuff */
-
-header, footer
-    p
-        margin: 0 0 5px
 
 // Solarized Light
 
