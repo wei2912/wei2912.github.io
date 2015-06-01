@@ -463,4 +463,4 @@ You could take a look at the following readings:
 
 You may also wish to follow [bitemyapp's guide](https://github.com/bitemyapp/learnhaskell) to learn more Haskell.
 
-If you have any comments or suggestions, go to [this post's Reddit post](https://www.reddit.com/r/haskell/comments/2oo7dy/revisied_introduction_to_haskell_looking_for/) for more details. Thanks for reading!
+If you have any comments or suggestions, go to [this post's Reddit post](https://www.reddit.com/r/haskell/comments/2oo7dy/revisied_introduction_to_haskell_looking_for/). Thanks for reading!

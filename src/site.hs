@@ -53,27 +53,21 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
-    field "id" getPostID `mappend`
-    field "url" setNewURL `mappend`
+    field "url" getNewURL `mappend`
     defaultContext
     where
-    	title2ID :: String -> String
-    	title2ID = map (toLower . \ x -> if x == ' ' then '_' else x)
-        getPostID :: Item a -> Compiler String
-        getPostID item = do
-            metadata <- getMetadata $ itemIdentifier item
-            let title = fromJust $ M.lookup "title" metadata
-            return $ title2ID title
-        setNewURL :: Item a -> Compiler String
-        setNewURL item = do
+    	quote :: String -> String
+    	quote = map (toLower . \ x -> if x == ' ' then '_' else x)
+        getNewURL :: Item a -> Compiler String
+        getNewURL item = do
         	metadata <- getMetadata $ itemIdentifier item
         	let title = fromJust $ M.lookup "title" metadata
-        	return $ '#' : title2ID title
+        	return $ "/posts/" ++ quote title
 
 feedConfig :: FeedConfiguration
 feedConfig = FeedConfiguration
     { feedTitle       = "wei2912’s blog"
-    , feedDescription = "A website where I throw in some stuff which may be useful to others."
+    , feedDescription = "The blog of a high school studet, on math and computer science."
     , feedAuthorName  = "Wei En (wei2912)"
     , feedAuthorEmail = "wei2912.supp0rt@gmail.com"
     , feedRoot        = "https://wei2912.github.io"
