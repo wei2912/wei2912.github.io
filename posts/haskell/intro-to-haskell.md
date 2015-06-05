@@ -255,11 +255,9 @@ By now, you should be familiar with looking at type signatures.
 
 What `iterate` does is that it prepends a value to a list, applies a function to the value and pass the new value into `iterate` again. This is what we call a recursive function -- a function that calls itself.
 
-It's a bit hard to figure out what `iterate` does, so let's look at a trace of the `pows` function.
-
 ### Trace of the `pows` function
 
-It's hard to see what this function does if you're not familiar with recursion. Let's look at a trace.
+It's hard to see what this function does if you're not familiar with recursion, so let's look at a trace.
 
 ```haskell
   pows 3
@@ -376,27 +374,25 @@ All these 4 terminology are functions. You can try them out in GHCi.
 3
 ```
 
-(I apologize for my lack of artistic skills.)
-
 ### `zipWith`
 
 Now that we've conquered list terminology, let's look at `zipWith`.
 
 ```haskell
 zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
-zipWith f (a:as) (b:bs) = f a b : zipWith f as bs
+zipWith f (a : as) (b : bs) = f a b : zipWith f as bs
 zipWith _ _ _ = []
 ```
 
 Hmm. We have 2 equations, with some weird looking stuff. How does this work?
 
-Haskell allows for pattern matching. In our case, `(a:as)` seperates a list of values into `a` (the head) and `as` (the tail). We do the same with `(b:bs)`.
+Haskell allows for pattern matching. In our case, `(a : as)` seperates a list of values into `a` (the head) and `as` (the tail). We do the same with `(b : bs)`.
 
 Afterwards, we apply `f` to `a` and `b`, then prepend our value to `zipWith f as bs`.
 
 However, there's still a second equation. Underscores are a way for us to dispose unneeded values. The last clause catches everything that doesn't fit the first equation and returns an empty list.
 
-But why do we need a catchall? As it turns out, the head of an empty list is undefined. Hence, `(a:as)` will only match lists with at least one element. Our catchall ensures that the function doesn't error out when we exhaust both lists. Instead, it returns an empty list.
+But why do we need a catchall? As it turns out, the head of an empty list is undefined. Hence, `(a : as)` will only match lists with at least one element. Our catchall ensures that the function doesn't error out when we exhaust both lists. Instead, it returns an empty list.
 
 This is what we call the `base case` of a recursive function, as all other calls to the recursive function gets reduced to this. It's also the reason why `zipWith` terminates while `iterate` doesn't.
 
@@ -452,9 +448,9 @@ This algorithm, while a bit hard to comprehend, is inherently elegant and simple
 
 I hope this has showed you how elegant Haskell could be and why many programmers like working in it.
 
-There's a lot more to Haskell than this (such as Monads) which make solving other real-life problems quite elegant as well.
+There's a lot more to Haskell than this (such as functors, monads, etc.) which make solving other real-life problems quite elegant as well.
 
-You could take a look at the following readings:
+You can take a look at the following readings:
 
 * [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
 
