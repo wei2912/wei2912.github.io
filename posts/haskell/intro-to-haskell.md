@@ -122,7 +122,7 @@ Ok, modules loaded: Main.
 30
 ```
 
-**Protip**: You can also use `ghci main.hs` directly. Another nifty thing is that you can reload a file by `:reload main.hs`.
+**Protip**: You can also run the command `ghci main.hs` on your shell. Another nifty thing is that you can reload a file by `:reload main.hs`.
 
 **Protip 2**: `:l` is `:load` and `:r` is `:reload`.
 
