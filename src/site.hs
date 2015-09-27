@@ -8,15 +8,11 @@ import Hakyll.Web.CompileSass (sassCompiler)
 
 main :: IO ()
 main = hakyll $ do
-    match "res/**" $ do
-        route idRoute
-        compile copyFileCompiler
-
     match "css/**.sass" $ do
         route $ setExtension "css"
         compile sassCompiler
 
-    match "posts/**" $ do
+    match "posts/**.md" $ do
         route $ setExtension ".html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html" postCtx
@@ -28,7 +24,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<<
-                loadAllSnapshots "posts/**" "content"
+                loadAllSnapshots "posts/**.md" "content"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     defaultContext
@@ -39,6 +35,10 @@ main = hakyll $ do
                 >>= relativizeUrls
 
     match "templates/**" $ compile templateCompiler
+
+    match (fromRegex "^posts/" .&&. complement (fromRegex "\\.md$")) $ do
+        route idRoute
+        compile copyFileCompiler
 
 postCtx :: Context String
 postCtx =
