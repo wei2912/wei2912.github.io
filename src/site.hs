@@ -12,10 +12,6 @@ main = hakyll $ do
         route idRoute
         compile copyFileCompiler
 
-    match "css/**.css" $ do
-        route idRoute
-        compile compressCssCompiler
-
     match "css/**.sass" $ do
         route $ setExtension "css"
         compile sassCompiler
