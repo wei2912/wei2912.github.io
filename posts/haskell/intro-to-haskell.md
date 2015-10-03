@@ -1,5 +1,6 @@
 ---
 title: Introduction to Haskell
+date: 2014-11-27
 ---
 
 This post assumes that the reader has at least an intermediate knowledge of an imperative programming language, but does not assume knowledge of functional programming.
