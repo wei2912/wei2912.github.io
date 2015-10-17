@@ -3,8 +3,10 @@ import Data.Char
 import qualified Data.Map as M
 import Data.Maybe (fromJust)
 import Data.Monoid (mappend)
+import qualified Data.Set as S
 import Hakyll
 import Hakyll.Web.CompileSass (sassCompiler)
+import Text.Pandoc.Options
 
 main :: IO ()
 main = hakyll $ do
@@ -14,7 +16,7 @@ main = hakyll $ do
 
     match "posts/**.md" $ do
         route $ setExtension ".html"
-        compile $ pandocCompiler
+        compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/post.html" postCtx
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -44,3 +46,19 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+pandocMathCompiler :: Compiler (Item String)
+pandocMathCompiler =
+    let mathExtensions =
+            [ Ext_tex_math_dollars
+            , Ext_tex_math_double_backslash
+            , Ext_latex_macros
+            ]
+        defaultExtensions = writerExtensions defaultHakyllWriterOptions
+        newExtensions = foldr S.insert defaultExtensions mathExtensions
+        writerOptions = defaultHakyllWriterOptions
+            { writerExtensions = newExtensions
+            , writerHTMLMathMethod = MathJax ""
+            }
+    in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+
