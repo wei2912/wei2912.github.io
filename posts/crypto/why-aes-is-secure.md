@@ -29,9 +29,9 @@ a Galois field different from these fields, is that it contains a finite number
 of elements. On the other hand, there is an infinite number of real numbers and
 rational numbers.
 
-A Galois field is denoted as $GF(p^n)$ where $p \in \mathbb{P}$ and $n \in \mathbb{Z^+}$.
-We call $p^n$ the order of the field. The elements of a Galois field are the set
-of elements $\{0, 1, 2, \ldots, p^n - 1\}$
+A Galois field is denoted as $GF(p^n)$ where $p$ is a prime number and $n$ is a
+positive integer. We call $p^n$ the order of the field. The elements of a Galois
+field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$
 
 In AES, where we want to manipulate bytes, $GF(2^8)$ is used. $GF(2^8)$ has a
 set of elements which represent all possible values of a byte. The fact that the
