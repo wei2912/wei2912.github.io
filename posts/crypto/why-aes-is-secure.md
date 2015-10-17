@@ -1,6 +1,6 @@
 ---
 title: Why AES Is Secure
-date: 2015-10-07
+date: 2015-10-17
 ---
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
