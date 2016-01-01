@@ -9,14 +9,14 @@ ciphers for the encryption of data. It's been approved by the US government to
 protect classified data. In this article, I'll explain how AES works and why
 it's secure.
 
-This article is written for anyone who has knowledge of basic number theory and
+This article is written for anyone who has knowledge of pre-calculus math and
 computer knowledge. No prior knowledge of cryptography is required.
 
 [advanced-encryption-standard]: https://en.wikipedia.org/wiki/Advanced_Encryption_Standard "Advanced Encryption Standard"
 
 ## Galois field theory
 
-AES makes extensive use of Galois field Theory, which I'm going to give a very
+AES makes extensive use of Galois field theory, which I'm going to give a very
 brief introduction to. For more details see [Galois Field in Cryptography][galois-field-in-cryptography].
 
 A [Galois field][finite-field] is a [field][field-mathematics] containing a
@@ -283,8 +283,8 @@ $$\begin{bmatrix}
 \end{bmatrix}$$
 
 in $GF(2^8)$. Matrix multiplication is composed of several multiplication and
-addition operations. This transforms each column. Hence, `MixColumns` permutates
-the bytes in each column **column-wise**.
+addition operations. This transforms the bytes of every column. Hence,
+`MixColumns` permutates the bits **column-wise**.
 
 This matrix is a [Maximum Distance Seperable matrix][mds-matrix]. The power of
 MDS matrices lie in the fact that they have perfect diffusion. Changing $k$ of
