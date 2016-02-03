@@ -31,7 +31,7 @@ there is an infinite number of real numbers and rational numbers.
 
 A Galois field is denoted as $GF(p^n)$ where $p$ is a prime number and $n$ is a
 positive integer. We call $p^n$ the order of the field. The elements of a Galois
-field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$
+field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$.
 
 [galois-field-in-cryptography]: http://www.math.washington.edu/~morrow/336_12/papers/juan.pdf "Galois Field in Cryptography"
 [finite-field]: https://en.wikipedia.org/wiki/Finite_field "Finite field"
@@ -45,11 +45,10 @@ remainder after dividing by $p$). For example, in $GF(5)$, $4 + 3 = 7$ is
 reduced to $2$, and $4 \times 2 = 8$ is reduced to $3$.
 
 Elements of $GF(p^n)$ can be represented as polynomials of degree less than $n$.
-For example, in $GF(3^3)$, the polynomial $x^2 + 2$ would represent 11 and the
-polynomial $2x^2 + x + 1$ would represent 22. How these polynomials are created
-is similar to how you would represent a base 10 number in base 3, with $x = 3$.
-In addition, we use modulo $p$ too. Adding up the two polynomials gives us
-$3x^2 + x + 3$, which is reduced to $x + 3$ or 4.
+For example, in $GF(3^3)$, the polynomial $x^2 + 1$ would represent 10 and the
+polynomial $2x^2 + x + 1$ would represent 22, with $x = 3$. In addition, we use
+modulo $3$ on each of the coefficients. Adding up the two polynomials gives us
+$3x^2 + x + 2$, which is reduced to $x + 2$, represented as 5.
 
 However, things get more complicated when it comes to multiplication. Take the
 polynomials $2x^2 + 1$ and $x + 1$. Multiplying these two would give us
