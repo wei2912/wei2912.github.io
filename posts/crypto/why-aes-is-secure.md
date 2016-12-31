@@ -1,7 +1,9 @@
 ---
 title: Why AES Is Secure
-date: 2015-10-17
+date: 2017-01-01
 ---
+
+DISCLAIMER: I am not a cryptographer by profession, and may have made some mistakes or oversimplification in the content of this article.
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
 known as Rijndael (which was its original name), is one of the most widely used
@@ -199,17 +201,21 @@ that given more key bits, there is a need for more rounds so as to ensure that
 there is *confusion*. This is why the key schedule differs depending on the
 key size.
 
-I will not elaborate much on how the key schedule works. The main point to note
-is that the key schedule is somewhat weak in a few areas. Instead of using a
-[cryptographically secure pseudorandom number generator][csprng] and seeding the
-generator with the key, providing a sequence of output round keys that are hard
-to predict and increase the difficulty of obtaining the original key from the
-key schedule, a simpler key schedule is used. This has allowed the propagation
-of structures across keys.
+The key schedule derives the first round key from the master key, the second
+from the first, and so on until all round keys required have been generated. I
+will not elaborate much on how the key schedule works. The main point to note
+is that the key schedule consists of shifting bytes and XOR operations. The key
+schedule is invertible, allowing an adversary to derive the master key given
+any round key.
 
-A simpler key schedule provides efficiency but comes at the cost of a bit of
-security. However, practically speaking, there is not much need to make the key
-schedule non-invertible.
+A question you may ask is, why not use a [cryptographically secure pseudorandom number generator][csprng]?
+One could seed the generator with the key, providing a sequence of output round
+keys that are hard to predict and increasing the difficulty of obtaining the
+master key from the key schedule.
+
+Simply put, a simpler key schedule provides efficiency but comes at the cost of
+a bit of security. However, practically speaking, there is not much need to
+make the key schedule non-invertible.
 
 Despite the weakness of the key schedule, it satisfies the property that
 changing one bit of the key changes several round keys, which was a requirement
@@ -314,7 +320,7 @@ written in 2000:
 
 Since then, academic attacks against AES have been developed. But many of them
 involve a smaller number of rounds or are impractical. The best key-recovery
-attacks on full AES so far is a [biclique-attack] which is merely faster than
+attacks on full AES so far is a [biclique attack][biclique-attack] which is merely faster than
 brute force by at most a factor of 4. Furthermore, the data storage required
 works out to trillions of terabytes, far beyond the data stored on the planet.
 
@@ -324,5 +330,12 @@ replaced with a lookup table of 256 bytes. Its simplicity means that operations
 can be performed very fast, and is easily implemented on hardware. All of these
 properties are why Rijndael was chosen by NIST to become AES.
 
+If you would like to read more on the design of AES, take a look at
+[The Design of Rijndael][design-of-rijndael]. If you want to learn more about
+why Rijndael was chosen over other candidates, take a look at [this answer on
+StackExchange][finalist-nist-aes].
+
 [biclique-attack]: https://en.wikipedia.org/wiki/Biclique_attack "Biclique attack"
+[design-of-rijndael]: http://www.springer.com/gp/book/9783540425809 "The Design of Rijndael"
+[finalist-nist-aes]: http://crypto.stackexchange.com/questions/11104/how-exactly-was-the-finalist-chosen-in-the-nist-aes-competition "How exactly was the finalist chosen in the NIST AES competition?"
 
