@@ -167,7 +167,7 @@ However, when combined together, they provide powerful cryptographic strength.
 [Confusion and diffusion][confusion-and-diffusion] are key properties of a
 secure cipher (as identified by Claude Shannon, considered the father of
 information theory). *Confusion* refers to the property that each character of
-the plaintext depends on several parts of the key, and *diffusion* refers to the
+the ciphertext depends on several parts of the key, and *diffusion* refers to the
 property that when we change a character of the plaintext, then several
 characters of the ciphertext should change.
 
