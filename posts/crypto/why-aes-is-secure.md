@@ -3,7 +3,8 @@ title: Why AES Is Secure
 date: 2017-01-01
 ---
 
-DISCLAIMER: I am not a cryptographer by profession, and may have made some mistakes or oversimplification in the content of this article.
+DISCLAIMER: I am not a cryptographer by profession, and the content presented
+here may not be fully accurate.
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
 known as Rijndael (which was its original name), is one of the most widely used
