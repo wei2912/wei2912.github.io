@@ -1,5 +1,5 @@
 language: haskell
-ghc: "7.10"
+ghc: "8.0"
 sudo: false
 
 install: scripts/install.sh
