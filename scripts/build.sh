@@ -2,15 +2,17 @@
 
 echo "* Start of build process."
 
-# compile binary
-mkdir bin
-ghc -o bin/site --make -O -threaded src/*.hs || exit 1
+gem install sass
 
-echo "* Compiled binaries."
+echo "* Installed SASS."
 
-# build site
-git clone https://github.com/wei2912/wei2912.github.io _site/ || exit 1
-bin/site build || exit 1
+stack setup || exit 1
+stack build || exit 1
+
+echo "* Compiled Haskell build."
+
+git clone https://github.com/wei2912/blog _site/ || exit 1
+stack exec blog-src build || exit 1
 
 echo "* Built site."
 ls -R _site/

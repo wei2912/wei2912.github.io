@@ -1,8 +1,9 @@
 *.hi
 *.o
-bin/
+.stack-work/
 _site/
 _cache/
-travis_rsa
-travis_rsa.pub
-
+blog-src.cabal
+circle_rsa
+circle_rsa.pub
+*~
