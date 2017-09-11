@@ -4,5 +4,9 @@ sudo: false
 
 install: scripts/install.sh
 script: scripts/build.sh
+deploy:
+  provider: script
+  script: scripts/deploy.sh
+  on:
+    branch: master
 after_script: scripts/clean.sh
-after_success: scripts/deploy.sh
