@@ -1,30 +1,30 @@
 version: 2
 defaults:
-  working_directory: /tmp
+  working_directory: ~
 
 jobs:
   build:
     docker:
-      - image: ubuntu:trusty
+      - image: circleci/ruby:2.4.1-node-browsers
     steps:
       - checkout
       - run: scripts/install.sh
       - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}
+          key: deps1-{{ checksum "package.yaml" }}
       - run: stack setup && stack install || exit 1
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}
+          key: deps1-{{ checksum "package.yaml" }}
           paths:
             - ".stack-work"
       - run: scripts/build.sh
       - persist_to_workspace:
-          root: /tmp
+          root: ~
   deploy:
     docker:
-      - image: ubuntu:trusty
+      - image: circleci/ruby:2.4.1-node-browsers
     steps:
       - attach_workspace:
-          at: /tmp
+          at: ~
       - run: scripts/deploy.sh
 
 workflows:
