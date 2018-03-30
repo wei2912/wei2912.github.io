@@ -8,11 +8,14 @@ jobs:
       - image: ubuntu:trusty
     steps:
       - checkout
-      - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}-{{ checksum "scripts/install.sh" }}
       - run: scripts/install.sh
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}
+      - run: stack setup && stack install || exit 1
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}-{{ checksum "scripts/install.sh" }}
+          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}
+          paths:
+            - ".stack-work"
       - run: scripts/build.sh
       - persist_to_workspace:
           root: /tmp
