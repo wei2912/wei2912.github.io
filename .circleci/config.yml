@@ -2,16 +2,17 @@ version: 2
 defaults:
   working_directory: /tmp
 
-dependencies:
-  pre:
-    - sudo su -c 'apt-get install rubygems build-essential && curl -sSL https://get.haskellstack.org/ | s'
-
 jobs:
   build:
     docker:
       - image: ubuntu:trusty
     steps:
       - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}-{{ checksum "scripts/install.sh" }}
+      - run: scripts/install.sh
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "package.yaml" }}-{{ checksum "scripts/install.sh" }}
       - run: scripts/build.sh
       - persist_to_workspace:
           root: /tmp

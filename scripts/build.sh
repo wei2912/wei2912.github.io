@@ -1,12 +1,7 @@
 #!/bin/bash
 
-echo "* Start of build process."
+echo "* Continuing build process from installed dependencies."
 
-gem install sass
-
-echo "* Installed SASS."
-
-stack setup || exit 1
 stack build || exit 1
 
 echo "* Compiled Haskell build."
