@@ -1,6 +1,6 @@
 version: 2
 defaults:
-  working_directory: ~
+  working_directory: ~/
 
 jobs:
   build:
@@ -18,13 +18,13 @@ jobs:
             - ".stack-work"
       - run: scripts/build.sh
       - persist_to_workspace:
-          root: ~
+          root: ~/
   deploy:
     docker:
       - image: circleci/ruby:2.4.1-node-browsers
     steps:
       - attach_workspace:
-          at: ~
+          at: ~/
       - run: scripts/deploy.sh
 
 workflows:
