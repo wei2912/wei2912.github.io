@@ -1,4 +1,4 @@
-# blog-src
+# blog-src [![CircleCI](https://circleci.com/gh/wei2912/blog-src/tree/master.svg?style=svg)](https://circleci.com/gh/wei2912/blog-src/tree/master)
 
 This is the source of my personal blog, [weien.io](https://weien.io), and is where I keep my articles as well as the code of my static site generator, which is based upon [Hakyll](https://jaspervdj.be/hakyll/).
 
