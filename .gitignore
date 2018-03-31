@@ -4,6 +4,5 @@
 _site/
 _cache/
 blog-src.cabal
-circle_rsa
-circle_rsa.pub
+piwik/
 *~
