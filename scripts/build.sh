@@ -2,7 +2,7 @@
 
 echo "* Start of build process."
 
-travis_wait stack --no-terminal --skip-ghc-check build
+stack --no-terminal --skip-ghc-check build
 
 echo "* Compiled binaries."
 

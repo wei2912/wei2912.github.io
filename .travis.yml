@@ -9,9 +9,9 @@ cache:
     - $HOME/.stack-work-cache
   apt: true
 
-install: scripts/install.sh
+install: travis_wait scripts/install.sh
 
-script: scripts/build.sh
+script: travis_wait scripts/build.sh
 
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_1fe6220ef9db_key -iv $encrypted_1fe6220ef9db_iv -in deploy_rsa.enc -out ~/.ssh/id_rsa -d
