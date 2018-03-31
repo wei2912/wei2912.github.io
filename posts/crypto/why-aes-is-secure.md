@@ -321,25 +321,23 @@ written in 2000:
 
 Since then, academic attacks against AES have been developed. But many of them
 involve a smaller number of rounds or are impractical. The best key-recovery
-attacks on full AES so far is a [biclique attack][biclique-attack] which is merely faster than
-brute force by at most a factor of 4. Furthermore, the data storage required
-works out to trillions of terabytes, far beyond the data stored on the planet.
+attacks on full AES so far is a [biclique attack][biclique-attack] which is
+merely faster than brute force by at most a factor of 4. Furthermore, the data
+storage required works out to trillions of terabytes, far beyond the data
+stored on the planet.
 
 In addition to its strength, AES performs very quickly. `SubBytes` and
-multiplication in `MixColumns` can be
-replaced with a lookup table of 256 bytes. Its simplicity means that operations
-can be performed very fast, and is easily implemented on hardware. All of these
-properties are why Rijndael was chosen by NIST to become AES.
+multiplication in `MixColumns` can be replaced with a lookup table of 256
+bytes. Its simplicity means that operations can be performed very fast, and is
+easily implemented on hardware. All of these properties are why Rijndael was
+chosen by NIST to become AES.
 
 If you want to know more about AES, take a look at
-[A Stick Figure Guide to AES][stick-figure-guide]. If you would like to read
-more on the design of AES, take a look at
-[The Design of Rijndael][design-of-rijndael]. If you want to learn more about
-why Rijndael was chosen over other candidates, take a look at [this answer on
-StackExchange][finalist-nist-aes].
+[A Stick Figure Guide to AES][stick-figure-guide]. Alternatively, if you want
+to read more on the design of AES, there's a comprehensive reference written by
+the creators themselves, titled [The Design of Rijndael][design-of-rijndael].
 
 [biclique-attack]: https://en.wikipedia.org/wiki/Biclique_attack "Biclique attack"
 [stick-figure-guide]: http://www.moserware.com/2009/09/stick-figure-guide-to-advanced.html "A Stick Figure Guide to the Advanced Encryption Standard (AES)"
 [design-of-rijndael]: http://www.springer.com/gp/book/9783540425809 "The Design of Rijndael"
-[finalist-nist-aes]: http://crypto.stackexchange.com/questions/11104/how-exactly-was-the-finalist-chosen-in-the-nist-aes-competition "How exactly was the finalist chosen in the NIST AES competition?"
 
