@@ -16,7 +16,7 @@ shortHash = take 6 $(gitHash)
 main :: IO ()
 main = hakyll $ do
     match "css/**.sass" $ do
-        route $ setExtension $ concat ["min.", shortHash, ".css"]
+        route $ setExtension $ concat [shortHash, ".min.css"]
         compile sassCompiler
 
     match "posts/**.md" $ do
