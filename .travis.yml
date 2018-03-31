@@ -1,22 +1,18 @@
 language: haskell
 ghc: '8.0'
 sudo: false
-
 cache:
   directories:
-    - $HOME/.local
-    - $HOME/.stack
-    - $HOME/.stack-work-cache
+  - "$HOME/.local"
+  - "$HOME/.stack"
+  - "$HOME/.stack-work-cache"
   apt: true
-
 install: travis_wait scripts/install.sh
-
 script: travis_wait scripts/build.sh
-
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_1fe6220ef9db_key -iv $encrypted_1fe6220ef9db_iv -in deploy_rsa.enc -out ~/.ssh/id_rsa -d
-  - chmod 600 ~/.ssh/id_rsa
-
+- openssl aes-256-cbc -K $encrypted_1fe6220ef9db_key -iv $encrypted_1fe6220ef9db_iv
+  -in deploy_rsa.enc -out deploy_rsa -d
+- chmod 600 ~/.ssh/id_rsa
 deploy:
   provider: script
   skip_cleanup: true
