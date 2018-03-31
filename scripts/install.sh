@@ -1,13 +1,15 @@
 #!/bin/bash
 
-echo "* Start of install process"
+echo "* Start of install process."
 
-cabal install hakyll || exit 1
+mkdir -p ~/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-echo "** Installed Hakyll"
+echo "** Installed Stack."
 
 gem install sass
 
-echo "** Installed SASS"
+echo "** Installed SASS."
 
-echo "* Installed dependencies."
+echo "* Installed all dependencies."
