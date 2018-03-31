@@ -8,6 +8,7 @@ before_deploy:
   - chmod 600 ~/.ssh/id_rsa
 deploy:
   provider: script
+  skip_cleanup: true
   script: scripts/deploy.sh
   on:
     branch: master
