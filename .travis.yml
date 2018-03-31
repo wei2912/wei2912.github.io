@@ -3,9 +3,10 @@ ghc: '8.0'
 sudo: false
 cache:
   directories:
+  - "$HOME/.cabal"
+  - "$HOME/.ghc"
   - "$HOME/.local"
   - "$HOME/.stack"
-  - "$TRAVIS_BUILD_DIR/.stack-work"
   apt: true
 install: travis_wait scripts/install.sh
 script: travis_wait scripts/build.sh
