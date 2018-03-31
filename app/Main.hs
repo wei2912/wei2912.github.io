@@ -33,7 +33,6 @@ main = hakyll $ do
                     defaultContext
 
             getResourceBody
-                >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
@@ -42,6 +41,18 @@ main = hakyll $ do
     match (fromRegex "^posts/" .&&. complement (fromRegex "\\.md$")) $ do
         route idRoute
         compile copyFileCompiler
+
+    create ["sitemap.xml"] $ do
+        route   idRoute
+        compile $ do
+            posts <- recentFirst =<<
+                loadAllSnapshots "posts/**.md" "content"
+            let sitemapCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 postCtx :: Context String
 postCtx =
