@@ -2,8 +2,7 @@
 
 echo "* Start of build process."
 
-stack setup
-stack build
+stack --no-terminal --skip-ghc-check build
 
 echo "* Compiled binaries."
 
