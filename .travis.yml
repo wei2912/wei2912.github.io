@@ -4,7 +4,10 @@ sudo: false
 
 cache:
   directories:
+    - $HOME/.local
     - $HOME/.stack
+    - $HOME/.stack-work-cache
+  apt: true
 
 install: scripts/install.sh
 
