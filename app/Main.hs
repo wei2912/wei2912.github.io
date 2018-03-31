@@ -5,18 +5,14 @@ import qualified Data.Map as M
 import Data.Maybe (fromJust)
 import Data.Monoid (mappend)
 import qualified Data.Set as S
-import Development.GitRev
 import Hakyll
 import Hakyll.Web.CompileSass (sassCompiler)
 import Text.Pandoc.Options
 
-shortHash :: String
-shortHash = take 6 $(gitHash)
-
 main :: IO ()
 main = hakyll $ do
     match "css/**.sass" $ do
-        route $ setExtension $ concat [shortHash, ".min.css"]
+        route $ setExtension ".min.css"
         compile sassCompiler
 
     match "posts/**.md" $ do
@@ -34,7 +30,6 @@ main = hakyll $ do
                 loadAllSnapshots "posts/**.md" "content"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "hash" shortHash `mappend`
                     defaultContext
 
             getResourceBody
@@ -51,7 +46,6 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
-    constField "hash" shortHash `mappend`
     defaultContext
 
 pandocMathCompiler :: Compiler (Item String)

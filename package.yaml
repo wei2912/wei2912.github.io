@@ -37,6 +37,5 @@ executables:
     dependencies:
     - blog-src
     - containers
-    - gitrev
     - hakyll
     - pandoc
