@@ -241,7 +241,9 @@ do?
 ### `(* base)`?
 
 There appears to be a typo in `* base`. This is not the case. Haskell allows the
-use of [partially applied functions](https://en.wikipedia.org/wiki/Partial_application) which is going to be explained soon.
+use of
+[partially applied functions](https://en.wikipedia.org/wiki/Partial_application)
+which is going to be explained soon.
 
 Let's first look at the difference between multiplying 2 integers and
 multiplying an integer by 3:
@@ -534,6 +536,5 @@ to learn more Haskell. (As of 4th Oct 2015, Chris Allen is midway through
 writing [a book on Haskell](http://haskellbook.com/) and is [offering early
 access to sections of the book](https://gumroad.com/l/haskellbook).)
 
-If you have any comments or suggestions, go to [this post's Reddit post](https://www.reddit.com/r/haskell/comments/2oo7dy/revisied_introduction_to_haskell_looking_for/).
 Thanks for reading!
 
