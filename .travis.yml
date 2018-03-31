@@ -5,7 +5,7 @@ cache:
   directories:
   - "$HOME/.local"
   - "$HOME/.stack"
-  - "$HOME/.stack-work-cache"
+  - "$TRAVIS_BUILD_DIR/.stack-work"
   apt: true
 install: travis_wait scripts/install.sh
 script: travis_wait scripts/build.sh
