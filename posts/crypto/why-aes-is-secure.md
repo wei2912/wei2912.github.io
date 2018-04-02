@@ -310,7 +310,7 @@ This is just a XOR operation as described in [the section on SPNs](#substitution
 
 ## Conclusions on AES
 
-AES remains a very strong cipher. Bruce Schneler, a developer of Twofish, has
+AES remains a very strong cipher. Bruce Schneier, a developer of Twofish, has
 written in 2000:
 
 > I believe that within the next five years someone will discover an academic
