@@ -1,20 +1,45 @@
-language: haskell
-ghc: '8.0'
+# This is the simple Travis configuration, which is intended for use
+# on applications which do not require cross-platform and
+# multiple-GHC-version support. For more information and other
+# options, see:
+#
+# https://docs.haskellstack.org/en/stable/travis_ci/
+#
+# Copy these contents into the root directory of your Github project in a file
+# named .travis.yml
+
+# Use new container infrastructure to enable caching
 sudo: false
+
+# Do not choose a language; we provide our own build tools.
+language: generic
+
+# Caching so the next build will be fast too.
 cache:
   directories:
-  - "$HOME/.cabal"
-  - "$HOME/.ghc"
-  - "$HOME/.local"
-  - "$HOME/.stack"
-  apt: true
+  - $HOME/.stack
+
+# Ensure necessary system libraries are present
+addons:
+  apt:
+    packages:
+      - libgmp-dev
+
+before_install:
+# Download and unpack the stack executable
+- mkdir -p ~/.local/bin
+- export PATH=$HOME/.local/bin:$PATH
+- travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+
 install: travis_wait scripts/install.sh
 script: travis_wait scripts/build.sh
+
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_1fe6220ef9db_key -iv $encrypted_1fe6220ef9db_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 - mv deploy_rsa ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
+
 deploy:
   provider: script
   skip_cleanup: true
