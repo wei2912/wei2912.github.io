@@ -11,12 +11,16 @@ import Text.Pandoc.Options
 
 main :: IO ()
 main = hakyll $ do
+    (match . fromList) ["favicon.ico", "favicon-16x16.png", "favicon-32x32.png"] $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "css/**.sass" $ do
-        route $ setExtension ".min.css"
+        route   $ setExtension ".min.css"
         compile sassCompiler
 
     match "posts/**.md" $ do
-        route $ setExtension ".html"
+        route   $ setExtension ".html"
         compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/post.html" postCtx
             >>= saveSnapshot "content"
@@ -24,7 +28,7 @@ main = hakyll $ do
             >>= relativizeUrls
 
     match "index.html" $ do
-        route idRoute
+        route   idRoute
         compile $ do
             posts <- recentFirst =<<
                 loadAllSnapshots "posts/**.md" "content"
@@ -39,7 +43,7 @@ main = hakyll $ do
     match "templates/**" $ compile templateCompiler
 
     match (fromRegex "^posts/" .&&. complement (fromRegex "\\.md$")) $ do
-        route idRoute
+        route   idRoute
         compile copyFileCompiler
 
     create ["sitemap.xml"] $ do
