@@ -1,4 +1,5 @@
-Planmed Posts
+
+Planned Posts
 ===
 
 # Algorithms
