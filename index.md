@@ -4,7 +4,7 @@ title: wei2912's articles
 
 # wei2912's articles
 
-**Twitter**: [@wei2912](https://twitter.com/wei2912)
+**Twitter**: [\@wei2912](https://twitter.com/wei2912)
 
 **GitHub**: [wei2912](https://github.com/wei2912)
 
