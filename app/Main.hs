@@ -29,7 +29,7 @@ main = hakyll $ do
 
     match "index.md" $ do
         route   $ setExtension ".html"
-        compile $
+        compile $ do
             posts <- recentFirst =<<
                 loadAllSnapshots "posts/**.md" "content"
             let indexCtx =
