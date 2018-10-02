@@ -58,7 +58,7 @@ within `{-` and `-}`. The latter can span multiple lines.
 Functions are the building block of Haskell. Everything we do in Haskell relies
 on stringing together functions.
 
-Every function is comprised of 2 parts:
+Every function comprises 2 parts:
 
 1) Type signature
 2) Equations
