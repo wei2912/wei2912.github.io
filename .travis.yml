@@ -13,8 +13,6 @@ sudo: false
 
 # Do not choose a language; we provide our own build tools.
 language: generic
-dart: # Dart is required for dart-sass.
-- stable
 
 # Caching so the next build will be fast too.
 cache:
@@ -25,7 +23,9 @@ cache:
 addons:
   apt:
     packages:
+      - apt-transport-https
       - libgmp-dev
+      - dart # Install Dart which is required for dart-sass
 
 # Download and unpack the stack and dart-sass executables
 install:
