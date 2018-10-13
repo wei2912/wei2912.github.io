@@ -16,4 +16,4 @@ sassCompiler :: Compiler (Item String)
 sassCompiler = compileWith ["-s"]
 
 scssCompiler :: Compiler (Item String)
-scssCompiler = compileWith ["-s", "-scss"]
+scssCompiler = compileWith ["-s", "--scss"]
