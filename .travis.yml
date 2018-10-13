@@ -1,4 +1,4 @@
-# This is the simple Travis configuration, which is intended for use
+# This is taken from the simple Travis configuration, which is intended for use
 # on applications which do not require cross-platform and
 # multiple-GHC-version support. For more information and other
 # options, see:
@@ -11,7 +11,7 @@
 # Use new container infrastructure to enable caching
 sudo: false
 
-# While we provide our own build tools, Dart is required for dart-sass. The latest stable version will suffice.
+# While we provide our own build tools for Haskell, Dart is required for dart-sass. The latest stable version will suffice.
 language: dart
 dart:
 - stable
@@ -20,13 +20,6 @@ dart:
 cache:
   directories:
   - $HOME/.stack
-
-# Ensure necessary system libraries are present
-addons:
-  apt:
-    packages:
-      - apt-transport-https
-      - libgmp-dev
 
 # Download and unpack the stack and dart-sass executables
 install:
