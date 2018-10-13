@@ -6,7 +6,7 @@ import Data.Maybe (fromJust)
 import Data.Monoid (mappend)
 import qualified Data.Set as S
 import Hakyll
-import Hakyll.Web.CompileSass (sassCompiler)
+import Hakyll.Web.CompileSass (scssCompiler)
 import Text.Pandoc.Options
 
 main :: IO ()
@@ -15,9 +15,9 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/**.sass" $ do
+    match "css/**.scss" $ do
         route   $ setExtension ".min.css"
-        compile sassCompiler
+        compile scssCompiler
 
     match "posts/**.md" $ do
         route   $ setExtension ".html"
