@@ -1,7 +1,4 @@
-module Hakyll.Web.CompileSass
-( sassCompiler
-, scssCompiler
-) where
+module Hakyll.Web.CompileSass (scssCompiler) where
 
 import Control.Monad
 import Hakyll
@@ -12,8 +9,5 @@ compileWith flags =
         >>= withItemBody (unixFilter "sass" flags)
     )
 
-sassCompiler :: Compiler (Item String)
-sassCompiler = compileWith ["-s"]
-
 scssCompiler :: Compiler (Item String)
-scssCompiler = compileWith ["-s", "--scss"]
+scssCompiler = compileWith []
