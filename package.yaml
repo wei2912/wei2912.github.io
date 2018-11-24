@@ -20,7 +20,9 @@ description:         Please see the README on Github at <https://github.com/wei2
 
 dependencies:
 - hakyll
-- hakyll-sass >= 0.2
+
+extra-deps:
+- hakyll-sass
 
 
 
