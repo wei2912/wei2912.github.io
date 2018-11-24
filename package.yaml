@@ -25,6 +25,7 @@ library:
   source-dirs: src
   dependencies:
   - hakyll
+  - hakyll-sass
 
 executables:
   blog-src:
