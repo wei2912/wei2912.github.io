@@ -19,13 +19,14 @@ extra-source-files:
 description:         Please see the README on Github at <https://github.com/wei2912/blog-src#readme>
 
 dependencies:
-- base >= 4.7 && < 5
+- hakyll
+- hakyll-saaa
 
-library:
-  source-dirs: src
-  dependencies:
-  - hakyll
-  - hakyll-sass
+
+
+
+
+
 
 executables:
   blog-src:
