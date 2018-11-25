@@ -19,12 +19,11 @@ extra-source-files:
 description:         Please see the README on Github at <https://github.com/wei2912/blog-src#readme>.
 
 dependencies:
-- base >= 4.7 && < 5
-
-library:
-  source-dirs: src
-  dependencies:
-  - hakyll
+- base
+- containers
+- hakyll
+- hakyll-sass
+- pandoc
 
 executables:
   blog-src:
@@ -34,8 +33,4 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    dependencies:
-    - blog-src
-    - containers
-    - hakyll
-    - pandoc
+
