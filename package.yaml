@@ -19,10 +19,10 @@ extra-source-files:
 description:         Please see the README on Github at <https://github.com/wei2912/blog-src#readme>
 
 dependencies:
-- hakyll
+ - hakyll
 
-extra-deps:
-- hakyll-sass
+
+
 
 
 
@@ -42,4 +42,5 @@ executables:
     - blog-src
     - containers
     - hakyll
+    - 
     - pandoc
