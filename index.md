@@ -8,7 +8,7 @@ title: wei2912's articles
 
 **GitHub**: [wei2912](https://github.com/wei2912)
 
-**Email**: [weien1292+blog@gmail.com](mailto:weien1292+blog@gmail.com)
+**Email**: [weien1292@gmail.com](mailto:weien1292@gmail.com)
 
 This page lists the articles which I have written on a variety of topics.
 
