@@ -1,7 +1,7 @@
 ---
 title: Why AES Is Secure
+category: Cryptography
 date: 2017-01-01
-description: An explanation of how AES is designed and why it's built in a secure manner.
 ---
 
 DISCLAIMER: I am not a cryptographer by profession, and the content presented
