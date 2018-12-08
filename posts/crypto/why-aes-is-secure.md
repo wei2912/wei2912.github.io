@@ -1,10 +1,12 @@
 ---
 title: Why AES Is Secure
 date: 2017-01-01
+description: An explanation of how AES is designed and why it's built in a secure manner.
 ---
 
 DISCLAIMER: I am not a cryptographer by profession, and the content presented
-here may not be fully accurate.
+here may not be fully accurate. If you spot any errors, please let me know on 
+[my repository](https://github.com/wei2912/blog-src)!
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
 known as Rijndael (which was its original name), is one of the most widely used
