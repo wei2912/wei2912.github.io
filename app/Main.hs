@@ -2,8 +2,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 import Data.Char
 import qualified Data.Map as M
-import Data.Maybe (fromJust)
-import Data.Monoid (mappend)
 import qualified Data.Set as S
 import Hakyll
 import Hakyll.Web.Sass (sassCompiler)
@@ -34,7 +32,7 @@ main = hakyll $ do
             posts <- recentFirst =<<
                 loadAllSnapshots "posts/**.md" "content"
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" postCtx (return posts) <>
                     defaultContext
 
             pandocMathCompiler
@@ -53,7 +51,7 @@ main = hakyll $ do
             posts <- recentFirst =<<
                 loadAllSnapshots "posts/**.md" "content"
             let sitemapCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" postCtx (return posts) <>
                     defaultContext
 
             makeItem ""
@@ -61,7 +59,7 @@ main = hakyll $ do
 
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
+    dateField "date" "%B %e, %Y" <>
     defaultContext
 
 pandocMathCompiler :: Compiler (Item String)
