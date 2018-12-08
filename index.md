@@ -16,11 +16,11 @@ This page lists the articles which I have written on a variety of topics.
 
 ## Cryptography
 
-[Why AES is Secure](/posts/crypto/why-aes-is-secure.html) - An explanation of how AES is designed and why it's secure, for people with some knowledge of computers.
+(January 1, 2017) [Why AES is Secure](/posts/crypto/why-aes-is-secure.html) - An explanation of how AES is designed and why it's secure, for people with some knowledge of computers.
 
 ## Haskell
 
-[Introduction to Haskell](/posts/haskell/intro-to-haskell.html) - A brief introduction to Haskell, for intermediate programmers who have worked in an imperative programming language before.
+(November 27, 2014) [Introduction to Haskell](/posts/haskell/intro-to-haskell.html) - A brief introduction to Haskell, for intermediate programmers who have worked in an imperative programming language before.
 
 ---
 
