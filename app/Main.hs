@@ -13,6 +13,11 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    -- TODO: Compile LaTeX files into PDF and upload onto website.
+    match "notes/**.tex" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "css/**.sass" $ do
         route   $ setExtension ".min.css"
         let compressCssItem = fmap compressCss
