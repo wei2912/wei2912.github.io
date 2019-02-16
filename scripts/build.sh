@@ -2,7 +2,7 @@
 
 echo "* Start of build process."
 
-stack --no-terminal --skip-ghc-check build
+stack --no-terminal --skip-ghc-check build --fast
 
 echo "* Compiled binaries."
 
