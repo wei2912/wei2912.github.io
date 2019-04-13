@@ -84,7 +84,8 @@ add :: Integer -> Integer -> Integer
 
 This time round, we take in 2 integers and return a single integer.
 
-In Haskell, we usually go by type signatures to describe what our function does.
+In Haskell, we usually go by type signatures to describe what our function
+does.
 
 ### Equations
 
@@ -160,9 +161,9 @@ Prelude> :type "abc"
 "abc" :: [Char]
 ```
 
-Lists in Haskell are implemented as a series of "cons" operations, which join up
-elements of the list. We use the `:` operator to do this (otherwise known as the
-*cons* operator). It prepends an element to a list of the *same type*.
+Lists in Haskell are implemented as a series of "cons" operations, which join
+up elements of the list. We use the `:` operator to do this (otherwise known as
+the *cons* operator). It prepends an element to a list of the *same type*.
 
 ```haskell
 Prelude> 3 : [1, 2]
@@ -202,7 +203,8 @@ function.
 
 ### Higher Order functions
 
-Higher order functions are functions that can take in or return other functions.
+Higher order functions are functions that can take in or return other
+functions.
 
 A function which takes in one parameter and returns something of the same type
 is denoted by `a -> a`. Likewise, a function that takes in a function and
@@ -225,8 +227,8 @@ That's it for the basics. Let's get down to some interesting code.
 ## Powers of a number
 
 Haskell lets us do quite a lot of elegant stuff. Here's one that I find
-particularly elegant (there're many other ways to write this function too, but I
-believe that this is one of the clearest).
+particularly elegant (there're many other ways to write this function too, but
+I believe that this is one of the clearest).
 
 ```haskell
 pows :: Integer -> [Integer]
@@ -241,8 +243,8 @@ do?
 
 ### `(* base)`?
 
-There appears to be a typo in `* base`. This is not the case. Haskell allows the
-use of
+There appears to be a typo in `* base`. This is not the case. Haskell allows
+the use of
 [partially applied functions](https://en.wikipedia.org/wiki/Partial_application)
 which is going to be explained soon.
 
@@ -272,8 +274,8 @@ multiplyByThree :: Integer -> Integer
 multiplyByThree x = (x *) 3
 ```
 
-We provide the left value, `x`, to `(*)`. `(x *)` gives us a function that takes
-in a single number and multiples that by `x`. Finally, we get a value.
+We provide the left value, `x`, to `(*)`. `(x *)` gives us a function that
+takes in a single number and multiples that by `x`. Finally, we get a value.
 
 Haskell allows us to supply only a few parameters required, so as to get back a
 function that takes in the rest of the parameters. This is known as partial
@@ -292,9 +294,9 @@ iterate f x = x : iterate f (f x)
 
 By now, you should be familiar with looking at type signatures.
 
-What `iterate` does is that it prepends a value to a list, applies a function to
-the value and pass the new value into `iterate` again. This is what we call a
-recursive function -- a function that calls itself.
+What `iterate` does is that it prepends a value to a list, applies a function
+to the value and pass the new value into `iterate` again. This is what we call
+a recursive function -- a function that calls itself.
 
 ### Trace of the `pows` function
 
@@ -310,8 +312,8 @@ so let's look at a trace.
 = ...
 ```
 
-We can see that we'll get a list of powers of 3. How this comes about is that we
-go through the following steps:
+We can see that we'll get a list of powers of 3. How this comes about is that
+we go through the following steps:
 
 1) Prepend the current value to the list
 2) Apply `(3 *)` to the current value to get a new value.
@@ -323,14 +325,14 @@ things about functional programming; we get to reuse all sorts of functions.
 
 Running that will give us a list of the powers of 3.
 
-But wait! Wouldn't that go on for infinity? In Haskell, executing `pows 3` would
-have given us an infinite list of the powers of 3 (try it and see what
-happens!). Notice that the list will keep on growing. That looks like a horrible
-thing.
+But wait! Wouldn't that go on for infinity? In Haskell, executing `pows 3`
+would have given us an infinite list of the powers of 3 (try it and see what
+happens!). Notice that the list will keep on growing. That looks like a
+horrible thing.
 
-But we can still do stuff with an infinite list, thanks to laziness. We need not
-evaluate the whole list. We only need to evaluate the items that we need to.
-That is the crux of laziness.
+But we can still do stuff with an infinite list, thanks to laziness. We need
+not evaluate the whole list. We only need to evaluate the items that we need
+to. That is the crux of laziness.
 
 That means that from our infinite list:
 
@@ -365,8 +367,8 @@ and get:
 The elegance of this solution lies in the fact that we easily did this with
 recursion, in a rather terse, clear and "mathematical" way.
 
-The ability to reuse functions like this grants us a lot of power in Haskell and
-allows us to reason about code in a very powerful way.
+The ability to reuse functions like this grants us a lot of power in Haskell
+and allows us to reason about code in a very powerful way.
 
 ## Fibonacci Numbers
 
@@ -379,8 +381,8 @@ Here's how the sequence looks like:
 0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 ...
 ```
 
-As you can see, the third number, 1, is the sum of 0 and 1. The fourth number, 2
-is the sum of 1 and 1. This sequence goes on forever.
+As you can see, the third number, 1, is the sum of 0 and 1. The fourth number,
+2 is the sum of 1 and 1. This sequence goes on forever.
 
 On to the code:
 
@@ -405,9 +407,9 @@ Take a look at this graphical representation:
  ^
 ```
 
-The top line denotes the elements that make up the *tail* while the bottom carat
-denotes the *head*. To put it in words, the *head* is the first element of the
-list, while the *tail* is everything after the *head*.
+The top line denotes the elements that make up the *tail* while the bottom
+carat denotes the *head*. To put it in words, the *head* is the first element
+of the list, while the *tail* is everything after the *head*.
 
 Here's another graphical representation:
 
@@ -445,23 +447,24 @@ zipWith _ _ _ = []
 
 Hmm. We have 2 equations, with some weird looking stuff. How does this work?
 
-Haskell allows for pattern matching. In our case, `(a : as)` seperates a list of
-values into `a` (the head) and `as` (the tail). We do the same with `(b : bs)`.
+Haskell allows for pattern matching. In our case, `(a : as)` seperates a list
+of values into `a` (the head) and `as` (the tail). We do the same with `(b :
+bs)`.
 
 Afterwards, we apply `f` to `a` and `b`, then prepend our value to
 `zipWith f as bs`.
 
 However, there's still a second equation. Underscores are a way for us to
-dispose unneeded values. The last clause catches everything that doesn't fit the
-first equation and returns an empty list.
+dispose unneeded values. The last clause catches everything that doesn't fit
+the first equation and returns an empty list.
 
 But why do we need a catchall? As it turns out, the head of an empty list is
 undefined. Hence, `(a : as)` will only match lists with at least one element.
 Our catchall ensures that the function doesn't error out when we exhaust both
 lists. Instead, it returns an empty list.
 
-This is what we call the `base case` of a recursive function, as all other calls
-to the recursive function gets reduced to this. It's also the reason why
+This is what we call the `base case` of a recursive function, as all other
+calls to the recursive function gets reduced to this. It's also the reason why
 `zipWith` terminates while `iterate` doesn't.
 
 While we now know what the function is doing, we still have no idea how it
@@ -522,8 +525,8 @@ simple.
 
 ## Conclusion
 
-I hope this has showed you how elegant Haskell could be and why many programmers
-like working in it.
+I hope this has showed you how elegant Haskell could be and why many
+programmers enjoy working in it.
 
 There's a lot more to Haskell than this (such as functors, monads, etc.) which
 make solving other real-life problems quite elegant as well.

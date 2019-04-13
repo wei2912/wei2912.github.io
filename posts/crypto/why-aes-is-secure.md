@@ -5,7 +5,7 @@ date: 2017-01-01
 ---
 
 DISCLAIMER: I am not a cryptographer by profession, and the content presented
-here may not be fully accurate. If you spot any errors, please let me know on 
+here may not be fully accurate. If you spot any errors, please let me know on
 [my repository](https://github.com/wei2912/blog-src)!
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
