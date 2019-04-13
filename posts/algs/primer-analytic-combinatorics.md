@@ -88,12 +88,12 @@ While we *know* what the generating function looks like, we don't know much
 about the sequence it represents. An attempt to figure out the power series
 could yield this:
 
-\begin{align*}
+$$\begin{aligned}
    & (1 + x + x^2 + x^3 + \ldots)(1 + 2x + 4x^2 + 8x^3 + \ldots) \\
   =& 1 + (1 \cdot 2 + 1 \cdot 1)x + (1 \cdot 4 + 1 \cdot 2 + 1 \cdot 1)x^2 + (1
     \cdot 8 + 1 \cdot 4 + 1 \cdot 2 + 1 \cdot 1)x^3 \\
   =& 1 + 3x + 7x^2 + 15x^3 + \ldots \\
-\end{align*}
+\end{aligned}$$
 
 With a way to formalise our intuition of generating functions and some
 intuition on how multiplication of power series would work, we could derive a
@@ -104,12 +104,12 @@ lemma.
 b_1, b_2, \ldots, b_k, \ldots$, then $A(z)B(z)$ is the OGF of $a_0b_0, a_0b_1 +
 a_1b_0, a_0b_2 + a_1b_1 + a_2b_0, \ldots$.
 
-**Proof.** \begin{align*}
+**Proof.** $$\begin{aligned}
   A(z)B(z) &= \sum_{k \geq 0} a_k z^k \sum_{n \geq 0} b_n z^n \\
     &= \sum_{k \geq 0} \sum_{n \geq 0} a_k b_n z^{n+k} \\
     &= \sum_{k \geq 0} \sum_{n \geq k} a_k b_{n-k} z^n \\
     &= \sum_{n \geq 0} \left(\sum_{0 \leq k \leq n} a_kb_{n-k}\right) z^n
-\end{align*}
+\end{aligned}$$
 
 Loads of math will come later on, so do take your time to digest the math here.
 A lot of it will prove to be rewarding.

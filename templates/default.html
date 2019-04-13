@@ -4,29 +4,49 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>$title$</title>
-    
+
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    
+
     <link rel="stylesheet" href="/css/main.min.css">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+
+    <!-- KaTeX -->
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css"
+      integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ"
+      crossorigin="anonymous">
+    <script defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js"
+      integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij"
+      crossorigin="anonymous"></script>
+    <script defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js"
+      integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI"
+      crossorigin="anonymous" onload="renderMathInElement(document.body);">
+    </script>
+    <!-- End KaTeX Code -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Matomo -->
     <script type="text/javascript">
       var _paq = window._paq || [];
-      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      /* tracker methods like "setCustomDimension" should be called before
+        "trackPageView" */
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
       (function() {
         var u="//weien.io/matomo/";
         _paq.push(['setTrackerUrl', u+'matomo.php']);
         _paq.push(['setSiteId', '1']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        var d=document, g=d.createElement('script'),
+          s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true;
+        g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
-    <noscript><p><img src="//weien.io/matomo/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <noscript><p><img src="//weien.io/matomo/matomo.php?idsite=1&amp;rec=1"
+      style="border:0;" alt="" /></p></noscript>
     <!-- End Matomo Code -->
   </head>
   <body>
@@ -34,10 +54,18 @@
   </body>
   <footer>
     <p>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /></a><br />
-      This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />
-      The website was generated using <a href="https://jaspervdj.be/hakyll/">Hakyll</a>, and its source is available on <a href="https://github.com/wei2912/blog-src">GitHub</a>.<br />
-      The commenting system is powered by <a href="https://www.talkyard.io">Talkyard</a>.
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img alt="Creative Commons License" style="border-width:0"
+          src="https://licensebuttons.net/l/by/4.0/88x31.png" />
+      </a><br />
+      This work is licensed under a <a rel="license"
+        href="http://creativecommons.org/licenses/by/4.0/">Creative Commons
+        Attribution 4.0 International License</a>.<br />
+      The website was generated using <a href="https://jaspervdj.be/hakyll/">
+        Hakyll</a>, and its source is available on
+        <a href="https://github.com/wei2912/blog-src">GitHub</a>.<br />
+      The commenting system is powered by <a href="https://www.talkyard.io">
+        Talkyard</a>.
     </p>
   </footer>
 </html>
