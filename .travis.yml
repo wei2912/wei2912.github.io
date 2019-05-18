@@ -33,7 +33,7 @@ before_install:
 
 script:
 - travis_wait 30 stack --no-terminal --skip-ghc-check build --fast
-- git clone git@github.com:wei2912/blog _site/
+- git clone https://github.com:wei2912/blog _site/
 - stack exec blog-src build
 - ls -R _site/
 
