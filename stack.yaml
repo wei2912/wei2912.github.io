@@ -41,7 +41,6 @@ packages:
 # (e.g., acme-missiles-0.3)
 extra-deps:
 - hakyll-sass-0.2.4
-- hakyll-images-0.4.2
 
 # Override default flag values for local packages and extra-deps
 # flags: {}
