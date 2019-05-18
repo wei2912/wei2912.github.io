@@ -22,7 +22,6 @@ dependencies:
 - base
 - containers
 - hakyll
-- hakyll-images
 - hakyll-sass
 - pandoc
 

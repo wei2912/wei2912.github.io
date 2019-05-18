@@ -4,7 +4,6 @@ import Data.Char
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Hakyll
-import Hakyll.Images (loadImage, compressJpgCompiler)
 import Hakyll.Web.Sass (sassCompiler)
 import Text.Pandoc.Options
 
