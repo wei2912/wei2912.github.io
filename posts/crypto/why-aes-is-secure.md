@@ -2,6 +2,7 @@
 title: Why AES Is Secure
 category: Cryptography
 date: 2017-01-01
+katex: true
 ---
 
 DISCLAIMER: I am not a cryptographer by profession, and the content presented
