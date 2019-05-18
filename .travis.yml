@@ -31,7 +31,11 @@ before_install:
 - export PATH=$HOME/.local/bin:$PATH
 - travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
 
-script: travis_wait 30 scripts/build.sh
+script:
+- travis_wait 30 stack --no-terminal --skip-ghc-check build --fast
+- git clone https://github.com/wei2912/blog _site/
+- stack exec blog-src build
+- ls -R _site/
 
 before_deploy:
 - openssl aes-256-cbc -K $encrypted_1fe6220ef9db_key -iv $encrypted_1fe6220ef9db_iv
@@ -42,6 +46,14 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: scripts/deploy.sh
+  script:
+  - cd _site/
+  - git config user.email "weien1292@gmail.com"
+  - git config user.name "Ng Wei En"
+  - git config --global push.default simple
+  - git remote set-url origin git@github.com:wei2912/blog
+  - git add -A && git diff-index --quiet HEAD || git commit -m "update at $(date)"
+  - git push
   on:
     branch: master
+
