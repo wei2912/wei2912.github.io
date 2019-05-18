@@ -1,5 +1,5 @@
 ---
-title: wei2912's articles 
+title: wei2912's articles
 ---
 
 # wei2912's articles
