@@ -8,24 +8,21 @@ title: wei2912's articles
 
 **GitHub**: [wei2912](https://github.com/wei2912)
 
-**Email**: [weien1292@gmail.com](mailto:weien1292@gmail.com)
-
-This page lists the articles which I have written on a variety of topics.
-
 ---
 
-## Cryptography
+## Summary Pieces
 
-(January 1, 2017) [Why AES is Secure](/posts/crypto/why-aes-is-secure.html) -
-An explanation of how AES is designed and why it's secure, for people with some
-knowledge of computers.
+These articles are *easier*-to-read summary pieces on a few select topics,
+intended to let people dip their toes into unfamiliar technical topics.
 
+### [Why AES is Secure](/posts/crypto/why-aes-is-secure.html)
+(January 1, 2017) An explanation of how AES, a (very) commonly used modern
+crytosystem, was designed to be resistant to many different types of
+cryptographic attacks.
 
-## Haskell
-
-(November 27, 2014) [Introduction to Haskell](/posts/haskell/intro-to-haskell.html)
-- A brief introduction to Haskell, for intermediate programmers who have worked
-in an imperative programming language before.
+### [Introduction to Haskell](/posts/haskell/intro-to-haskell.html)
+(November 27, 2014) A brief introduction to Haskell, for programmers wondering
+what functional programming languages have to offer over imperative languages.
 
 ---
 
@@ -52,3 +49,4 @@ viewed at [blog](https://github.com/wei2912/blog) and is built by
 [Travis CI](https://travis-ci.org) on each commit to the source repository.
 
 ---
+

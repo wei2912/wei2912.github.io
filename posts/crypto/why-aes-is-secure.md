@@ -5,18 +5,11 @@ date: 2017-01-01
 katex: true
 ---
 
-DISCLAIMER: I am not a cryptographer by profession, and the content presented
-here may not be fully accurate. If you spot any errors, please let me know on
-[my repository](https://github.com/wei2912/blog-src)!
-
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise
 known as Rijndael (which was its original name), is one of the most widely used
 ciphers for the encryption of data. It's been approved by the US government to
 protect classified data. In this article, I'll explain how AES works and why
 it's secure.
-
-This article is written for anyone who has knowledge of pre-calculus math and
-computer knowledge. No prior knowledge of cryptography is required.
 
 [advanced-encryption-standard]: https://en.wikipedia.org/wiki/Advanced_Encryption_Standard "Advanced Encryption Standard"
 
@@ -26,9 +19,9 @@ AES makes extensive use of Galois field theory, which I'm going to give a very
 brief introduction to. For more details see [Galois Field in Cryptography][galois-field-in-cryptography].
 
 A [Galois field][finite-field] is a [field][field-mathematics] containing a
-finite number of elements. A field is a set on which the operations of addition,
-multiplication, subtraction and division meet certain rules. We'll refer to
-these rules as they come in useful -- don't worry too much about them.
+finite number of elements. A field is a set on which the operations of
+addition, multiplication, subtraction and division meet certain rules. We'll
+refer to these rules as they come in useful -- don't worry too much about them.
 
 There's the field of real numbers and the field of rational numbers. What makes
 a Galois field different from these fields, is that it contains a finite number
@@ -36,8 +29,8 @@ of elements (which is why it's also called a finite field). On the other hand,
 there is an infinite number of real numbers and rational numbers.
 
 A Galois field is denoted as $GF(p^n)$ where $p$ is a prime number and $n$ is a
-positive integer. We call $p^n$ the order of the field. The elements of a Galois
-field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$.
+positive integer. We call $p^n$ the order of the field. The elements of a
+Galois field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$.
 
 [galois-field-in-cryptography]: http://www.math.washington.edu/~morrow/336_12/papers/juan.pdf "Galois Field in Cryptography"
 [finite-field]: https://en.wikipedia.org/wiki/Finite_field "Finite field"
@@ -50,11 +43,11 @@ similarly to integers, followed by modulo $p$ (this is just finding the
 remainder after dividing by $p$). For example, in $GF(5)$, $4 + 3 = 7$ is
 reduced to $2$, and $4 \times 2 = 8$ is reduced to $3$.
 
-Elements of $GF(p^n)$ can be represented as polynomials of degree less than $n$.
-For example, in $GF(3^3)$, the polynomial $x^2 + 1$ would represent 10 and the
-polynomial $2x^2 + x + 1$ would represent 22, with $x = 3$. In addition, we use
-modulo $3$ on each of the coefficients. Adding up the two polynomials gives us
-$3x^2 + x + 2$, which is reduced to $x + 2$, represented as 5.
+Elements of $GF(p^n)$ can be represented as polynomials of degree less than
+$n$. For example, in $GF(3^3)$, the polynomial $x^2 + 1$ would represent 10 and
+the polynomial $2x^2 + x + 1$ would represent 22, with $x = 3$. In addition, we
+use modulo $3$ on each of the coefficients. Adding up the two polynomials gives
+us $3x^2 + x + 2$, which is reduced to $x + 2$, represented as 5.
 
 However, things get more complicated when it comes to multiplication. Take the
 polynomials $2x^2 + 1$ and $x + 1$. Multiplying these two would give us
@@ -66,18 +59,18 @@ I will not discuss.
 ### Use of Galois field theory in AES
 
 In AES, where we want to manipulate bytes, $GF(2^8)$ is used. $GF(2^8)$ has a
-set of elements which represent all possible values of a byte. The fact that the
-addition and multiplication operations are closed (that is, applying addition
-and multiplication to any two elements will always return an element that is in
-the set of elements of that field) makes the Galois field very convenient for
-manipulating bytes, as operations can be done on any two bytes to get a new
-byte.
+set of elements which represent all possible values of a byte. The fact that
+the addition and multiplication operations are closed (that is, applying
+addition and multiplication to any two elements will always return an element
+that is in the set of elements of that field) makes the Galois field very
+convenient for manipulating bytes, as operations can be done on any two bytes
+to get a new byte.
 
 It also turns out that addition of two elements in $GF(2^8)$ is simply XOR of
-both elements -- this means that addition is efficient on hardware! On the other
-hand, multiplication is more complex. AES uses the polynomial $x^8 + x^4 + x^3 + x + 1$,
-and most implementations will use a lookup table instead of computing the
-polynomial for the sake of efficiency.
+both elements -- this means that addition is efficient on hardware! On the
+other hand, multiplication is more complex. AES uses the polynomial $x^8 + x^4
++ x^3 + x + 1$, and most implementations will use a lookup table instead of
+computing the polynomial for the sake of efficiency.
 
 ## Overview of AES
 
@@ -98,8 +91,8 @@ stream cipher which encrypts plaintext bit by bit. Its block size is 128 bits.
 Credits to [mikeazo's answer on Crypto StackExchange][aes-addroundkey] for the
 image.
 
-AES takes in 16 bytes, $b_0, b_1, \dots, b_{15}$, which are arranged in a matrix
-from top to bottom, left to right:
+AES takes in 16 bytes, $b_0, b_1, \dots, b_{15}$, which are arranged in a
+matrix from top to bottom, left to right:
 
 $$\begin{bmatrix}
 b_0 & b_4 & b_8    & b_{12} \\
@@ -136,7 +129,8 @@ A substitution-permutation network (SPN) takes in plaintext and keys as inputs.
 Each round looks like this:
 
 1. Combination of the plaintext with the round key (represented by $\oplus$)
-2. Substitution of small blocks of bits (referred to as a S-box, or a **s**ubstitution box)
+2. Substitution of small blocks of bits (referred to as a S-box, or a
+**s**ubstitution box)
 3. Permutation of all the bits (referred to as a P-box, or a **p**ermutation box)
 
 The combination of the plaintext with the round key is often XOR, as XOR is
@@ -171,13 +165,13 @@ However, when combined together, they provide powerful cryptographic strength.
 [Confusion and diffusion][confusion-and-diffusion] are key properties of a
 secure cipher (as identified by Claude Shannon, considered the father of
 information theory). *Confusion* refers to the property that each character of
-the ciphertext depends on several parts of the key, and *diffusion* refers to the
-property that when we change a character of the plaintext, then several
+the ciphertext depends on several parts of the key, and *diffusion* refers to
+the property that when we change a character of the plaintext, then several
 characters of the ciphertext should change.
 
 Firstly, if a single bit is changed in the plaintext, an S-Box changes several
-bits. The P-Box then distributes these changed bits across. With several rounds,
-the ciphertext has changed completely. This satisfies the property of
+bits. The P-Box then distributes these changed bits across. With several
+rounds, the ciphertext has changed completely. This satisfies the property of
 *diffusion*. Other than having a completely different ciphertext, this also
 prevents an attacker from modifying the ciphertext in order to get a desired
 plaintext, as this would change the plaintext drastically.
@@ -185,10 +179,10 @@ plaintext, as this would change the plaintext drastically.
 Secondly, the SPN also exhibits *confusion* (under the assumption that changing
 one bit of the key changes several round keys -- the SPN does not include
 derivation of the round keys). Every change in a round key causes a change in
-the input of the S-Boxes. As per the property of diffusion, the ciphertext would
-be drastically altered. This means that each of the output bits would depend on
-several parts of the round keys, which in turn depend on the key. This satisfies
-the property of confusion.
+the input of the S-Boxes. As per the property of diffusion, the ciphertext
+would be drastically altered. This means that each of the output bits would
+depend on several parts of the round keys, which in turn depend on the key.
+This satisfies the property of confusion.
 
 The power of the SPN lies in how it allows for both properties to be exhibited,
 despite being so simple and efficient.
@@ -212,10 +206,10 @@ is that the key schedule consists of shifting bytes and XOR operations. The key
 schedule is invertible, allowing an adversary to derive the master key given
 any round key.
 
-A question you may ask is, why not use a [cryptographically secure pseudorandom number generator][csprng]?
-One could seed the generator with the key, providing a sequence of output round
-keys that are hard to predict and increasing the difficulty of obtaining the
-master key from the key schedule.
+A question you may ask is, why not use a [cryptographically secure pseudorandom
+number generator][csprng]? One could seed the generator with the key, providing
+a sequence of output round keys that are hard to predict and increasing the
+difficulty of obtaining the master key from the key schedule.
 
 Simply put, a simpler key schedule provides efficiency but comes at the cost of
 a bit of security. However, practically speaking, there is not much need to
@@ -239,9 +233,9 @@ on why making the key schedule non-invertible will not add much security.
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/AES-SubBytes.svg/320px-AES-SubBytes.svg.png)
 
 A fixed S-box is used, taking in a byte as input and also producing a byte.The
-S-box of AES is calculated from the [multiplicative inverse][multiplicative-inverse]
-over $GF(2^8)$. The presence of multiplicative inverse for all elements is one
-of the properties that fields satisfy.
+S-box of AES is calculated from the [multiplicative
+inverse][multiplicative-inverse] over $GF(2^8)$. The presence of multiplicative
+inverse for all elements is one of the properties that fields satisfy.
 
 A multiplicative inverse for a number $x$ is a number which when multiplied by
 $x$ gives the multiplicative identity $1$. The multiplicative identity $1$
@@ -249,15 +243,16 @@ satisfies the property that $x \times 1 = x$. In the field of rational numbers,
 we call the multiplicative inverse the reciprocal, or $\frac{1}{x}$.
 
 In a Galois field, there is a more complex procedure used in order to find the
-multiplicative inverse, known as the [Extended Euclidean Algorithm][extended-euclidean-algorithm].
-It turns out that the multiplicative inverses have good non-linearity
-properties, adding security against attacks which recover the key by exploiting
-linearity in the S-box.
+multiplicative inverse, known as the [Extended Euclidean
+Algorithm][extended-euclidean-algorithm]. It turns out that the multiplicative
+inverses have good non-linearity properties, adding security against attacks
+which recover the key by exploiting linearity in the S-box.
 
-In addition to the multiplicative inverses, an [affine transformation][affine-transformation]
-is used which I will not elaborate on. This allows it to be resistant to
-[linear][linear-cryptanalysis] and [differential cryptanalysis][differential-cryptanalysis],
-as well as algebraic attacks.
+In addition to the multiplicative inverses, an [affine
+transformation][affine-transformation] is used which I will not elaborate on.
+This allows it to be resistant to [linear][linear-cryptanalysis] and
+[differential cryptanalysis][differential-cryptanalysis], as well as algebraic
+attacks.
 
 For more details on the design of the S-box, look at [Rijndael S-box][sbox].
 
@@ -270,19 +265,20 @@ For more details on the design of the S-box, look at [Rijndael S-box][sbox].
 
 ### `ShiftRows` and `MixColumns`
 
-These two operations are what permutates the bits (techincally speaking, `MixColumns` does more than just permutations).
+These two operations are what permutates the bits (techincally speaking,
+`MixColumns` does more than just permutations).
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/AES-ShiftRows.svg/320px-AES-ShiftRows.svg.png)
 
 `ShiftRows` just rotates each row by varying number of bytes. The first row is
-not rotated, the second row is rotated to the left by one byte, the third row is
-rotated to the left by two bytes, etc. This permutates the order of the outputs
-from the S-box **row-wise**.
+not rotated, the second row is rotated to the left by one byte, the third row
+is rotated to the left by two bytes, etc. This permutates the order of the
+outputs from the S-box **row-wise**.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/AES-MixColumns.svg/320px-AES-MixColumns.svg.png)
 
-`MixColumns` performs a transformation on each column of the matrix.
-It multiplies the matrix of bytes with:
+`MixColumns` performs a transformation on each column of the matrix. It
+multiplies the matrix of bytes with:
 
 $$\begin{bmatrix}
 2 & 3 & 1 & 1 \\
@@ -309,7 +305,8 @@ cryptanalysis tough.
 
 ### `AddRoundKey`
 
-This is just a XOR operation as described in [the section on SPNs](#substitution-permutation-network).
+This is just a XOR operation as described in [the section on
+SPNs](#substitution-permutation-network).
 
 ## Conclusions on AES
 
