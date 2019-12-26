@@ -4,7 +4,6 @@ import Data.Char
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Hakyll
-import Hakyll.Web.Sass (sassCompiler)
 import Text.Pandoc.Options
 
 main :: IO ()
@@ -14,15 +13,11 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    -- TODO: Compile LaTeX files into PDF and upload onto website.
-    match "notes/**.tex" $ do
-        route   idRoute
-        compile copyFileCompiler
-
     match "css/**.sass" $ do
         route   $ setExtension ".min.css"
-        let compressCssItem = fmap compressCss
-        compile (compressCssItem <$> sassCompiler)
+        compile $ getResourceString >>=
+            withItemBody (unixFilter "sass" ["--stdin", "--indented",
+              "--style=compressed"])
 
     match "posts/**.md" $ do
         route   $ setExtension ".html"

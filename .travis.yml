@@ -26,10 +26,10 @@ addons:
       - libgmp-dev
 
 before_install:
-# Download and unpack the stack executable
 - mkdir -p ~/.local/bin
 - export PATH=$HOME/.local/bin:$PATH
 - travis_retry curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+- travis_retry curl -L https://github.com/sass/dart-sass/releases/download/1.24.0/dart-sass-1.24.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/sass' '*/src'
 
 script:
 - travis_wait 50 stack --no-terminal --skip-ghc-check build --fast

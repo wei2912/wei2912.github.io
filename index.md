@@ -4,6 +4,8 @@ title: wei2912's articles
 
 # [wei2912](https://github.com/wei2912)'s articles
 
+---
+
 ## Summary Pieces
 
 These articles are *easier*-to-read summary pieces on a few select topics,
@@ -20,8 +22,7 @@ what functional programming languages have to offer over imperative languages.
 
 ---
 
-## Design of Blog
-
+<small>
 The design of this blog was intended to be minimalist, while being very
 readable and following responsive design principles. The general look and feel
 of the blog is inspired by [Mike Bostock](https://bost.ocks.org/mike)'s
@@ -48,6 +49,7 @@ In addition to the above, I use these external services:
 of the content for [weien.io](https://weien.io)
 * [Mailgun](https://www.mailgun.com/) for notification emails
 * [Askimet](https://akismet.com) for comments spam protection
+</small>
 
 ---
 
