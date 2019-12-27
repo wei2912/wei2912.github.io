@@ -24,3 +24,4 @@ tasks. For more information, run this command:
 stack exec blog-src -h
 ```
 
+To build the `.sass` files, you will need to install the [Sass executable](https://sass-lang.com/install).
