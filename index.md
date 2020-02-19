@@ -35,20 +35,13 @@ these software to build the website:
 Haskell which allows for great flexibility in the building of pages,
 * [KaTeX](https://katex.org) for [LaTeX](https://www.latex-project.org/) math
 equations
-
-I also run the following services on my server:
-
-* [Matomo](https://matomo.org) which provides free web analytics that respects
-user privacy
-* [Commento](https://commento.io) which provides the commenting platform on
-the posts
+* [Matomo](https://matomo.org) which is an open source web analytics platform
 
 In addition to the above, I use these external services:
 
 * [Cloudflare](https://www.cloudflare.com) serves DNS requests as well as all
 of the content for [weien.io](https://weien.io)
-* [Mailgun](https://www.mailgun.com/) for notification emails
-* [Askimet](https://akismet.com) for comments spam protection
+* [Mailjet](https://www.mailjet.com/) for Matomo's notification emails
 </small>
 
 ---
