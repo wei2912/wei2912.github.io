@@ -10,12 +10,19 @@ jobs:
       - run: |
           mkdir -p ~/.local/bin
           export PATH=$HOME/.local/bin:$PATH
+      - uses: actions/cache@v1
+        name: Cache Stack
+        with:
+          path: ~/.stack/
+          key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml.lock) }}
+          restore-keys: |
+            ${{ runner.os }}-stack-
 
       - name: Setup Stack
         run: curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
       - name: Setup SASS
         run: curl -L https://github.com/sass/dart-sass/releases/download/1.24.0/dart-sass-1.24.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/sass' '*/src'
-      - run: stack build
+      - run: stack --no-terminal build
       - run: stack exec blog-src build
 
       - name: Deploy
