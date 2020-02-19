@@ -11,9 +11,16 @@ packages:
       sha256: 4a4409d287ee3daabb0141e3ebd3d2e88ead7382ba5cc582733907b4a938c4a8
   original:
     hackage: hakyll-4.13.0.1
+- completed:
+    hackage: lrucache-1.2.0.1@sha256:18fc3d7052012c7ab3cd395160f34b53c5e1ec5379cc45185baf35b90ffadc2e,1254
+    pantry-tree:
+      size: 619
+      sha256: 61b2a39a11873f2d8a577e1f6b5e848d2f465ea7f6837ce15436796d3a20eda0
+  original:
+    hackage: lrucache-1.2.0.1
 snapshots:
 - completed:
-    size: 524127
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/6.yaml
-    sha256: dc70dfb45e2c32f54719819bd055f46855dd4b3bd2e58b9f3f38729a2d553fbb
-  original: lts-14.6
+    size: 500539
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/13/29.yaml
+    sha256: 006398c5e92d1d64737b7e98ae4d63987c36808814504d1451f56ebd98093f75
+  original: lts-13.29
