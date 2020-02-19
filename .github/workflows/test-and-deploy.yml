@@ -14,7 +14,7 @@ jobs:
         name: Cache Stack
         with:
           path: ~/.stack/
-          key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml.lock) }}
+          key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml.lock') }}
           restore-keys: |
             ${{ runner.os }}-stack-
 
