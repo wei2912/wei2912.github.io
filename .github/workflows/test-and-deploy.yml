@@ -7,9 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: |
-          mkdir -p ~/.local/bin
-          export PATH=$HOME/.local/bin:$PATH
       - uses: actions/cache@v1
         name: Cache Stack
         with:
@@ -18,18 +15,20 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-stack-
 
+      - run: mkdir -p $HOME/.local/bin
+      - run: export PATH="$HOME/.local/bin:$PATH"
       - name: Setup Stack
-        run: curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+        run: curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/stack'
       - name: Setup SASS
-        run: curl -L https://github.com/sass/dart-sass/releases/download/1.24.0/dart-sass-1.24.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/sass' '*/src'
+        run: curl -L https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/sass' '*/src'
       - run: stack --no-terminal build
       - run: stack exec blog-src build
 
       - name: Deploy
         if: github.event_name == 'push' && github.ref == 'refs/head/master'
         run: |
-          mkdir ~/.ssh
-          chmod 700 ~/.ssh
-          echo '${{ secrets.SSH_DEPLOY_KEY }}' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          rsync -a --delete _site/ ${{ secrets.SSH_DEPLOY_USER }}@${{ secrets.SSH_DEPLOY_HOST }}:~/html/
+          mkdir $HOME/.ssh
+          chmod 700 $HOME/.ssh
+          echo '${{ secrets.SSH_DEPLOY_KEY }}' > $HOME/.ssh/id_rsa
+          chmod 600 $HOME/.ssh/id_rsa
+          rsync -a --delete _site/ ${{ secrets.SSH_DEPLOY_USER }}@${{ secrets.SSH_DEPLOY_HOST }}:$HOME/html/

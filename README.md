@@ -1,4 +1,4 @@
-# blog-src [![Build Status](https://travis-ci.org/wei2912/blog-src.svg?branch=master)](https://travis-ci.org/wei2912/blog-src)
+# blog-src ![Test and Deploy](https://github.com/wei2912/blog-src/workflows/Test%20and%20Deploy/badge.svg)
 
 This is the source of my personal blog, [weien.io](https://weien.io), and is
 where I keep my articles as well as the code of my static site generator, which
