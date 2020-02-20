@@ -29,7 +29,7 @@ jobs:
           $HOME/.local/bin/stack exec blog-src build
 
       - name: Deploy
-        if: github.event_name == 'push' && github.ref == 'refs/head/master'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           mkdir $HOME/.ssh
           chmod 700 $HOME/.ssh
