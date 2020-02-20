@@ -1,4 +1,4 @@
-name: Test and Deploy
+name: Build
 on:
   pull_request:
   push:
@@ -27,12 +27,3 @@ jobs:
         run: |
           export PATH="$HOME/.local/bin:$PATH"
           $HOME/.local/bin/stack exec blog-src build
-
-      - name: Deploy
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          mkdir $HOME/.ssh
-          chmod 700 $HOME/.ssh
-          echo '${{ secrets.SSH_DEPLOY_KEY }}' > $HOME/.ssh/id_rsa
-          chmod 600 $HOME/.ssh/id_rsa
-          rsync -a --delete _site/ ${{ secrets.SSH_DEPLOY_USER }}@${{ secrets.SSH_DEPLOY_HOST }}:~/html/
