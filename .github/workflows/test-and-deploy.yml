@@ -35,4 +35,4 @@ jobs:
           chmod 700 $HOME/.ssh
           echo '${{ secrets.SSH_DEPLOY_KEY }}' > $HOME/.ssh/id_rsa
           chmod 600 $HOME/.ssh/id_rsa
-          rsync -a --delete _site/ ${{ secrets.SSH_DEPLOY_USER }}@${{ secrets.SSH_DEPLOY_HOST }}:$HOME/html/
+          rsync -a --delete _site/ ${{ secrets.SSH_DEPLOY_USER }}@${{ secrets.SSH_DEPLOY_HOST }}:~/html/
