@@ -28,7 +28,8 @@ readable and following responsive design principles. The general look and feel
 of the blog is inspired by [Mike Bostock](https://bost.ocks.org/mike)'s
 website.
 
-I used these software to build the website:
+The website is hosted on [Netlify](https://www.netlify.com/), and I used these
+software to build the website:
 
 * [Hakyll](https://jaspervdj.be/hakyll), a static site generator written in
 Haskell which allows for great flexibility in the building of pages
@@ -36,11 +37,6 @@ Haskell which allows for great flexibility in the building of pages
 equations
 * [Utterances](https://utteranc.es/), a lightweight comments widget built on
 GitHub issues
-
-In addition to the above, I use these external services:
-
-* [Cloudflare](https://www.cloudflare.com) serves DNS requests as well as all
-of the content for [weien.io](https://weien.io)
 </small>
 
 ---
