@@ -31,7 +31,7 @@ website.
 I used these software to build the website:
 
 * [Hakyll](https://jaspervdj.be/hakyll), a static site generator written in
-Haskell which allows for great flexibility in the building of pages,
+Haskell which allows for great flexibility in the building of pages
 * [KaTeX](https://katex.org) for [LaTeX](https://www.latex-project.org/) math
 equations
 * [Utterances](https://utteranc.es/), a lightweight comments widget built on
