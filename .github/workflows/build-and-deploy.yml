@@ -24,7 +24,7 @@ jobs:
 
       - run: stack --no-terminal build
       - run: stack exec blog-src build
-        with:
+        env:
           PATH: $PATH
 
       - run: tar -czf _site.tar.gz _site/
