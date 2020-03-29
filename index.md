@@ -34,6 +34,8 @@ I used these software to build the website:
 Haskell which allows for great flexibility in the building of pages,
 * [KaTeX](https://katex.org) for [LaTeX](https://www.latex-project.org/) math
 equations
+* [Utterances](https://utteranc.es/), a lightweight comments widget built on
+GitHub issues
 
 In addition to the above, I use these external services:
 
