@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: blog-src-${{ github.sha }}
-          path: _site.tar.gz
+          path: .
       - run: tar -xzf _site.tar.gz
 
       - name: Deploy to Netlify
