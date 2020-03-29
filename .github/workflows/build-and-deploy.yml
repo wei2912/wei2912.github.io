@@ -20,12 +20,13 @@ jobs:
         run: curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/stack'
       - name: Setup SASS
         run: curl -L https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/sass' '*/src'
-      - run: export PATH="$HOME/.local/bin:$PATH"
 
       - run: stack --no-terminal build
+        env:
+          PATH: $HOME/.local/bin:$PATH
       - run: stack exec blog-src build
         env:
-          PATH: $PATH
+          PATH: $HOME/.local/bin:$PATH
 
       - run: tar -czf _site.tar.gz _site/
       - name: Upload build
