@@ -28,30 +28,32 @@ jobs:
           export PATH="$HOME/.local/bin:$PATH"
           $HOME/.local/bin/stack exec blog-src build
 
-      - run: tar -czf _site.tar.gz _site/
       - name: Upload build
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: blog-src-${{ github.sha }}
-          path: _site.tar.gz
+          path: _site/
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - name: Download build
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v2
         with:
           name: blog-src-${{ github.sha }}
-          path: .
-      - run: tar -xzf _site.tar.gz
+          path: _site/
+      - run: touch _site/.nojekyll
 
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v1.0
+      - name: Install SSH Client 🔑
+        uses: webfactory/ssh-agent@v0.2.0
         with:
-          publish-dir: '_site/'
-          production-branch: master
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: 'Deploy from GitHub Actions'
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
+
+      - name: Deploy website
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          SSH: true
+          REPOSITORY_NAME: wei2912/wei2912.github.io
+          BRANCH: master
+          FOLDER: _site

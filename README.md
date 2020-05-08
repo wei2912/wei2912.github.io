@@ -1,4 +1,4 @@
-# blog-src ![Build and Deploy](https://github.com/wei2912/blog-src/workflows/Build%20and%20Deploy/badge.svg) [![Netlify Status](https://api.netlify.com/api/v1/badges/5192b7f8-9f71-485e-acd2-a367b340afa1/deploy-status)](https://app.netlify.com/sites/weienio/deploys)
+# blog-src ![Build and Deploy](https://github.com/wei2912/blog-src/workflows/Build%20and%20Deploy/badge.svg)
 
 This is the source of my personal blog, [weien.io](https://weien.io), and is
 where I keep my articles as well as the code of my static site generator, which
