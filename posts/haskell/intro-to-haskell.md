@@ -509,4 +509,3 @@ guide](https://github.com/bitemyapp/learnhaskell) to learn more about
 Haskell. (EDIT IN 2019: Chris Allen has finished all the content in [his book
 on Haskell](http://haskellbook.com/) and is [offering early access on
 Gumroad before the book is published](https://gumroad.com/l/haskellbook).)
-

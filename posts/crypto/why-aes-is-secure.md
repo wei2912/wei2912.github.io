@@ -340,4 +340,3 @@ the creators themselves, titled [The Design of Rijndael][design-of-rijndael].
 [biclique-attack]: https://en.wikipedia.org/wiki/Biclique_attack "Biclique attack"
 [stick-figure-guide]: http://www.moserware.com/2009/09/stick-figure-guide-to-advanced.html "A Stick Figure Guide to the Advanced Encryption Standard (AES)"
 [design-of-rijndael]: http://www.springer.com/gp/book/9783540425809 "The Design of Rijndael"
-
