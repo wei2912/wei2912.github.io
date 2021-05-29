@@ -1,8 +1,8 @@
 # wei2912.github.io ![Build and Deploy](https://github.com/wei2912/blog-src/workflows/Build%20and%20Deploy/badge.svg)
 
-This is the source of my personal blog, [weien.io](https://weien.io), and is
-where I keep my articles as well as the code of my static site generator, which
-is based upon [Hakyll](https://jaspervdj.be/hakyll/).
+This is the source of my personal blog and is where I keep my articles as well
+as the code of my static site generator, whichis based upon
+[Hakyll](https://jaspervdj.be/hakyll/).
 
 # Installation
 
