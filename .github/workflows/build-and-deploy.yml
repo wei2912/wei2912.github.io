@@ -35,6 +35,7 @@ jobs:
           path: _site/
   deploy:
     needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -45,15 +46,8 @@ jobs:
           path: _site/
       - run: touch _site/.nojekyll
 
-      - name: Install SSH Client 🔑
-        uses: webfactory/ssh-agent@v0.2.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_DEPLOY_KEY }}
-
       - name: Deploy website
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
-          SSH: true
-          REPOSITORY_NAME: wei2912/wei2912.github.io
-          BRANCH: master
-          FOLDER: _site
+          branch: gh-pages
+          folder: _site
