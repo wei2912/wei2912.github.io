@@ -69,8 +69,9 @@ to get a new byte.
 It also turns out that addition of two elements in $GF(2^8)$ is simply XOR of
 both elements -- this means that addition is efficient on hardware! On the
 other hand, multiplication is more complex. AES uses the polynomial $x^8 + x^4
-+ x^3 + x + 1$, and most implementations will use a lookup table instead of
-computing the polynomial for the sake of efficiency.
+
+- x^3 + x + 1$, and most implementations will use a lookup table instead of
+  computing the polynomial for the sake of efficiency.
 
 ## Overview of AES
 
@@ -94,12 +95,14 @@ image.
 AES takes in 16 bytes, $b_0, b_1, \dots, b_{15}$, which are arranged in a
 matrix from top to bottom, left to right:
 
-$$\begin{bmatrix}
+$$
+\begin{bmatrix}
 b_0 & b_4 & b_8    & b_{12} \\
 b_1 & b_5 & b_9    & b_{13} \\
 b_2 & b_6 & b_{10} & b_{14} \\
 b_3 & b_7 & b_{11} & b_{15} \\
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
 AES can be broken down into 4 steps:
 
@@ -130,7 +133,7 @@ Each round looks like this:
 
 1. Combination of the plaintext with the round key (represented by $\oplus$)
 2. Substitution of small blocks of bits (referred to as a S-box, or a
-**s**ubstitution box)
+   **s**ubstitution box)
 3. Permutation of all the bits (referred to as a P-box, or a **p**ermutation box)
 
 The combination of the plaintext with the round key is often XOR, as XOR is
@@ -164,19 +167,19 @@ However, when combined together, they provide powerful cryptographic strength.
 
 [Confusion and diffusion][confusion-and-diffusion] are key properties of a
 secure cipher (as identified by Claude Shannon, considered the father of
-information theory). *Confusion* refers to the property that each character of
-the ciphertext depends on several parts of the key, and *diffusion* refers to
+information theory). _Confusion_ refers to the property that each character of
+the ciphertext depends on several parts of the key, and _diffusion_ refers to
 the property that when we change a character of the plaintext, then several
 characters of the ciphertext should change.
 
 Firstly, if a single bit is changed in the plaintext, an S-Box changes several
 bits. The P-Box then distributes these changed bits across. With several
 rounds, the ciphertext has changed completely. This satisfies the property of
-*diffusion*. Other than having a completely different ciphertext, this also
+_diffusion_. Other than having a completely different ciphertext, this also
 prevents an attacker from modifying the ciphertext in order to get a desired
 plaintext, as this would change the plaintext drastically.
 
-Secondly, the SPN also exhibits *confusion* (under the assumption that changing
+Secondly, the SPN also exhibits _confusion_ (under the assumption that changing
 one bit of the key changes several round keys -- the SPN does not include
 derivation of the round keys). Every change in a round key causes a change in
 the input of the S-Boxes. As per the property of diffusion, the ciphertext
@@ -196,7 +199,7 @@ algorithm to obtain the round keys is called the [key schedule][key-schedule].
 
 With a larger key size, AES has a larger number of rounds. The reason is
 that given more key bits, there is a need for more rounds so as to ensure that
-there is *confusion*. This is why the key schedule differs depending on the
+there is _confusion_. This is why the key schedule differs depending on the
 key size.
 
 The key schedule derives the first round key from the master key, the second
@@ -280,12 +283,14 @@ outputs from the S-box **row-wise**.
 `MixColumns` performs a transformation on each column of the matrix. It
 multiplies the matrix of bytes with:
 
-$$\begin{bmatrix}
+$$
+\begin{bmatrix}
 2 & 3 & 1 & 1 \\
 1 & 2 & 3 & 1 \\
 1 & 1 & 2 & 3 \\
 3 & 1 & 1 & 2 \\
-\end{bmatrix}$$
+\end{bmatrix}
+$$
 
 in $GF(2^8)$. Matrix multiplication is composed of several multiplication and
 addition operations. This transforms the bytes of every column. Hence,
@@ -297,7 +302,7 @@ the input bytes would change at least $m-k+1$ of the output bytes, where
 $m \times n$ is the size of the matrix.
 
 Combining both operations together, you get a very powerful P-box. As part of a
-SPN, this P-box helps to ensure *diffusion*, and does it very well. It
+SPN, this P-box helps to ensure _diffusion_, and does it very well. It
 propagates changes in the plaintext throughout, making differential
 cryptanalysis tough.
 

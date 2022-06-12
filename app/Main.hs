@@ -77,4 +77,3 @@ pandocMathCompiler =
             , writerHTMLMathMethod = MathJax ""
             }
     in pandocCompilerWith defaultHakyllReaderOptions writerOptions
-

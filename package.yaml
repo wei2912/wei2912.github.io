@@ -1,13 +1,13 @@
-name:                blog-src
-version:             0.1.0.0
-github:              "wei2912/wei2912.github.io"
-license:             MIT
-author:              "Ng Wei En"
-maintainer:          "weien1292@gmail.com"
-copyright:           "2021 Ng Wei En"
+name: blog-src
+version: 0.1.0.0
+github: "wei2912/wei2912.github.io"
+license: MIT
+author: "Ng Wei En"
+maintainer: "weien1292@gmail.com"
+copyright: "2021 Ng Wei En"
 
 extra-source-files:
-- README.md
+  - README.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -16,20 +16,19 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on Github at <https://github.com/wei2912/wei2912.github.io#readme>.
+description: Please see the README on Github at <https://github.com/wei2912/wei2912.github.io#readme>.
 
 dependencies:
-- base
-- containers
-- hakyll
-- pandoc
+  - base
+  - containers
+  - hakyll
+  - pandoc
 
 executables:
   blog-src:
-    main:                Main.hs
-    source-dirs:         app
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N

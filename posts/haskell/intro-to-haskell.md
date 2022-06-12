@@ -63,8 +63,8 @@ on stringing together functions.
 
 Every function comprises 2 parts:
 
-1) Type signature
-2) Equations
+1. Type signature
+2. Equations
 
 ### Type Signature
 
@@ -100,8 +100,7 @@ addByThree x = x + 3
 
 In Haskell, we write functions similar to equations. The left hand side is
 `addByThree x`, which is our function name and the integer `x`. The right hand
-side is `x + 3` which adds 3 to our integer `x`. Hence, by calling `addByThree
-10` we'll get back `13`.
+side is `x + 3` which adds 3 to our integer `x`. Hence, by calling `addByThree 10` we'll get back `13`.
 
 Likewise, our `add` function is the following:
 
@@ -140,7 +139,7 @@ Ok, modules loaded: Main.
 
 ### Infix functions
 
-Operators like `+` and `*` are *infix functions*, placed between two arguments.
+Operators like `+` and `*` are _infix functions_, placed between two arguments.
 We can use them as "normal" functions by enclosing the operator of our choice
 in brackets. For example, we can rewrite `3 + 7` as `(+) 3 7`.
 
@@ -158,14 +157,14 @@ Prelude> :type "abc"
 
 Lists in Haskell are implemented as a series of "cons" operations, which join
 up elements of the list. We use the `:` operator to do this (otherwise known as
-the *cons* operator). It prepends an element to a list of the *same type*.
+the _cons_ operator). It prepends an element to a list of the _same type_.
 
 ```haskell
 Prelude> 3 : [1, 2]
 [3, 1, 2]
 ```
 
-This `:` operator is *right-associative*, which means that everything on the
+This `:` operator is _right-associative_, which means that everything on the
 right is given precedence and evaluated first.
 
 ```haskell
@@ -177,7 +176,7 @@ Prelude> 3 : 2 : 1 : []
 
 ### Polymorphic types
 
-*Polymorphic types* allow for generic types to be used in a function. Take the
+_Polymorphic types_ allow for generic types to be used in a function. Take the
 function`id`:
 
 ```haskell
@@ -194,7 +193,7 @@ value it was passed into, and so is called the *id*entity function.
 
 ### Higher Order functions
 
-*Higher order functions* are functions that can take in or return other
+_Higher order functions_ are functions that can take in or return other
 functions.
 
 A function which takes in one parameter and returns something of the same type
@@ -223,13 +222,13 @@ pows :: Integer -> [Integer]
 pows base = iterate (* base) 1
 ```
 
-In here, we define a function that takes in an *integer* and returns a *list of
-integers*. Our equation then defines `pows base` as `iterate (* base) 1`.
+In here, we define a function that takes in an _integer_ and returns a _list of
+integers_. Our equation then defines `pows base` as `iterate (* base) 1`.
 
 ### `(* base)`?
 
-`* base` looks weird, but it is written with the intention of using [*partially
-applied functions*](https://en.wikipedia.org/wiki/Partial_application).
+`* base` looks weird, but it is written with the intention of using [_partially
+applied functions_](https://en.wikipedia.org/wiki/Partial_application).
 
 Let's first look at the difference between multiplying 2 integers and
 multiplying an integer by 3:
@@ -257,10 +256,10 @@ multiplyByThree x = (x *) 3
 We provide the left value, `x`, to `(*)`. `(x *)` gives us a function that
 takes in a single number and multiples that by `x`. Finally, we get a value.
 Haskell allows us to supply only a few parameters required, so as to get back a
-function that takes in the rest of the parameters. This is known as *partial
-application*.
+function that takes in the rest of the parameters. This is known as _partial
+application_.
 
-How does that help us? This is where *higher order functions* come in.
+How does that help us? This is where _higher order functions_ come in.
 
 ### The `iterate` function
 
@@ -273,7 +272,7 @@ iterate f x = x : iterate f (f x)
 
 What `iterate` does is that it prepends a value to a list, applies a function
 to the value and pass the new value into `iterate` again. This is what we call
-a *recursive function* --- a function that calls itself.
+a _recursive function_ --- a function that calls itself.
 
 ### Trace of the `pows` function
 
@@ -292,9 +291,9 @@ so let's look at a trace.
 We can see that we'll get a list of powers of 3. How this comes about is that
 we go through the following steps:
 
-1) Prepend the current value to the list
-2) Apply `(3 *)` to the current value to get a new value.
-3) Apply `iterate (3 *)` to the new value.
+1. Prepend the current value to the list
+2. Apply `(3 *)` to the current value to get a new value.
+3. Apply `iterate (3 *)` to the new value.
 
 Partially applied functions allow us to write this very elegantly, without
 having to define a new function `multiplyByThree`. This is one of the lovely
@@ -306,7 +305,7 @@ But wait! Wouldn't that go on for infinity? In Haskell, executing `pows 3`
 would have given us an infinite list of the powers of 3 (try it and see what
 happens!). Notice that the list will keep on growing, which looks horrible.
 
-But we can still do stuff with an infinite list, thanks to *laziness*. We need
+But we can still do stuff with an infinite list, thanks to _laziness_. We need
 not evaluate the whole list, but just the items that we need.
 
 From our infinite list,
@@ -346,8 +345,8 @@ us to reason about code in a very powerful way.
 
 ## Fibonacci Numbers
 
-Fibonacci numbers start with 0 and 1. Each number is the *sum of the previous
-two numbers*. In this example, we'll handle only natural numbers.
+Fibonacci numbers start with 0 and 1. Each number is the _sum of the previous
+two numbers_. In this example, we'll handle only natural numbers.
 
 Here's how the sequence looks like:
 
@@ -365,7 +364,7 @@ fibs :: [Integer]
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 ```
 
-This time round, we define `fibs` as a *list of integers*. We then prepend `0`
+This time round, we define `fibs` as a _list of integers_. We then prepend `0`
 and `1` to `zipWith (+) fibs (tail fibs)`.
 
 What does `zipWith` do? Before we cover it, we need to take a look at some list
@@ -423,8 +422,7 @@ zipWith _ _ _ = []
 We have 2 equations, with some weird underscores. How does this work?
 
 Haskell allows for pattern matching. In our case, `(a : as)` seperates a list
-of values into `a` (the head) and `as` (the tail). We do the same with `(b :
-bs)`. Afterwards, we apply `f` to `a` and `b`, then prepend our value to
+of values into `a` (the head) and `as` (the tail). We do the same with `(b : bs)`. Afterwards, we apply `f` to `a` and `b`, then prepend our value to
 `zipWith f as bs`.
 
 However, there's still a second equation. Underscores are a way for us to
@@ -502,7 +500,7 @@ mathematically-inclined.
 
 You can take a look at the following readings:
 
-* [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
+- [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
 
 You may also wish to follow [Chris Allen's
 guide](https://github.com/bitemyapp/learnhaskell) to learn more about
