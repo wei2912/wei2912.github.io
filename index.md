@@ -25,14 +25,14 @@ what functional programming languages have to offer over imperative languages.
 ---
 
 <small>
+
 The design of this blog was intended to be minimalist, while being very
 readable and following responsive design principles. The general look and feel
 of the blog is inspired by [Mike Bostock](https://bost.ocks.org/mike)'s
 website.
 
-The website is hosted on [GitHub Pages](https://pages.github.com/) with
-[Cloudflare](https://www.cloudflare.com/) as a Content Delivery Network (CDN),
-and I used these software to build the website:
+The website is hosted on [GitHub Pages](https://pages.github.com/) and I used these
+software to build the website:
 
 - [Hakyll](https://jaspervdj.be/hakyll), a static site generator written in
   Haskell which allows for great flexibility in the building of pages
@@ -40,6 +40,7 @@ and I used these software to build the website:
   equations
 - [Utterances](https://utteranc.es/), a lightweight comments widget built on
   GitHub issues
-  </small>
+
+</small>
 
 ---
