@@ -68,10 +68,9 @@ to get a new byte.
 
 It also turns out that addition of two elements in $GF(2^8)$ is simply XOR of
 both elements -- this means that addition is efficient on hardware! On the
-other hand, multiplication is more complex. AES uses the polynomial $x^8 + x^4
-
-- x^3 + x + 1$, and most implementations will use a lookup table instead of
-  computing the polynomial for the sake of efficiency.
+other hand, multiplication is more complex. AES uses the polynomial
+$x^8 + x^4 + x^3 + x + 1$, and most implementations will use a lookup table instead of
+computing the polynomial for the sake of efficiency.
 
 ## Overview of AES
 
