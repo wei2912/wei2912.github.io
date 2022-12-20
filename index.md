@@ -14,9 +14,9 @@ their toes into unfamiliar technical topics without sacrificing too much rigour.
 ### Regularisation & Redundancy: Examining Generalisation in Deep Learning
 
 (WIP) A brief look into recent research on generalisation in deep learning, which runs
-contrary to classical learning theory and common intuition. Rather than explain existing
-theories of generalisation, which at present are still very diverse and complex, this
-seeks to examine recent findings and the implications they have for the field.
+contrary to common intuition. Rather than explain existing theories of generalisation,
+which at present are still very diverse and complex, this seeks to examine recent
+findings and the implications they have for the field.
 
 ### [Why AES is Secure](/posts/crypto/why-aes-is-secure.html)
 
