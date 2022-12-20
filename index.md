@@ -8,14 +8,22 @@ title: wei2912's articles
 
 ## Summary Pieces
 
-These articles are _easier_-to-read summary pieces on a few select topics,
-intended to let people dip their toes into unfamiliar technical topics.
+These articles are summary pieces on a few select topics, intended to let people dip
+their toes into unfamiliar technical topics without sacrificing too much rigour.
+
+### Regularisation & Redundancy: Examining Generalisation in Deep Learning
+
+(WIP) A brief look into recent research on generalisation in deep learning, which runs
+contrary to classical learning theory and common intuition. Rather than explain existing
+theories of generalisation, which at present are still very diverse and complex, this
+seeks to examine recent findings and the implications they have for the field.
 
 ### [Why AES is Secure](/posts/crypto/why-aes-is-secure.html)
 
-(January 1, 2017) An explanation of how AES, a (very) commonly used modern
-crytosystem, was designed to be resistant to many different types of
-cryptographic attacks.
+(January 1, 2017) An explanation of how AES, a commonly used modern crytosystem, was
+designed to be resistant to many different types of cryptographic attacks.
+
+## Miscellaneous Pieces
 
 ### [Introduction to Haskell](/posts/haskell/intro-to-haskell.html)
 
