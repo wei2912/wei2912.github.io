@@ -4,30 +4,29 @@ title: wei2912's blog
 
 # [wei2912](https://github.com/wei2912)'s blog
 
-I now maintain a [Mastodon](https://joinmastodon.org/) account at
+_I now maintain a [Mastodon](https://joinmastodon.org/) account at
 [@wei2912@sigmoid.social](https://sigmoid.social/@wei2912) where I will regularly post
-updates on blog posts and other related content.
+updates on blog posts and other related content._
 
 ---
 
 ## Summary Pieces
 
-These articles are summary pieces on a few select topics, intended to let people dip
-their toes into unfamiliar technical topics without sacrificing too much rigour.
+These articles are intended to let people dip their toes into unfamiliar technical
+topics without sacrificing too much rigour.
 
-### Regularisation & Redundancy: Examining Generalisation in Deep Learning #mltheory
+### Regularisation & Redundancy: Examining Generalisation in Deep Learning #ml-theory
 
-(WIP) A brief look into recent research on generalisation in deep learning, which runs
-contrary to common intuition. Rather than explain existing theories of generalisation,
-which at present are still very diverse and complex, this seeks to examine recent
-findings and the implications they have for the field.
+(WIP) A brief look into generalisation in deep learning (namely in Convolutional
+Neural Networks), examining recent empirical findings which run contrary to common
+intuition.
 
 ### [Why AES is Secure](/posts/crypto/why-aes-is-secure.html) #crypto
 
-(January 1, 2017) An explanation of how AES, a commonly used modern crytosystem, was
+(January 1, 2017) An explanation of how AES, a commonly used modern cryptosystem, was
 designed to be resistant to many different types of cryptographic attacks.
 
-## Miscellaneous Pieces
+## Miscellaneous
 
 ### [Introduction to Haskell](/posts/haskell/intro-to-haskell.html) #haskell
 
