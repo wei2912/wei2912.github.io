@@ -1,6 +1,6 @@
 ---
 title: Introduction to Haskell
-category: Haskell
+category: haskell
 date: 2014-11-27
 ---
 

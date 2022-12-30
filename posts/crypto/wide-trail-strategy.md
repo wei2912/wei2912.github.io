@@ -1,6 +1,6 @@
 ---
 title: The Wide Trail Design Strategy of AES
-category: Cryptography
+category: crypto
 date: 2021-07-02
 katex: true
 ---

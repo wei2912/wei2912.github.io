@@ -1,6 +1,6 @@
 ---
 title: "Regularisation & Redundancy: Examining Generalisation in Deep Learning"
-category: Machine Learning Theory
+category: ml-theory
 date: 2022-12-20
 katex: true
 ---

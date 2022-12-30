@@ -1,6 +1,6 @@
 ---
 title: Why AES Is Secure
-category: Cryptography
+category: crypto
 date: 2017-01-01
 katex: true
 ---
