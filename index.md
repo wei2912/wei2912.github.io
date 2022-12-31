@@ -5,8 +5,8 @@ title: wei2912's blog
 # [wei2912](https://github.com/wei2912)'s blog
 
 _I now maintain a [Mastodon](https://joinmastodon.org/) account at
-[@wei2912@sigmoid.social](https://sigmoid.social/@wei2912) where I will regularly post
-updates on blog posts and other related content._
+<a rel="me" href="https://sigmoid.social/@wei2912">@wei2912@sigmoid.social</a> where I
+will regularly post updates on blog posts and other related content._
 
 ---
 
