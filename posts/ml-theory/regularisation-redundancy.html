@@ -24,33 +24,29 @@
     <header>December 20, 2022 / <a href="../../" rel="author">Ng Wei En</a> / #ml-theory</header>
 <h1>Regularisation & Redundancy: Examining Generalisation in Deep Learning</h1>
 
-<div id="content"><p>The past decade has seen deep learning models grow massively in size, as researchers
-gain access to greater levels of processing power. These models enter the regime of
-<a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning"><em>overparameterisation</em></a>, where the number of learnable parameters far exceed the
-number of training examples<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and yet achieve surprisingly high performance on
-unseen data in very complex tasks (just give the <a href="https://cs.stanford.edu/people/karpathy/ilsvrc/">ImageNet challenge</a> a try!).</p>
-<p>Rather than explain existing theories of generalisation, which at present are still very
-diverse and complex, this article seeks to examine some recent fascinating empirical
-findings in Convolutional Neural Networks (CNNs) from two different perspectives:</p>
+<div id="content"><p>The past decade has seen deep learning models grow massively in size, as researchers gain access to greater levels of processing power. These models enter the regime of <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">overparameterisation</a>, where the number of learnable parameters far exceed the number of training examples<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and yet achieve surprisingly high performance on unseen data in complex tasks.</p>
+<p>Rather than explain existing theories of generalisation, which at present are still very diverse and complex, this article seeks to examine some recent fascinating empirical findings in <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" title="Convolutional neural network">Convolutional Neural Networks (CNNs)</a> from two different perspectives:</p>
 <ol type="1">
-<li>Performing <strong>regularisation</strong>, which encourages “simpler” or more “structured” models
-in order to improve generalisation; and</li>
+<li>Performing <strong>regularisation</strong>, which encourages “simpler” or more “structured” models in order to improve generalisation; and</li>
 <li>Reducing <strong>redundancy</strong>, which compresses models to reduce memory requirements.</li>
 </ol>
-<p>These two directions in deep learning development revolve around a central question:
-<strong>what makes massive neural network architectures so effective, and can smaller or
-simpler architectures do as well?</strong> Even partial answers to this question could have
-implications for the design of deep learning architectures.</p>
-<h2 id="convolutional-neural-networks-cnns">Convolutional Neural Networks (CNNs)</h2>
-<p>The effectiveness of CNNs on image tasks is often attributed to its resemblance with the
-<a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>.</p>
-<figure>
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png" title="File:Typical cnn.png" alt="CNN Architecture (Credits: Wikimedia)" />
-<figcaption aria-hidden="true">CNN Architecture (Credits: <a href="https://commons.wikimedia.org/wiki/File:Typical_cnn.png">Wikimedia</a>)</figcaption>
-</figure>
+<p>These two perspectives revolve around a central question in the design of deep learning architectures: <em>what makes massive neural network architectures so effective, and can smaller or simpler architectures do as well?</em></p>
 <h2 id="regularisation">Regularisation</h2>
+<p>Regularisation is often seen as imposing <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" title="Occam's razor">Occam’s razor</a> — between two different models which are similarly feasible, we should prefer the “simpler” model. Simplicity can be viewed in various ways:</p>
+<ol type="1">
+<li>a model with lower “flexibility” may better represent the test population, such as in the classic example of <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html" title="Underfitting vs. Overfitting">polynomial regression</a>;</li>
+<li>one may prefer <a href="https://en.wikipedia.org/wiki/Minimum_description_length" title="Minimum description length">models that can be “compressed” more</a>;</li>
+<li>for models with many parameters, sparsity (i.e. having more parameters close to zero) could be encouraged through <a href="https://en.wikipedia.org/wiki/Ridge_regression" title="Ridge regression">adding a penalty term to the loss function</a>;</li>
+<li>certain restrictions could be imposed on the model structure, such as in <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" title="Convolutional neural network">Convolutional Neural Networks (CNNs)</a>.</li>
+</ol>
+<p>Intuitively, simpler models work well in simpler tasks (especially if we know how the solution should look like); for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is not known. This is not the case with complex tasks such as image classification, where it is not clear what distinguishes the suitability of “simpler” model architectures over more sophisticated or “flexible” ones, or vice versa.</p>
 <h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h3>
 <h3 id="double-descent-phenomenon">Double-Descent Phenomenon</h3>
+<p>The effectiveness of CNNs on image tasks is often attributed to its resemblance with the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>.</p>
+<figure>
+<img src="../../public/ml-theory/regularisation-redundancy/cnn-arch.png" alt="CNN Architecture (Credits: Wikimedia)" />
+<figcaption aria-hidden="true">CNN Architecture (Credits: <a href="https://commons.wikimedia.org/wiki/File:Typical_cnn.png">Wikimedia</a>)</figcaption>
+</figure>
 <h2 id="redundancy">Redundancy</h2>
 <h3 id="network-sparsity">Network Sparsity</h3>
 <h3 id="quantisation">Quantisation</h3>
@@ -58,9 +54,7 @@ implications for the design of deep learning architectures.</p>
 <section class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>The number of model parameters may not be a good proxy for model complexity in
-deep learning, and what constitutes a good definition of model complexity remains an
-open question. See <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">Dar et al. (2021)</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>The number of model parameters may not be a good proxy for model complexity in deep learning, and what constitutes a good definition of model complexity remains an open question. See <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">Dar et al. (2021)</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div>
 
