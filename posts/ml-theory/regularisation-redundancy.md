@@ -22,14 +22,14 @@ Overview of the Theory of Overparameterized Machine Learning"
 
 ## Regularisation
 
-Regularisation is often seen as imposing [Occam's razor][occam] --- between two different models which are similarly feasible, we should prefer the "simpler" model. Simplicity can be viewed in various ways:
+Regularisation is often seen as imposing [Occam's razor][occam]: between two different models which are similarly feasible, we should prefer the "simpler" model. Simplicity can be viewed in various ways:
 
 1. a model with lower "flexibility" may better represent the test population, such as in the classic example of [polynomial regression][uf-of];
-2. one may prefer [models that can be "compressed" more][mdl];
-3. for models with many parameters, sparsity (i.e. having more parameters close to zero) could be encouraged through [adding a penalty term to the loss function][ridge];
-4. certain restrictions could be imposed on the model structure, such as in [Convolutional Neural Networks (CNNs)][cnn].
+2. models [that can be "compressed" more][mdl] could be considered simpler;
+3. for models with many parameters, [a penalty term is often added to the loss function][ridge] to achieve higher sparsity (i.e. having more parameters close to zero);
+4. certain restrictions could be imposed on the model structure, such as [the use of Convolutional Neural Network (CNN) architctures][cnn].
 
-Intuitively, simpler models work well in simpler tasks (especially if we know how the solution should look like); for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is not known. This is not the case with complex tasks such as image classification, where it is not clear what distinguishes the suitability of "simpler" model architectures over more sophisticated or "flexible" ones, or vice versa.
+Intuitively, simpler models work well in simpler tasks, especially if we know how the solution should look like; for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is unknown. This is not the case with complex tasks such as image classification, where it is unclear why one should prefer "simpler" model architectures over more sophisticated or "flexible" ones. **Understanding regularisation in complex tasks requires us to revisit _the bias-variance tradeoff_**, which is often used to justify regularisation in introductory courses.
 
 [occam]: https://en.wikipedia.org/wiki/Occam%27s_razor "Occam's razor"
 [uf-of]: https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html "Underfitting vs. Overfitting"
