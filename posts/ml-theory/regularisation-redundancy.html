@@ -32,14 +32,14 @@
 </ol>
 <p>These two perspectives revolve around a central question in the design of deep learning architectures: <em>what makes massive neural network architectures so effective, and can smaller or simpler architectures do as well?</em></p>
 <h2 id="regularisation">Regularisation</h2>
-<p>Regularisation is often seen as imposing <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" title="Occam's razor">Occam’s razor</a> — between two different models which are similarly feasible, we should prefer the “simpler” model. Simplicity can be viewed in various ways:</p>
+<p>Regularisation is often seen as imposing <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" title="Occam's razor">Occam’s razor</a>: between two different models which are similarly feasible, we should prefer the “simpler” model. Simplicity can be viewed in various ways:</p>
 <ol type="1">
 <li>a model with lower “flexibility” may better represent the test population, such as in the classic example of <a href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html" title="Underfitting vs. Overfitting">polynomial regression</a>;</li>
-<li>one may prefer <a href="https://en.wikipedia.org/wiki/Minimum_description_length" title="Minimum description length">models that can be “compressed” more</a>;</li>
-<li>for models with many parameters, sparsity (i.e. having more parameters close to zero) could be encouraged through <a href="https://en.wikipedia.org/wiki/Ridge_regression" title="Ridge regression">adding a penalty term to the loss function</a>;</li>
-<li>certain restrictions could be imposed on the model structure, such as in <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" title="Convolutional neural network">Convolutional Neural Networks (CNNs)</a>.</li>
+<li>models <a href="https://en.wikipedia.org/wiki/Minimum_description_length" title="Minimum description length">that can be “compressed” more</a> could be considered simpler;</li>
+<li>for models with many parameters, <a href="https://en.wikipedia.org/wiki/Ridge_regression" title="Ridge regression">a penalty term is often added to the loss function</a> to achieve higher sparsity (i.e. having more parameters close to zero);</li>
+<li>certain restrictions could be imposed on the model structure, such as <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network" title="Convolutional neural network">the use of Convolutional Neural Network (CNN) architctures</a>.</li>
 </ol>
-<p>Intuitively, simpler models work well in simpler tasks (especially if we know how the solution should look like); for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is not known. This is not the case with complex tasks such as image classification, where it is not clear what distinguishes the suitability of “simpler” model architectures over more sophisticated or “flexible” ones, or vice versa.</p>
+<p>Intuitively, simpler models work well in simpler tasks, especially if we know how the solution should look like; for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is unknown. This is not the case with complex tasks such as image classification, where it is unclear why one should prefer “simpler” model architectures over more sophisticated or “flexible” ones. <strong>Understanding regularisation in complex tasks requires us to revisit <em>the bias-variance tradeoff</em></strong>, which is often used to justify regularisation in introductory courses.</p>
 <h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h3>
 <h3 id="double-descent-phenomenon">Double-Descent Phenomenon</h3>
 <p>The effectiveness of CNNs on image tasks is often attributed to its resemblance with the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>.</p>
