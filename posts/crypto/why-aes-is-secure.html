@@ -82,9 +82,10 @@ would ensure that <span class="math inline">\(D(k, E(k, p)) = p\)</span> for any
 <p>AES has 3 key sizes: 128, 192 and 256 bits. It is known as a block cipher; that
 means it encrypts plaintext in seperate blocks of fixed size, as opposed to a
 stream cipher which encrypts plaintext bit by bit. Its block size is 128 bits.</p>
-<p><img src="https://i.stack.imgur.com/SnHH2.png" /></p>
-<p>Credits to <a href="http://crypto.stackexchange.com/a/8044" title="AES AddRoundKey">mikeazo’s answer on Crypto StackExchange</a> for the
-image.</p>
+<figure>
+<img src="../../public/aes-arch.png" alt="AES Architecture (Credits: Vishwanath et al. (2016))" />
+<figcaption aria-hidden="true">AES Architecture (Credits: <a href="https://www.mecs-press.org/ijitcs/ijitcs-v8-n5/v8n5-3.html">Vishwanath et al. (2016)</a>)</figcaption>
+</figure>
 <p>AES takes in 16 bytes, <span class="math inline">\(b_0, b_1, \dots, b_{15}\)</span>, which are arranged in a
 matrix from top to bottom, left to right:</p>
 <p><span class="math display">\[
@@ -111,10 +112,13 @@ performed, and in the last round, <code>MixColumns</code> is omitted.</p>
 <li>AES-256: 256 bit key, 14 rounds</li>
 </ol>
 <h3 id="substitution-permutation-network">Substitution Permutation Network</h3>
-<p>AES has a structure known as a <a href="https://en.wikipedia.org/wiki/Substitution-permutation_network" title="Substitution-permutation network">substitution permutation network</a>.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/SubstitutionPermutationNetwork2.png/468px-SubstitutionPermutationNetwork2.png" /></p>
-<p>A substitution-permutation network (SPN) takes in plaintext and keys as inputs.
-Each round looks like this:</p>
+<p>AES has a structure known as a <a href="https://en.wikipedia.org/wiki/Substitution-permutation_network" title="Substitution-permutation network">substitution-permutation network (SPN)</a>, which
+takes in plaintext and keys as inputs.</p>
+<figure>
+<img src="../../public/spn-img.png" alt="Substitution-Permutation Network (Credits: Wikimedia)" />
+<figcaption aria-hidden="true">Substitution-Permutation Network (Credits: <a href="https://commons.wikimedia.org/wiki/File:SubstitutionPermutationNetwork2.png">Wikimedia</a>)</figcaption>
+</figure>
+<p>Each round looks like this:</p>
 <ol type="1">
 <li>Combination of the plaintext with the round key (represented by <span class="math inline">\(\oplus\)</span>)</li>
 <li>Substitution of small blocks of bits (referred to as a S-box, or a
@@ -188,7 +192,10 @@ for a SPN to be secure.</p>
 on why a simpler key schedule is used, and <a href="http://crypto.stackexchange.com/a/1709" title="Is the AES Key Schedule weak?">poncho’s answer</a>
 on why making the key schedule non-invertible will not add much security.</p>
 <h3 id="subbytes"><code>SubBytes</code></h3>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/AES-SubBytes.svg/320px-AES-SubBytes.svg.png" /></p>
+<figure>
+<img src="../../public/aes-subbytes.svg" alt="AES SubBytes (Credits: Wikimedia)" />
+<figcaption aria-hidden="true">AES SubBytes (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia</a>)</figcaption>
+</figure>
 <p>A fixed S-box is used, taking in a byte as input and also producing a byte.The
 S-box of AES is calculated from the <a href="https://en.wikipedia.org/wiki/Multiplicative_inverse" title="Multiplicative inverse">multiplicative
 inverse</a> over <span class="math inline">\(GF(2^8)\)</span>. The presence of multiplicative
@@ -211,12 +218,18 @@ attacks.</p>
 <h3 id="shiftrows-and-mixcolumns"><code>ShiftRows</code> and <code>MixColumns</code></h3>
 <p>These two operations are what permutates the bits (techincally speaking,
 <code>MixColumns</code> does more than just permutations).</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/AES-ShiftRows.svg/320px-AES-ShiftRows.svg.png" /></p>
+<figure>
+<img src="../../public/aes-shiftrows.svg" alt="AES ShiftRows (Credits: Wikimedia)" />
+<figcaption aria-hidden="true">AES ShiftRows (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg">Wikimedia</a>)</figcaption>
+</figure>
 <p><code>ShiftRows</code> just rotates each row by varying number of bytes. The first row is
 not rotated, the second row is rotated to the left by one byte, the third row
 is rotated to the left by two bytes, etc. This permutates the order of the
 outputs from the S-box <strong>row-wise</strong>.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/AES-MixColumns.svg/320px-AES-MixColumns.svg.png" /></p>
+<figure>
+<img src="../../public/aes-mixcolumns.svg" alt="AES MixColumns (Credits: Wikimedia)" />
+<figcaption aria-hidden="true">AES MixColumns (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg">Wikimedia</a>)</figcaption>
+</figure>
 <p><code>MixColumns</code> performs a transformation on each column of the matrix. It
 multiplies the matrix of bytes with:</p>
 <p><span class="math display">\[
