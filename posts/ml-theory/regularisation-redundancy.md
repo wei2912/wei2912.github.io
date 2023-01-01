@@ -5,18 +5,11 @@ date: 2022-12-20
 katex: true
 ---
 
-The past decade has seen deep learning models grow massively in size, as researchers
-gain access to greater levels of processing power. These models enter the regime of
-[overparameterisation][topml], where the number of learnable parameters far exceed the
-number of training examples[^op-fn], and yet achieve surprisingly high performance on
-unseen data in complex tasks.
+The past decade has seen deep learning models grow massively in size, as researchers gain access to greater levels of processing power. These models enter the regime of [overparameterisation][topml], where the number of learnable parameters far exceed the number of training examples[^op-fn], and yet achieve surprisingly high performance on unseen data in complex tasks.
 
-Rather than explain existing theories of generalisation, which at present are still very
-diverse and complex, this article seeks to examine some recent fascinating empirical
-findings in [Convolutional Neural Networks (CNNs)][cnn] from two different perspectives:
+Rather than explain existing theories of generalisation, which at present are still very diverse and complex, this article seeks to examine some recent fascinating empirical findings in [Convolutional Neural Networks (CNNs)][cnn] from two different perspectives:
 
-1. Performing **regularisation**, which encourages "simpler" or more "structured" models
-   in order to improve generalisation; and
+1. Performing **regularisation**, which encourages "simpler" or more "structured" models in order to improve generalisation; and
 2. Reducing **redundancy**, which compresses models to reduce memory requirements.
 
 These two perspectives revolve around a central question in the design of deep learning architectures: _what makes massive neural network architectures so effective, and can smaller or simpler architectures do as well?_
@@ -25,26 +18,18 @@ These two perspectives revolve around a central question in the design of deep l
 Overview of the Theory of Overparameterized Machine Learning"
 [cnn]: https://en.wikipedia.org/wiki/Convolutional_neural_network "Convolutional neural network"
 
-[^op-fn]:
-    The number of model parameters may not be a good proxy for model complexity in
-    deep learning, and what constitutes a good definition of model complexity remains an
-    open question. See [Dar et al. (2021)][topml].
+[^op-fn]: The number of model parameters may not be a good proxy for model complexity in deep learning, and what constitutes a good definition of model complexity remains an open question. See [Dar et al. (2021)][topml].
 
 ## Regularisation
 
-Regularisation is often seen as imposing [Occam's razor][occam] --- between two different models which are similarly feasible, we should
-prefer the "simpler" model. Simplicity can be viewed in various ways:
+Regularisation is often seen as imposing [Occam's razor][occam] --- between two different models which are similarly feasible, we should prefer the "simpler" model. Simplicity can be viewed in various ways:
 
-1. a model with lower "flexibility" may better represent the test population, such as in the classic example of
-   [polynomial regression][uf-of];
+1. a model with lower "flexibility" may better represent the test population, such as in the classic example of [polynomial regression][uf-of];
 2. one may prefer [models that can be "compressed" more][mdl];
-3. for models with many parameters, sparsity (i.e. having more parameters close to zero)
-   could be encouraged through [adding a penalty term to the loss function][ridge];
-4. certain restrictions could be imposed on the model structure, such as in
-   [Convolutional Neural Networks (CNNs)][cnn].
+3. for models with many parameters, sparsity (i.e. having more parameters close to zero) could be encouraged through [adding a penalty term to the loss function][ridge];
+4. certain restrictions could be imposed on the model structure, such as in [Convolutional Neural Networks (CNNs)][cnn].
 
-Intuitively, simpler models work well in simpler tasks (especially if we know how the
-solution should look like); for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is not known. This is not the case with complex tasks such as image classification, where it is not clear what distinguishes the suitability of "simpler" model architectures over more sophisticated or "flexible" ones, or vice versa.
+Intuitively, simpler models work well in simpler tasks (especially if we know how the solution should look like); for e.g., learning a polynomial function is straightforward even if the degree of the polynomial is not known. This is not the case with complex tasks such as image classification, where it is not clear what distinguishes the suitability of "simpler" model architectures over more sophisticated or "flexible" ones, or vice versa.
 
 [occam]: https://en.wikipedia.org/wiki/Occam%27s_razor "Occam's razor"
 [uf-of]: https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html "Underfitting vs. Overfitting"
@@ -55,8 +40,7 @@ solution should look like); for e.g., learning a polynomial function is straight
 
 ### Double-Descent Phenomenon
 
-The effectiveness of CNNs on image tasks is often attributed to its resemblance with the
-[visual cortex][vis-cor].
+The effectiveness of CNNs on image tasks is often attributed to its resemblance with the [visual cortex][vis-cor].
 
 ![CNN Architecture (Credits: [Wikimedia](https://commons.wikimedia.org/wiki/File:Typical_cnn.png))][cnn-arch]
 
