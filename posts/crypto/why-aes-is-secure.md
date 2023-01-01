@@ -86,10 +86,7 @@ AES has 3 key sizes: 128, 192 and 256 bits. It is known as a block cipher; that
 means it encrypts plaintext in seperate blocks of fixed size, as opposed to a
 stream cipher which encrypts plaintext bit by bit. Its block size is 128 bits.
 
-![](https://i.stack.imgur.com/SnHH2.png)
-
-Credits to [mikeazo's answer on Crypto StackExchange][aes-addroundkey] for the
-image.
+![AES Architecture (Credits: [Vishwanath et al. (2016)](https://www.mecs-press.org/ijitcs/ijitcs-v8-n5/v8n5-3.html))][aes-arch]
 
 AES takes in 16 bytes, $b_0, b_1, \dots, b_{15}$, which are arranged in a
 matrix from top to bottom, left to right:
@@ -119,15 +116,15 @@ The number of rounds for AES is based on the key size:
 2. AES-192: 192 bit key, 12 rounds
 3. AES-256: 256 bit key, 14 rounds
 
-[aes-addroundkey]: http://crypto.stackexchange.com/a/8044 "AES AddRoundKey"
+[aes-arch]: /public/crypto/why-aes-is-secure/aes-arch.png
 
 ### Substitution Permutation Network
 
-AES has a structure known as a [substitution permutation network][spn].
+AES has a structure known as a [substitution-permutation network (SPN)][spn], which
+takes in plaintext and keys as inputs.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/SubstitutionPermutationNetwork2.png/468px-SubstitutionPermutationNetwork2.png)
+![Substitution-Permutation Network (Credits: [Wikimedia](https://commons.wikimedia.org/wiki/File:SubstitutionPermutationNetwork2.png))][spn-img]
 
-A substitution-permutation network (SPN) takes in plaintext and keys as inputs.
 Each round looks like this:
 
 1. Combination of the plaintext with the round key (represented by $\oplus$)
@@ -158,6 +155,7 @@ offer any cryptographic strength, as they reveal statistical properties.
 However, when combined together, they provide powerful cryptographic strength.
 
 [spn]: https://en.wikipedia.org/wiki/Substitution-permutation_network "Substitution-permutation network"
+[spn-img]: /public/crypto/why-aes-is-secure/spn-img.png
 [avalanche-effect]: https://en.wikipedia.org/wiki/Avalanche_effect "Avalanche effect"
 [substitution-cipher]: https://en.wikipedia.org/wiki/Substitution_cipher "Substitution cipher"
 [transposition-cipher]: https://en.wikipedia.org/wiki/Transposition_cipher "Transposition cipher"
@@ -232,7 +230,7 @@ on why making the key schedule non-invertible will not add much security.
 
 ### `SubBytes`
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/AES-SubBytes.svg/320px-AES-SubBytes.svg.png)
+![AES SubBytes (Credits: [Wikimedia](https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg))][aes-subbytes]
 
 A fixed S-box is used, taking in a byte as input and also producing a byte.The
 S-box of AES is calculated from the [multiplicative
@@ -258,6 +256,7 @@ attacks.
 
 For more details on the design of the S-box, look at [Rijndael S-box][sbox].
 
+[aes-subbytes]: /public/crypto/why-aes-is-secure/aes-subbytes.svg
 [multiplicative-inverse]: https://en.wikipedia.org/wiki/Multiplicative_inverse "Multiplicative inverse"
 [extended-euclidean-algorithm]: https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm "Extended Euclidean algorithm"
 [affine-transformation]: https://en.wikipedia.org/wiki/Affine_transformation "Affine transformation"
@@ -270,14 +269,14 @@ For more details on the design of the S-box, look at [Rijndael S-box][sbox].
 These two operations are what permutates the bits (techincally speaking,
 `MixColumns` does more than just permutations).
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/AES-ShiftRows.svg/320px-AES-ShiftRows.svg.png)
+![AES ShiftRows (Credits: [Wikimedia](https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg))][aes-shiftrows]
 
 `ShiftRows` just rotates each row by varying number of bytes. The first row is
 not rotated, the second row is rotated to the left by one byte, the third row
 is rotated to the left by two bytes, etc. This permutates the order of the
 outputs from the S-box **row-wise**.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/AES-MixColumns.svg/320px-AES-MixColumns.svg.png)
+![AES MixColumns (Credits: [Wikimedia](https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg))][aes-mixcolumns]
 
 `MixColumns` performs a transformation on each column of the matrix. It
 multiplies the matrix of bytes with:
@@ -305,6 +304,8 @@ SPN, this P-box helps to ensure _diffusion_, and does it very well. It
 propagates changes in the plaintext throughout, making differential
 cryptanalysis tough.
 
+[aes-shiftrows]: /public/crypto/why-aes-is-secure/aes-shiftrows.svg
+[aes-mixcolumns]: /public/crypto/why-aes-is-secure/aes-mixcolumns.svg
 [mds-matrix]: https://en.wikipedia.org/wiki/MDS_matrix "MDS matrix"
 
 ### `AddRoundKey`

@@ -13,6 +13,10 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    match "public/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "css/**.sass" $ do
         route   $ setExtension ".min.css"
         compile $ getResourceString >>=
