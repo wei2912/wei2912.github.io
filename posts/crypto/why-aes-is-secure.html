@@ -83,7 +83,7 @@ would ensure that <span class="math inline">\(D(k, E(k, p)) = p\)</span> for any
 means it encrypts plaintext in seperate blocks of fixed size, as opposed to a
 stream cipher which encrypts plaintext bit by bit. Its block size is 128 bits.</p>
 <figure>
-<img src="../../public/aes-arch.png" alt="AES Architecture (Credits: Vishwanath et al. (2016))" />
+<img src="../../public/crypto/why-aes-is-secure/aes-arch.png" alt="AES Architecture (Credits: Vishwanath et al. (2016))" />
 <figcaption aria-hidden="true">AES Architecture (Credits: <a href="https://www.mecs-press.org/ijitcs/ijitcs-v8-n5/v8n5-3.html">Vishwanath et al. (2016)</a>)</figcaption>
 </figure>
 <p>AES takes in 16 bytes, <span class="math inline">\(b_0, b_1, \dots, b_{15}\)</span>, which are arranged in a
@@ -115,7 +115,7 @@ performed, and in the last round, <code>MixColumns</code> is omitted.</p>
 <p>AES has a structure known as a <a href="https://en.wikipedia.org/wiki/Substitution-permutation_network" title="Substitution-permutation network">substitution-permutation network (SPN)</a>, which
 takes in plaintext and keys as inputs.</p>
 <figure>
-<img src="../../public/spn-img.png" alt="Substitution-Permutation Network (Credits: Wikimedia)" />
+<img src="../../public/crypto/why-aes-is-secure/spn-img.png" alt="Substitution-Permutation Network (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">Substitution-Permutation Network (Credits: <a href="https://commons.wikimedia.org/wiki/File:SubstitutionPermutationNetwork2.png">Wikimedia</a>)</figcaption>
 </figure>
 <p>Each round looks like this:</p>
@@ -193,7 +193,7 @@ on why a simpler key schedule is used, and <a href="http://crypto.stackexchange.
 on why making the key schedule non-invertible will not add much security.</p>
 <h3 id="subbytes"><code>SubBytes</code></h3>
 <figure>
-<img src="../../public/aes-subbytes.svg" alt="AES SubBytes (Credits: Wikimedia)" />
+<img src="../../public/crypto/why-aes-is-secure/aes-subbytes.svg" alt="AES SubBytes (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">AES SubBytes (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia</a>)</figcaption>
 </figure>
 <p>A fixed S-box is used, taking in a byte as input and also producing a byte.The
@@ -219,7 +219,7 @@ attacks.</p>
 <p>These two operations are what permutates the bits (techincally speaking,
 <code>MixColumns</code> does more than just permutations).</p>
 <figure>
-<img src="../../public/aes-shiftrows.svg" alt="AES ShiftRows (Credits: Wikimedia)" />
+<img src="../../public/crypto/why-aes-is-secure/aes-shiftrows.svg" alt="AES ShiftRows (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">AES ShiftRows (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-ShiftRows.svg">Wikimedia</a>)</figcaption>
 </figure>
 <p><code>ShiftRows</code> just rotates each row by varying number of bytes. The first row is
@@ -227,7 +227,7 @@ not rotated, the second row is rotated to the left by one byte, the third row
 is rotated to the left by two bytes, etc. This permutates the order of the
 outputs from the S-box <strong>row-wise</strong>.</p>
 <figure>
-<img src="../../public/aes-mixcolumns.svg" alt="AES MixColumns (Credits: Wikimedia)" />
+<img src="../../public/crypto/why-aes-is-secure/aes-mixcolumns.svg" alt="AES MixColumns (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">AES MixColumns (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-MixColumns.svg">Wikimedia</a>)</figcaption>
 </figure>
 <p><code>MixColumns</code> performs a transformation on each column of the matrix. It
