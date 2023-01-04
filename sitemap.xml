@@ -6,28 +6,24 @@
         <priority>1.0</priority>
     </url>
 
-    <url>
-        <loc>https://weien.io/posts/ml-theory/regularisation-redundancy.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    
 
-    <url>
-        <loc>https://weien.io/posts/crypto/wide-trail-strategy.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    
 
-    <url>
-        <loc>https://weien.io/posts/crypto/why-aes-is-secure.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    
+        <url>
+            <loc>https://weien.io/posts/crypto/why-aes-is-secure.html</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    
 
-    <url>
-        <loc>https://weien.io/posts/haskell/intro-to-haskell.html</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    
+        <url>
+            <loc>https://weien.io/posts/haskell/intro-to-haskell.html</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    
 
 </urlset>
