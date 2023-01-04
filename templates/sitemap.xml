@@ -6,10 +6,12 @@
         <priority>1.0</priority>
     </url>
 $for(posts)$
-    <url>
-        <loc>https://weien.io$url$</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
+    $if(published)$
+        <url>
+            <loc>https://weien.io$url$</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.8</priority>
+        </url>
+    $endif$
 $endfor$
 </urlset>

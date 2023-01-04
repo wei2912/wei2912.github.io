@@ -2,6 +2,7 @@
 title: Introduction to Haskell
 category: haskell
 date: 2014-11-27
+published: true
 ---
 
 Haskell is one of the most commonly used purely functional programming languages that has been slowly rising in popularity, but haven't quite caught on to mainstream programmers. (EDIT IN 2019: In recent years, loads of exciting software have been developed in Haskell, like [Pandoc](https://github.com/jgm/pandoc), a marvellous universal markup converter which this blog uses heavily, and [semantic by GitHub](https://github.com/github/semantic), a library for parsing, analyzing and comparing source code.)
