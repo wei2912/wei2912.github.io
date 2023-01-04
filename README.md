@@ -1,4 +1,4 @@
-# wei2912.github.io ![Build and Deploy](https://github.com/wei2912/blog-src/workflows/Build%20and%20Deploy/badge.svg)
+# wei2912.github.io ![Build and Deploy](https://github.com/wei2912/blog-src/workflows/Build%20and%20Deploy/badge.svg) [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/wei2912/wei2912.github.io/master.svg)](https://results.pre-commit.ci/latest/github/wei2912/wei2912.github.io/master)
 
 This is the source of my personal blog and is where I keep my articles as well as the code of my static site generator, which is based upon [Hakyll](https://jaspervdj.be/hakyll/).
 
