@@ -8,9 +8,9 @@ _I maintain a Mastodon account at <a rel="me" href="https://sigmoid.social/@wei2
 
 ---
 
-## Summary Pieces
+## Shallow Dives
 
-These articles are intended to let people dip their toes into unfamiliar technical topics without sacrificing too much rigour.
+These articles are intended to let people dip their toes into unfamiliar technical topics, hopefully beyond a superficial level of understanding.
 
 ### Regularisation & Redundancy: Examining Generalisation in Deep Learning #ml-theory
 
