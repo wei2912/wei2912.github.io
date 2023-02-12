@@ -17,9 +17,15 @@ jobs:
 
       - run: mkdir -p $HOME/.local/bin
       - name: Setup Stack
-        run: curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/stack'
+        run:
+          curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar
+          xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/stack'
       - name: Setup SASS
-        run: curl -L https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/sass' '*/src'
+        run:
+          curl -L
+          https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz
+          | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/sass'
+          '*/src'
 
       - name: Build dependencies
         run: $HOME/.local/bin/stack --no-terminal build
