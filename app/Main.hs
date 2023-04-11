@@ -9,7 +9,7 @@ import Text.Pandoc.Options
 main :: IO ()
 main = hakyll $ do
     (match . fromList) ["favicon.ico", "favicon-16x16.png",
-        "favicon-32x32.png"] $ do
+        "favicon-32x32.png", "favicon.svg"] $ do
         route   idRoute
         compile copyFileCompiler
 
