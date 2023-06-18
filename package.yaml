@@ -27,6 +27,8 @@ dependencies:
   - cryptonite
   - hakyll
   - pandoc
+  - pandoc-sidenote
+  - pandoc-types
   - time
 
 executables:

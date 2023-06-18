@@ -1,15 +1,19 @@
+{-# LANGUAGE LambdaCase          #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-import qualified Crypto.Hash as CH
-import Data.Binary
+import Crypto.Hash (Digest, MD5, hashlazy)
+import Data.Binary (encode)
 import Data.Char
-import Data.Time.Clock
-import Data.Time.Clock.POSIX
+import Data.Time.Clock (nominalDiffTimeToSeconds)
+import Data.Time.Clock.POSIX (getPOSIXTime)
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Hakyll
+import Text.Pandoc.Definition (Block (..), Inline (..), Meta (..), MetaValue (..), Pandoc (Pandoc))
 import Text.Pandoc.Options
+import Text.Pandoc.SideNote (usingSideNotes)
+import Text.Pandoc.Walk (walk)
 
 main :: IO ()
 main = hakyll $ do
@@ -22,19 +26,16 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/**.sass" $ do
+    match "css/**.scss" $ do
         route   $ setExtension ".min.css"
         compile $ getResourceString >>=
-            withItemBody (unixFilter "sass" ["--stdin", "--indented",
-              "--style=compressed"])
+            withItemBody (unixFilter "sass" ["--stdin", "--style=compressed"])
 
     epoch <- preprocess $ nominalDiffTimeToSeconds <$> getPOSIXTime
-    let timeHash = take 6 $ show (CH.hashlazy (encode epoch) :: CH.Digest CH.MD5)
-
+    let timeHash = take 6 $ show (hashlazy (encode epoch) :: Digest MD5)
     let defaultCtxWithTimeHash =
             constField "timehash" timeHash <>
             defaultContext
-
     let postCtx =
             dateField "date" "%B %e, %Y" <>
             defaultCtxWithTimeHash
@@ -81,7 +82,12 @@ main = hakyll $ do
 
 pandocMathCompiler :: Compiler (Item String)
 pandocMathCompiler =
-    let mathExtensions =
+    pandocCompilerWithTransform
+        defaultHakyllReaderOptions
+        writerOptions
+        (usingSideNotes . addSectionLinks)
+    where
+        mathExtensions =
             [ Ext_tex_math_dollars
             , Ext_tex_math_double_backslash
             , Ext_latex_macros
@@ -92,4 +98,12 @@ pandocMathCompiler =
             { writerExtensions = newExtensions
             , writerHTMLMathMethod = MathJax ""
             }
-    in pandocCompilerWith defaultHakyllReaderOptions writerOptions
+
+        -- adapted from https://github.com/slotThe/slotThe.github.io/
+        addSectionLinks :: Pandoc -> Pandoc
+        addSectionLinks = walk $ \case {
+            Header n attr@(idAttr, _, _) inlines ->
+                let link = Link ("", ["sec-link"], []) [Str "¶"] ("#" <> idAttr, "")
+                    in Header n attr (inlines <> [link]);
+            block -> block
+        }

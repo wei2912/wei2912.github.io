@@ -12,4 +12,4 @@ repos:
     rev: v3.0.0-alpha.6
     hooks:
       - id: prettier
-        types_or: [html, css, javascript, markdown, yaml]
+        types_or: [html, scss, javascript, markdown, yaml]
