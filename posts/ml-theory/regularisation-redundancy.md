@@ -1,8 +1,9 @@
 ---
 title: "Regularisation & Redundancy: Examining Generalisation in Deep Learning"
 category: ml-theory
-date: 2022-12-20
+date: 2023-06-19
 katex: true
+toc: true
 ---
 
 The past decade has seen deep learning models grow massively in size, as
@@ -22,13 +23,13 @@ from two different perspectives:
    requirements.
 
 These two perspectives revolve around a central question in the design of deep
-learning architectures: _what makes massive neural network architectures so
-effective, and can smaller or simpler architectures do as well?_
+learning architectures: **what makes massive neural network architectures so
+effective**, and **can smaller or simpler architectures do as well?**
 
 [topml]:
     https://arxiv.org/abs/2109.02355
     "A Farewell to the Bias-Variance Tradeoff? An
-Overview of the Theory of Overparameterized Machine Learning"
+    Overview of the Theory of Overparameterized Machine Learning"
 [cnn]:
     https://en.wikipedia.org/wiki/Convolutional_neural_network
     "Convolutional neural network"
@@ -37,6 +38,41 @@ Overview of the Theory of Overparameterized Machine Learning"
     The number of model parameters may not be a good proxy for model complexity
     in deep learning, and what constitutes a good definition of model complexity
     remains an open question. See [Dar et al. (2021)][topml].
+
+## Simple Models?
+
+[TODO: add FNN diagram]
+
+The [universal approximation theorem][ua-thm] is often cited as the underlying
+reason behind the expressivity of neural networks - essentially, under _certain
+conditions_, a [Feedforward Network (FNN)][fnn] can approximate any continuous
+function:
+
+1. **(Arbitrary width)** [Kurt et al. (1989)][ua-thm-w] proved for a FNN with _a
+   single hidden layer of arbitrary width_ and the [tanh][tanh] activation
+   function.
+2. **(Arbitrary depth)** [Lu et al. (2017)][ua-thm-d] proved for a FNN with
+   _arbitrarily many $(n+4)$-width hidden layers_ and the [ReLU][relu]
+   activation function.
+
+[ua-thm]:
+    https://en.wikipedia.org/wiki/Universal_approximation_theorem
+    "Universal approximation theorem"
+[fnn]:
+    https://en.wikipedia.org/wiki/Feedforward_neural_network
+    "Feedforward neural network"
+[ua-thm-w]:
+    https://dl.acm.org/doi/abs/10.5555/70405.70408
+    "Multilayer feedforward networks are universal approximators"
+[tanh]:
+    https://en.wikipedia.org/wiki/Hyperbolic_functions
+    "Hyperbolic functions"
+[ua-thm-d]:
+    https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html
+    "The Expressive Power of Neural Networks: A View from the Width"
+[relu]:
+    https://en.wikipedia.org/wiki/Rectifier_(neural_networks)
+    "Rectifier (neural networks)"
 
 ## Regularisation
 
@@ -59,8 +95,7 @@ straightforward even if the degree of the polynomial is unknown. This is not the
 case with complex tasks such as image classification, where it is unclear why
 one should prefer "simpler" model architectures over more sophisticated or
 "flexible" ones. **Understanding regularisation in complex tasks requires us to
-revisit _the bias-variance tradeoff_**, which is often used to justify
-regularisation in introductory courses.
+revisit _the bias-variance tradeoff_**.
 
 [occam]: https://en.wikipedia.org/wiki/Occam%27s_razor "Occam's razor"
 [uf-of]:
@@ -72,6 +107,8 @@ regularisation in introductory courses.
 [ridge]: https://en.wikipedia.org/wiki/Ridge_regression "Ridge regression"
 
 ### Bias-Variance Tradeoff
+
+Often used to justify regularisation in introductory courses, [TODO]
 
 ### Double-Descent Phenomenon
 
