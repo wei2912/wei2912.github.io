@@ -193,6 +193,7 @@ hr {
 }
 
 // Sidenotes
+// adapted from https://github.com/edwardtufte/tufte-css
 
 .sidenote,
 .marginnote {
@@ -285,7 +286,76 @@ label.margin-toggle:not(.sidenote-number) {
     }
 }
 
-// Solarized Light, adapted from https://github.com/jez/tufte-pandoc-css/blob/master/pandoc-solarized.css
+// Table of Contents
+// adapted from https://github.com/jez/pandoc-markdown-css-theme/blob/master/public/css/theme.css
+
+nav#toc {
+    margin-bottom: 20px;
+}
+
+nav#toc input {
+    display: none;
+}
+
+nav#toc label {
+    color: $link;
+    cursor: pointer;
+}
+
+nav#toc ul {
+    display: block;
+    padding-left: 1.5rem;
+    margin-bottom: 0;
+}
+
+nav#toc a {
+    font-weight: 400;
+}
+
+nav#toc > ul {
+    display: none;
+    margin-left: 0;
+}
+
+nav#toc > input:checked + ul {
+    display: block;
+}
+
+@media print {
+    nav#toc > input + ul {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1537px) {
+    nav#toc {
+        top: 20vh;
+        position: sticky;
+
+        float: left;
+        clear: left;
+        margin-left: -50%;
+        width: 40%;
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        overflow-y: auto;
+    }
+
+    nav#toc label {
+        display: none;
+    }
+
+    nav#toc > ul {
+        display: block;
+    }
+
+    nav#toc code {
+        font-size: var(--nav-toc-code-font-size);
+    }
+}
+
+// Solarized Light
+// adapted from https://github.com/jez/tufte-pandoc-css/blob/master/pandoc-solarized.css
 
 div.sourceCode,
 pre:not(.sourceCode) {

@@ -4,6 +4,7 @@ category: crypto
 date: 2017-01-01
 katex: true
 published: true
+toc: true
 ---
 
 The [Advanced Encryption Standard][advanced-encryption-standard], otherwise

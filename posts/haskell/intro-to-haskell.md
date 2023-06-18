@@ -3,6 +3,7 @@ title: Introduction to Haskell
 category: haskell
 date: 2014-11-27
 published: true
+toc: true
 ---
 
 Haskell is one of the most commonly used purely functional programming languages

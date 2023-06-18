@@ -10,10 +10,9 @@ import Data.Time.Clock.POSIX (getPOSIXTime)
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Hakyll
-import Text.Pandoc.Definition (Block (..), Inline (..), Meta (..), MetaValue (..), Pandoc (Pandoc))
 import Text.Pandoc.Options
+import Text.Pandoc.Templates
 import Text.Pandoc.SideNote (usingSideNotes)
-import Text.Pandoc.Walk (walk)
 
 main :: IO ()
 main = hakyll $ do
@@ -42,11 +41,14 @@ main = hakyll $ do
 
     match "posts/**.md" $ do
         route   $ setExtension ".html"
-        compile $ pandocMathCompiler
-            >>= loadAndApplyTemplate "templates/post.html" postCtx
-            >>= saveSnapshot "content"
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+        compile $ do
+            underlying <- getUnderlying
+            toc <- getMetadataField underlying "toc"
+            pandocCustomCompiler (maybe False (\bool -> bool == "true") toc)
+                >>= loadAndApplyTemplate "templates/post.html" postCtx
+                >>= saveSnapshot "content"
+                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= relativizeUrls
 
     match "index.md" $ do
         route   $ setExtension ".html"
@@ -57,7 +59,7 @@ main = hakyll $ do
                     listField "posts" postCtx (return posts) <>
                     defaultCtxWithTimeHash
 
-            pandocMathCompiler
+            pandocCustomCompiler False
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
@@ -80,30 +82,38 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
 
-pandocMathCompiler :: Compiler (Item String)
-pandocMathCompiler =
-    pandocCompilerWithTransform
-        defaultHakyllReaderOptions
-        writerOptions
-        (usingSideNotes . addSectionLinks)
-    where
-        mathExtensions =
-            [ Ext_tex_math_dollars
-            , Ext_tex_math_double_backslash
-            , Ext_latex_macros
-            ]
-        defaultExtensions = writerExtensions defaultHakyllWriterOptions
-        newExtensions = foldr enableExtension defaultExtensions mathExtensions
-        writerOptions = defaultHakyllWriterOptions
-            { writerExtensions = newExtensions
-            , writerHTMLMathMethod = MathJax ""
-            }
+pandocCustomCompiler :: Bool -> Compiler (Item String)
+pandocCustomCompiler withTOC = do
+        tmpl <- either (const Nothing) Just <$> unsafeCompiler (
+            compileTemplate
+            "" $
+            "\n$if(toc)$"
+            <> "\n<nav id=\"toc\" role=\"doc-toc\">"
+            <> "\n<strong>Contents</strong>"
+            <> "\n<label for=\"contents\">⊕</label>"
+            <> "\n<input type=\"checkbox\" id=\"contents\">"
+            <> "\n$toc$"
+            <> "\n</nav>"
+            <> "\n$endif$"
+            <> "\n$body$"
+            )
 
-        -- adapted from https://github.com/slotThe/slotThe.github.io/
-        addSectionLinks :: Pandoc -> Pandoc
-        addSectionLinks = walk $ \case {
-            Header n attr@(idAttr, _, _) inlines ->
-                let link = Link ("", ["sec-link"], []) [Str "¶"] ("#" <> idAttr, "")
-                    in Header n attr (inlines <> [link]);
-            block -> block
-        }
+        let defaultExtensions = writerExtensions defaultHakyllWriterOptions
+        let mathExtensions =
+                [ Ext_tex_math_dollars
+                , Ext_tex_math_double_backslash
+                , Ext_latex_macros
+                ]
+        let newExtensions = foldr enableExtension defaultExtensions mathExtensions
+
+        let writerOptions = defaultHakyllWriterOptions
+                { writerExtensions = newExtensions
+                , writerHTMLMathMethod = MathJax ""
+                , writerTableOfContents = withTOC
+                , writerTemplate = tmpl
+                }
+
+        pandocCompilerWithTransform
+            defaultHakyllReaderOptions
+            writerOptions
+            usingSideNotes
