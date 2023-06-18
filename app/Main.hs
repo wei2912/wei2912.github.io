@@ -1,6 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
+
+import qualified Crypto.Hash as CH
+import Data.Binary
 import Data.Char
+import Data.Time.Clock
+import Data.Time.Clock.POSIX
 import qualified Data.Map as M
 import qualified Data.Set as S
 import Hakyll
@@ -23,6 +28,17 @@ main = hakyll $ do
             withItemBody (unixFilter "sass" ["--stdin", "--indented",
               "--style=compressed"])
 
+    epoch <- preprocess $ nominalDiffTimeToSeconds <$> getPOSIXTime
+    let timeHash = take 6 $ show (CH.hashlazy (encode epoch) :: CH.Digest CH.MD5)
+
+    let defaultCtxWithTimeHash =
+            constField "timehash" timeHash <>
+            defaultContext
+
+    let postCtx =
+            dateField "date" "%B %e, %Y" <>
+            defaultCtxWithTimeHash
+
     match "posts/**.md" $ do
         route   $ setExtension ".html"
         compile $ pandocMathCompiler
@@ -38,7 +54,7 @@ main = hakyll $ do
                 loadAllSnapshots "posts/**.md" "content"
             let indexCtx =
                     listField "posts" postCtx (return posts) <>
-                    defaultContext
+                    defaultCtxWithTimeHash
 
             pandocMathCompiler
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
@@ -57,15 +73,11 @@ main = hakyll $ do
                 loadAllSnapshots "posts/**.md" "content"
             let sitemapCtx =
                     listField "posts" postCtx (return posts) <>
-                    defaultContext
+                    defaultCtxWithTimeHash
 
             makeItem ""
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
-postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" <>
-    defaultContext
 
 pandocMathCompiler :: Compiler (Item String)
 pandocMathCompiler =
