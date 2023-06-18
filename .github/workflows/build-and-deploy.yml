@@ -1,59 +1,63 @@
 name: Build and Deploy
 on:
-  pull_request:
-  push:
+    pull_request:
+    push:
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/cache@v3
-        name: Cache Stack
-        with:
-          path: ~/.stack/
-          key: ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-stack-
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - uses: actions/cache@v3
+              name: Cache Stack
+              with:
+                  path: ~/.stack/
+                  key:
+                      ${{ runner.os }}-stack-${{ hashFiles('**/stack.yaml.lock')
+                      }}
+                  restore-keys: |
+                      ${{ runner.os }}-stack-
 
-      - run: mkdir -p $HOME/.local/bin
-      - name: Setup Stack
-        run:
-          curl -L https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar
-          xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/stack'
-      - name: Setup SASS
-        run:
-          curl -L
-          https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz
-          | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin '*/sass'
-          '*/src'
+            - run: mkdir -p $HOME/.local/bin
+            - name: Setup Stack
+              run:
+                  curl -L
+                  https://get.haskellstack.org/stable/linux-x86_64.tar.gz | tar
+                  xz --wildcards --strip-components=1 -C $HOME/.local/bin
+                  '*/stack'
+            - name: Setup SASS
+              run:
+                  curl -L
+                  https://github.com/sass/dart-sass/releases/download/1.25.0/dart-sass-1.25.0-linux-x64.tar.gz
+                  | tar xz --wildcards --strip-components=1 -C $HOME/.local/bin
+                  '*/sass' '*/src'
 
-      - name: Build dependencies
-        run: $HOME/.local/bin/stack --no-terminal build
-      - name: Build website
-        run: |
-          export PATH="$HOME/.local/bin:$PATH"
-          $HOME/.local/bin/stack exec blog-src build
+            - name: Build dependencies
+              run: $HOME/.local/bin/stack --no-terminal build
+            - name: Build website
+              run: |
+                  export PATH="$HOME/.local/bin:$PATH"
+                  $HOME/.local/bin/stack exec blog-src build
 
-      - name: Upload build
-        uses: actions/upload-artifact@v2
-        with:
-          name: blog-src-${{ github.sha }}
-          path: _site/
-  deploy:
-    needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Download build
-        uses: actions/download-artifact@v2
-        with:
-          name: blog-src-${{ github.sha }}
-          path: _site/
-      - run: touch _site/.nojekyll
+            - name: Upload build
+              uses: actions/upload-artifact@v2
+              with:
+                  name: blog-src-${{ github.sha }}
+                  path: _site/
+    deploy:
+        needs: build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
+            - name: Download build
+              uses: actions/download-artifact@v2
+              with:
+                  name: blog-src-${{ github.sha }}
+                  path: _site/
+            - run: touch _site/.nojekyll
 
-      - name: Deploy website
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: _site
+            - name: Deploy website
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages
+                  folder: _site

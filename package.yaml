@@ -7,7 +7,7 @@ maintainer: "weien1292@gmail.com"
 copyright: "2023 Ng Wei En"
 
 extra-source-files:
-  - README.md
+    - README.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,25 +17,25 @@ extra-source-files:
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
 description:
-  Please see the README on Github at
-  <https://github.com/wei2912/wei2912.github.io#readme>.
+    Please see the README on Github at
+    <https://github.com/wei2912/wei2912.github.io#readme>.
 
 dependencies:
-  - base
-  - binary
-  - containers
-  - cryptonite
-  - hakyll
-  - pandoc
-  - pandoc-sidenote
-  - pandoc-types
-  - time
+    - base
+    - binary
+    - containers
+    - cryptonite
+    - hakyll
+    - pandoc
+    - pandoc-sidenote
+    - pandoc-types
+    - time
 
 executables:
-  blog:
-    main: Main.hs
-    source-dirs: app
-    ghc-options:
-      - -threaded
-      - -rtsopts
-      - -with-rtsopts=-N
+    blog:
+        main: Main.hs
+        source-dirs: app
+        ghc-options:
+            - -threaded
+            - -rtsopts
+            - -with-rtsopts=-N

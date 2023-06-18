@@ -13,8 +13,8 @@ protect classified data. In this article, I'll explain how AES works and why
 it's secure.
 
 [advanced-encryption-standard]:
-  https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
-  "Advanced Encryption Standard"
+    https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
+    "Advanced Encryption Standard"
 
 ## Galois field theory
 
@@ -37,12 +37,12 @@ positive integer. We call $p^n$ the order of the field. The elements of a Galois
 field are the set of elements $\{0, 1, 2, \ldots, p^n - 1\}$.
 
 [galois-field-in-cryptography]:
-  http://www.math.washington.edu/~morrow/336_12/papers/juan.pdf
-  "Galois Field in Cryptography"
+    http://www.math.washington.edu/~morrow/336_12/papers/juan.pdf
+    "Galois Field in Cryptography"
 [finite-field]: https://en.wikipedia.org/wiki/Finite_field "Finite field"
 [field-mathematics]:
-  https://en.wikipedia.org/wiki/Field_%28mathematics%29
-  "Field (mathematics)"
+    https://en.wikipedia.org/wiki/Field_%28mathematics%29
+    "Field (mathematics)"
 
 ### Galois field arithmetic
 
@@ -164,18 +164,18 @@ offer any cryptographic strength, as they reveal statistical properties.
 However, when combined together, they provide powerful cryptographic strength.
 
 [spn]:
-  https://en.wikipedia.org/wiki/Substitution-permutation_network
-  "Substitution-permutation network"
+    https://en.wikipedia.org/wiki/Substitution-permutation_network
+    "Substitution-permutation network"
 [spn-img]: /public/crypto/why-aes-is-secure/spn-img.png
 [avalanche-effect]:
-  https://en.wikipedia.org/wiki/Avalanche_effect
-  "Avalanche effect"
+    https://en.wikipedia.org/wiki/Avalanche_effect
+    "Avalanche effect"
 [substitution-cipher]:
-  https://en.wikipedia.org/wiki/Substitution_cipher
-  "Substitution cipher"
+    https://en.wikipedia.org/wiki/Substitution_cipher
+    "Substitution cipher"
 [transposition-cipher]:
-  https://en.wikipedia.org/wiki/Transposition_cipher
-  "Transposition cipher"
+    https://en.wikipedia.org/wiki/Transposition_cipher
+    "Transposition cipher"
 
 ### Confusion and Diffusion
 
@@ -205,8 +205,8 @@ The power of the SPN lies in how it allows for both properties to be exhibited,
 despite being so simple and efficient.
 
 [confusion-and-diffusion]:
-  https://en.wikipedia.org/wiki/Confusion_and_diffusion
-  "Confusion and diffusion"
+    https://en.wikipedia.org/wiki/Confusion_and_diffusion
+    "Confusion and diffusion"
 
 ### Key Schedule
 
@@ -244,14 +244,14 @@ non-invertible will not add much security.
 
 [key-schedule]: https://en.wikipedia.org/wiki/Key_schedule "Key schedule"
 [csprng]:
-  https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator
-  "Cryptographically secure pseudorandom number generator"
+    https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator
+    "Cryptographically secure pseudorandom number generator"
 [is-aes-256-weaker]:
-  http://crypto.stackexchange.com/a/5120
-  "Is AES-256 weaker than 192 and 128 bit versions?"
+    http://crypto.stackexchange.com/a/5120
+    "Is AES-256 weaker than 192 and 128 bit versions?"
 [is-aes-key-schedule-weak]:
-  http://crypto.stackexchange.com/a/1709
-  "Is the AES Key Schedule weak?"
+    http://crypto.stackexchange.com/a/1709
+    "Is the AES Key Schedule weak?"
 
 ### `SubBytes`
 
@@ -283,20 +283,20 @@ For more details on the design of the S-box, look at [Rijndael S-box][sbox].
 
 [aes-subbytes]: /public/crypto/why-aes-is-secure/aes-subbytes.svg
 [multiplicative-inverse]:
-  https://en.wikipedia.org/wiki/Multiplicative_inverse
-  "Multiplicative inverse"
+    https://en.wikipedia.org/wiki/Multiplicative_inverse
+    "Multiplicative inverse"
 [extended-euclidean-algorithm]:
-  https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
-  "Extended Euclidean algorithm"
+    https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+    "Extended Euclidean algorithm"
 [affine-transformation]:
-  https://en.wikipedia.org/wiki/Affine_transformation
-  "Affine transformation"
+    https://en.wikipedia.org/wiki/Affine_transformation
+    "Affine transformation"
 [linear-cryptanalysis]:
-  https://en.wikipedia.org/wiki/Linear_cryptanalysis
-  "Linear cryptanalysis"
+    https://en.wikipedia.org/wiki/Linear_cryptanalysis
+    "Linear cryptanalysis"
 [differential-cryptanalysis]:
-  https://en.wikipedia.org/wiki/Differential_cryptanalysis
-  "Differential cryptanalysis"
+    https://en.wikipedia.org/wiki/Differential_cryptanalysis
+    "Differential cryptanalysis"
 [sbox]: https://en.wikipedia.org/wiki/Rijndael_S-box "Rijndael S-box"
 
 ### `ShiftRows` and `MixColumns`
@@ -378,11 +378,11 @@ of AES, there's a comprehensive reference written by the creators themselves,
 titled [The Design of Rijndael][design-of-rijndael].
 
 [biclique-attack]:
-  https://en.wikipedia.org/wiki/Biclique_attack
-  "Biclique attack"
+    https://en.wikipedia.org/wiki/Biclique_attack
+    "Biclique attack"
 [stick-figure-guide]:
-  http://www.moserware.com/2009/09/stick-figure-guide-to-advanced.html
-  "A Stick Figure Guide to the Advanced Encryption Standard (AES)"
+    http://www.moserware.com/2009/09/stick-figure-guide-to-advanced.html
+    "A Stick Figure Guide to the Advanced Encryption Standard (AES)"
 [design-of-rijndael]:
-  http://www.springer.com/gp/book/9783540425809
-  "The Design of Rijndael"
+    http://www.springer.com/gp/book/9783540425809
+    "The Design of Rijndael"

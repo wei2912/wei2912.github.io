@@ -15,5 +15,5 @@ complexities of `
 
 [why-aes-is-secure]: /posts/crypto/why-aes-is-secure.html
 [advanced-encryption-standard]:
-  https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
-  "Advanced Encryption Standard"
+    https://en.wikipedia.org/wiki/Advanced_Encryption_Standard
+    "Advanced Encryption Standard"

@@ -1,7 +1,7 @@
 resolver: lts-20.25
 
 packages:
-  - .
+    - .
 
 extra-deps:
-  - "pandoc-sidenote-0.23.0.0"
+    - "pandoc-sidenote-0.23.0.0"

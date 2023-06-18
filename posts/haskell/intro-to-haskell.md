@@ -503,7 +503,7 @@ mathematically-inclined.
 
 You can take a look at the following readings:
 
-- [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
+-   [Why Functional Programming matters](http://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf)
 
 You may also wish to follow
 [Chris Allen's guide](https://github.com/bitemyapp/learnhaskell) to learn more

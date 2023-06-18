@@ -26,12 +26,12 @@ learning architectures: _what makes massive neural network architectures so
 effective, and can smaller or simpler architectures do as well?_
 
 [topml]:
-  https://arxiv.org/abs/2109.02355
-  "A Farewell to the Bias-Variance Tradeoff? An
+    https://arxiv.org/abs/2109.02355
+    "A Farewell to the Bias-Variance Tradeoff? An
 Overview of the Theory of Overparameterized Machine Learning"
 [cnn]:
-  https://en.wikipedia.org/wiki/Convolutional_neural_network
-  "Convolutional neural network"
+    https://en.wikipedia.org/wiki/Convolutional_neural_network
+    "Convolutional neural network"
 
 [^op-fn]:
     The number of model parameters may not be a good proxy for model complexity
@@ -64,11 +64,11 @@ regularisation in introductory courses.
 
 [occam]: https://en.wikipedia.org/wiki/Occam%27s_razor "Occam's razor"
 [uf-of]:
-  https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html
-  "Underfitting vs. Overfitting"
+    https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html
+    "Underfitting vs. Overfitting"
 [mdl]:
-  https://en.wikipedia.org/wiki/Minimum_description_length
-  "Minimum description length"
+    https://en.wikipedia.org/wiki/Minimum_description_length
+    "Minimum description length"
 [ridge]: https://en.wikipedia.org/wiki/Ridge_regression "Ridge regression"
 
 ### Bias-Variance Tradeoff
