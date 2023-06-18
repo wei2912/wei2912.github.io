@@ -3,5 +3,5 @@
 .stack-work/
 _site/
 _cache/
-blog-src.cabal
+*.cabal
 *~

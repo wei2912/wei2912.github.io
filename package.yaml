@@ -1,10 +1,10 @@
-name: blog-src
+name: blog
 version: 0.1.0.0
 github: "wei2912/wei2912.github.io"
 license: MIT
 author: "Ng Wei En"
 maintainer: "weien1292@gmail.com"
-copyright: "2021 Ng Wei En"
+copyright: "2023 Ng Wei En"
 
 extra-source-files:
   - README.md
@@ -27,7 +27,7 @@ dependencies:
   - pandoc
 
 executables:
-  blog-src:
+  blog:
     main: Main.hs
     source-dirs: app
     ghc-options:
