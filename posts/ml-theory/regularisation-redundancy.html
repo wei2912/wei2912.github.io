@@ -12,7 +12,7 @@
         <style>
             @import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&display=swap");
         </style>
-        <link rel="stylesheet" href="../../css/main.min.css?v=29626d" />
+        <link rel="stylesheet" href="../../css/main.min.css?v=7fbfb3" />
 
         
         <!-- KaTeX -->
@@ -26,10 +26,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <header>December 20, 2022 / <a href="../../" rel="author">Ng Wei En</a> / #ml-theory</header>
+        <header>June 19, 2023 / <a href="../../" rel="author">Ng Wei En</a> / #ml-theory</header>
 <h1>Regularisation & Redundancy: Examining Generalisation in Deep Learning</h1>
 
-<div id="content"><p>The past decade has seen deep learning models grow massively in size, as
+<div id="content">
+<nav id="toc" role="doc-toc">
+<strong>Contents</strong>
+<label for="contents">⊕</label>
+<input type="checkbox" id="contents">
+<ul>
+<li><a href="#simple-models" id="toc-simple-models">Simple Models?</a></li>
+<li><a href="#regularisation" id="toc-regularisation">Regularisation</a>
+<ul>
+<li><a href="#bias-variance-tradeoff" id="toc-bias-variance-tradeoff">Bias-Variance Tradeoff</a></li>
+<li><a href="#double-descent-phenomenon" id="toc-double-descent-phenomenon">Double-Descent Phenomenon</a></li>
+</ul></li>
+<li><a href="#redundancy" id="toc-redundancy">Redundancy</a>
+<ul>
+<li><a href="#network-sparsity" id="toc-network-sparsity">Network Sparsity</a></li>
+<li><a href="#quantisation" id="toc-quantisation">Quantisation</a></li>
+</ul></li>
+<li><a href="#implications" id="toc-implications">Implications</a></li>
+</ul>
+</nav>
+<p>The past decade has seen deep learning models grow massively in size, as
 researchers gain access to greater levels of processing power. These models
 enter the regime of <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">overparameterisation</a>, where the number of learnable
 parameters far exceed the number of training examples<span class="sidenote-wrapper"><label for="sn-0" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-0" class="margin-toggle" /><span class="sidenote">The number of model parameters may not be a good proxy for model complexity
@@ -49,9 +69,23 @@ from two different perspectives:</p>
 requirements.</li>
 </ol>
 <p>These two perspectives revolve around a central question in the design of deep
-learning architectures: <em>what makes massive neural network architectures so
-effective, and can smaller or simpler architectures do as well?</em></p>
-<h2 id="regularisation">Regularisation<a href="#regularisation" class="sec-link">¶</a></h2>
+learning architectures: <strong>what makes massive neural network architectures so
+effective</strong>, and <strong>can smaller or simpler architectures do as well?</strong></p>
+<h2 id="simple-models">Simple Models?</h2>
+<p>[TODO: add FNN diagram]</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem" title="Universal approximation theorem">universal approximation theorem</a> is often cited as the underlying
+reason behind the expressivity of neural networks - essentially, under <em>certain
+conditions</em>, a <a href="https://en.wikipedia.org/wiki/Feedforward_neural_network" title="Feedforward neural network">Feedforward Network (FNN)</a> can approximate any continuous
+function:</p>
+<ol type="1">
+<li><strong>(Arbitrary width)</strong> <a href="https://dl.acm.org/doi/abs/10.5555/70405.70408" title="Multilayer feedforward networks are universal approximators">Kurt et al. (1989)</a> proved for a FNN with <em>a
+single hidden layer of arbitrary width</em> and the <a href="https://en.wikipedia.org/wiki/Hyperbolic_functions" title="Hyperbolic functions">tanh</a> activation
+function.</li>
+<li><strong>(Arbitrary depth)</strong> <a href="https://proceedings.neurips.cc/paper/2017/hash/32cbf687880eb1674a07bf717761dd3a-Abstract.html" title="The Expressive Power of Neural Networks: A View from the Width">Lu et al. (2017)</a> proved for a FNN with
+<em>arbitrarily many <span class="math inline">\((n+4)\)</span>-width hidden layers</em> and the <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)" title="Rectifier (neural networks)">ReLU</a>
+activation function.</li>
+</ol>
+<h2 id="regularisation">Regularisation</h2>
 <p>Regularisation is often seen as imposing <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" title="Occam's razor">Occam’s razor</a>: between two
 different models which are similarly feasible, we should prefer the “simpler”
 model. Simplicity can be viewed in various ways:</p>
@@ -71,20 +105,20 @@ straightforward even if the degree of the polynomial is unknown. This is not the
 case with complex tasks such as image classification, where it is unclear why
 one should prefer “simpler” model architectures over more sophisticated or
 “flexible” ones. <strong>Understanding regularisation in complex tasks requires us to
-revisit <em>the bias-variance tradeoff</em></strong>, which is often used to justify
-regularisation in introductory courses.</p>
-<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff<a href="#bias-variance-tradeoff" class="sec-link">¶</a></h3>
-<h3 id="double-descent-phenomenon">Double-Descent Phenomenon<a href="#double-descent-phenomenon" class="sec-link">¶</a></h3>
+revisit <em>the bias-variance tradeoff</em></strong>.</p>
+<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h3>
+<p>Often used to justify regularisation in introductory courses, [TODO]</p>
+<h3 id="double-descent-phenomenon">Double-Descent Phenomenon</h3>
 <p>The effectiveness of CNNs on image tasks is often attributed to its resemblance
 with the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>.</p>
 <figure>
 <img src="../../public/ml-theory/regularisation-redundancy/cnn-arch.png" alt="CNN Architecture (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">CNN Architecture (Credits: <a href="https://commons.wikimedia.org/wiki/File:Typical_cnn.png">Wikimedia</a>)</figcaption>
 </figure>
-<h2 id="redundancy">Redundancy<a href="#redundancy" class="sec-link">¶</a></h2>
-<h3 id="network-sparsity">Network Sparsity<a href="#network-sparsity" class="sec-link">¶</a></h3>
-<h3 id="quantisation">Quantisation<a href="#quantisation" class="sec-link">¶</a></h3>
-<h2 id="implications">Implications<a href="#implications" class="sec-link">¶</a></h2></div>
+<h2 id="redundancy">Redundancy</h2>
+<h3 id="network-sparsity">Network Sparsity</h3>
+<h3 id="quantisation">Quantisation</h3>
+<h2 id="implications">Implications</h2></div>
 
 <hr />
 
