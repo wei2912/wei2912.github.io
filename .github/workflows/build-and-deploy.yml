@@ -36,12 +36,12 @@ jobs:
             - name: Build website
               run: |
                   export PATH="$HOME/.local/bin:$PATH"
-                  $HOME/.local/bin/stack exec blog-src build
+                  $HOME/.local/bin/stack exec blog build
 
             - name: Upload build
               uses: actions/upload-artifact@v2
               with:
-                  name: blog-src-${{ github.sha }}
+                  name: blog-${{ github.sha }}
                   path: _site/
     deploy:
         needs: build
@@ -52,7 +52,7 @@ jobs:
             - name: Download build
               uses: actions/download-artifact@v2
               with:
-                  name: blog-src-${{ github.sha }}
+                  name: blog-${{ github.sha }}
                   path: _site/
             - run: touch _site/.nojekyll
 
