@@ -21,13 +21,16 @@ body
     padding: 50px
     width: 720px
 
-h1, h2, h3, h4, h5, h6
-    font-family: $serif
-    font-weight: 700
-    margin: 0 0 20px
-
 p, ul, ol, table, pre, dl
     margin: 0 0 20px
+
+h1, h2, h3, h4, h5, h6
+    font-family: $serif
+    font-weight: 500
+    margin: 0 0 20px
+
+    a, code
+        font-weight: 500
 
 h1, h2, h3
     line-height: 1.25
@@ -46,7 +49,10 @@ h3, h4, h5, h6
 
 a
     color: $link
-    font-weight: 400
+    text-decoration: underline
+    font-weight: 500
+
+.footnote-ref
     text-decoration: none
 
 small
@@ -60,6 +66,7 @@ blockquote
 
 code, pre
     font-family: $monospace
+    font-weight: 400
 
 pre
     background: #fdf6e3
@@ -80,7 +87,7 @@ th, td
 
 dt
     color: #444
-    font-weight: 700
+    font-weight: 500
 
 th
     color: #444
@@ -95,7 +102,7 @@ figcaption
     font-size: 0.9rem
 
 strong
-    font-weight: 700
+    font-weight: 500
 
 header, footer
     font-size: 0.9rem
