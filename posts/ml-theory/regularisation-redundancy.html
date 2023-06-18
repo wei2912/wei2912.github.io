@@ -1,42 +1,42 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <title>Regularisation & Redundancy: Examining Generalisation in Deep Learning</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <title>Regularisation & Redundancy: Examining Generalisation in Deep Learning</title>
 
-    <link rel="icon" type="image/svg+xml" sizes="any" type="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+        <link rel="icon" type="image/svg+xml" sizes="any" type="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:wght@300&family=Merriweather&display=swap" rel="stylesheet" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+        </style>
+        <link rel="stylesheet" href="../../css/main.min.css?v=29626d" />
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:wght@300&family=Merriweather&display=swap");
-    </style>
-    <link rel="stylesheet" href="../../css/main.min.css" />
+        
+        <!-- KaTeX -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous" />
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+        <!-- End KaTeX Code -->
+        
 
-    
-    <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous" />
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-    <!-- End KaTeX Code -->
-    
-
-    <meta name="google-site-verification" content="zktyx9NWxN4_455e9TF-WP6Fh3AYo0Hs62TYwr43QIY" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <header>December 20, 2022 / <a href="../../" rel="author">Ng Wei En</a> / #ml-theory</header>
+        <meta name="google-site-verification" content="zktyx9NWxN4_455e9TF-WP6Fh3AYo0Hs62TYwr43QIY" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <header>December 20, 2022 / <a href="../../" rel="author">Ng Wei En</a> / #ml-theory</header>
 <h1>Regularisation & Redundancy: Examining Generalisation in Deep Learning</h1>
 
 <div id="content"><p>The past decade has seen deep learning models grow massively in size, as
 researchers gain access to greater levels of processing power. These models
 enter the regime of <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">overparameterisation</a>, where the number of learnable
-parameters far exceed the number of training examples<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, and yet achieve
+parameters far exceed the number of training examples<span class="sidenote-wrapper"><label for="sn-0" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sn-0" class="margin-toggle" /><span class="sidenote">The number of model parameters may not be a good proxy for model complexity
+in deep learning, and what constitutes a good definition of model complexity
+remains an open question. See <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">Dar et al. (2021)</a>.<br />
+<br />
+</span></span>, and yet achieve
 surprisingly high performance on unseen data in complex tasks.</p>
 <p>Rather than explain existing theories of generalisation, which at present are
 still very diverse and complex, this article seeks to examine some recent
@@ -51,7 +51,7 @@ requirements.</li>
 <p>These two perspectives revolve around a central question in the design of deep
 learning architectures: <em>what makes massive neural network architectures so
 effective, and can smaller or simpler architectures do as well?</em></p>
-<h2 id="regularisation">Regularisation</h2>
+<h2 id="regularisation">Regularisation<a href="#regularisation" class="sec-link">¶</a></h2>
 <p>Regularisation is often seen as imposing <a href="https://en.wikipedia.org/wiki/Occam%27s_razor" title="Occam's razor">Occam’s razor</a>: between two
 different models which are similarly feasible, we should prefer the “simpler”
 model. Simplicity can be viewed in various ways:</p>
@@ -73,55 +73,48 @@ one should prefer “simpler” model architectures over more sophisticated or
 “flexible” ones. <strong>Understanding regularisation in complex tasks requires us to
 revisit <em>the bias-variance tradeoff</em></strong>, which is often used to justify
 regularisation in introductory courses.</p>
-<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff</h3>
-<h3 id="double-descent-phenomenon">Double-Descent Phenomenon</h3>
+<h3 id="bias-variance-tradeoff">Bias-Variance Tradeoff<a href="#bias-variance-tradeoff" class="sec-link">¶</a></h3>
+<h3 id="double-descent-phenomenon">Double-Descent Phenomenon<a href="#double-descent-phenomenon" class="sec-link">¶</a></h3>
 <p>The effectiveness of CNNs on image tasks is often attributed to its resemblance
 with the <a href="https://en.wikipedia.org/wiki/Visual_cortex" title="Visual cortex">visual cortex</a>.</p>
 <figure>
 <img src="../../public/ml-theory/regularisation-redundancy/cnn-arch.png" alt="CNN Architecture (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">CNN Architecture (Credits: <a href="https://commons.wikimedia.org/wiki/File:Typical_cnn.png">Wikimedia</a>)</figcaption>
 </figure>
-<h2 id="redundancy">Redundancy</h2>
-<h3 id="network-sparsity">Network Sparsity</h3>
-<h3 id="quantisation">Quantisation</h3>
-<h2 id="implications">Implications</h2>
-<section class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1" role="doc-endnote"><p>The number of model parameters may not be a good proxy for model complexity
-in deep learning, and what constitutes a good definition of model complexity
-remains an open question. See <a href="https://arxiv.org/abs/2109.02355" title="A Farewell to the Bias-Variance Tradeoff? An Overview of the Theory of Overparameterized Machine Learning">Dar et al. (2021)</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div>
+<h2 id="redundancy">Redundancy<a href="#redundancy" class="sec-link">¶</a></h2>
+<h3 id="network-sparsity">Network Sparsity<a href="#network-sparsity" class="sec-link">¶</a></h3>
+<h3 id="quantisation">Quantisation<a href="#quantisation" class="sec-link">¶</a></h3>
+<h2 id="implications">Implications<a href="#implications" class="sec-link">¶</a></h2></div>
 
 <hr />
 
 <aside>
-  <small>
-    <p>
-      <em>
-        You can view the history of changes made to this post at
-        <a href="https://github.com/wei2912/wei2912.github.io/blame/master/posts/ml-theory/regularisation-redundancy.md">this website's GitHub repository</a>.
-      </em>
-    </p>
-  </small>
+    <small>
+        <p>
+            <em>
+                You can view the history of changes made to this post at
+                <a href="https://github.com/wei2912/wei2912.github.io/blame/master/posts/ml-theory/regularisation-redundancy.md">this website's GitHub repository</a>.
+            </em>
+        </p>
+    </small>
 </aside>
 
 <script src="https://utteranc.es/client.js" repo="wei2912/wei2912.github.io" issue-term="title" label="comments" theme="github-light" crossorigin="anonymous" async></script>
 
 <hr />
 
-    <footer>
-      <small>
-        <p>
-          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-            <img alt="Creative Commons License" style="border-width: 0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /> </a><br />
-          This work is licensed under a
-          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />
-          The source of the website is available at
-          <a href="https://github.com/wei2912/wei2912.github.io">wei2912/wei2912.github.io</a>.<br />
-        </p>
-      </small>
-    </footer>
-  </body>
+        <footer>
+            <small>
+                <p>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                        <img alt="Creative Commons License" style="border-width: 0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /> </a><br />
+                    This work is licensed under a
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                        License</a>.<br />
+                    The source of the website is available at
+                    <a href="https://github.com/wei2912/wei2912.github.io">wei2912/wei2912.github.io</a>.<br />
+                </p>
+            </small>
+        </footer>
+    </body>
 </html>

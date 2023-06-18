@@ -1,36 +1,32 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <title>Why AES Is Secure</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+        <title>Why AES Is Secure</title>
 
-    <link rel="icon" type="image/svg+xml" sizes="any" type="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
+        <link rel="icon" type="image/svg+xml" sizes="any" type="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:wght@300&family=Merriweather&display=swap" rel="stylesheet" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&family=Fira+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Merriweather:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+        </style>
+        <link rel="stylesheet" href="../../css/main.min.css?v=29626d" />
 
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Fira+Sans:wght@300&family=Merriweather&display=swap");
-    </style>
-    <link rel="stylesheet" href="../../css/main.min.css" />
+        
+        <!-- KaTeX -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous" />
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+        <!-- End KaTeX Code -->
+        
 
-    
-    <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous" />
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-    <!-- End KaTeX Code -->
-    
-
-    <meta name="google-site-verification" content="zktyx9NWxN4_455e9TF-WP6Fh3AYo0Hs62TYwr43QIY" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    <header>January  1, 2017 / <a href="../../" rel="author">Ng Wei En</a> / #crypto</header>
+        <meta name="google-site-verification" content="zktyx9NWxN4_455e9TF-WP6Fh3AYo0Hs62TYwr43QIY" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <header>January  1, 2017 / <a href="../../" rel="author">Ng Wei En</a> / #crypto</header>
 <h1>Why AES Is Secure</h1>
 
 <div id="content"><p>The <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" title="Advanced Encryption Standard">Advanced Encryption Standard</a>, otherwise
@@ -38,7 +34,7 @@ known as Rijndael (which was its original name), is one of the most widely used
 ciphers for the encryption of data. It’s been approved by the US government to
 protect classified data. In this article, I’ll explain how AES works and why
 it’s secure.</p>
-<h2 id="galois-field-theory">Galois field theory</h2>
+<h2 id="galois-field-theory">Galois field theory<a href="#galois-field-theory" class="sec-link">¶</a></h2>
 <p>AES makes extensive use of Galois field theory, which I’m going to give a very
 brief introduction to. For more details see <a href="http://www.math.washington.edu/~morrow/336_12/papers/juan.pdf" title="Galois Field in Cryptography">Galois Field in
 Cryptography</a>.</p>
@@ -53,7 +49,7 @@ there is an infinite number of real numbers and rational numbers.</p>
 <p>A Galois field is denoted as <span class="math inline">\(GF(p^n)\)</span> where <span class="math inline">\(p\)</span> is a prime number and <span class="math inline">\(n\)</span> is a
 positive integer. We call <span class="math inline">\(p^n\)</span> the order of the field. The elements of a Galois
 field are the set of elements <span class="math inline">\(\{0, 1, 2, \ldots, p^n - 1\}\)</span>.</p>
-<h3 id="galois-field-arithmetic">Galois field arithmetic</h3>
+<h3 id="galois-field-arithmetic">Galois field arithmetic<a href="#galois-field-arithmetic" class="sec-link">¶</a></h3>
 <p>Firstly, let’s take a look at <span class="math inline">\(GF(p)\)</span>. Addition and multiplication is done
 similarly to integers, followed by modulo <span class="math inline">\(p\)</span> (this is just finding the
 remainder after dividing by <span class="math inline">\(p\)</span>). For example, in <span class="math inline">\(GF(5)\)</span>, <span class="math inline">\(4 + 3 = 7\)</span> is
@@ -69,7 +65,7 @@ polynomials <span class="math inline">\(2x^2 + 1\)</span> and <span class="math 
 order of the field! The way to resolve this is to modulo a suitable polynomial,
 by long division. There are certain rules for selecting this polynomial, which I
 will not discuss.</p>
-<h3 id="use-of-galois-field-theory-in-aes">Use of Galois field theory in AES</h3>
+<h3 id="use-of-galois-field-theory-in-aes">Use of Galois field theory in AES<a href="#use-of-galois-field-theory-in-aes" class="sec-link">¶</a></h3>
 <p>In AES, where we want to manipulate bytes, <span class="math inline">\(GF(2^8)\)</span> is used. <span class="math inline">\(GF(2^8)\)</span> has a
 set of elements which represent all possible values of a byte. The fact that the
 addition and multiplication operations are closed (that is, applying addition
@@ -82,7 +78,7 @@ both elements – this means that addition is efficient on hardware! On the othe
 hand, multiplication is more complex. AES uses the polynomial
 <span class="math inline">\(x^8 + x^4 + x^3 + x + 1\)</span>, and most implementations will use a lookup table
 instead of computing the polynomial for the sake of efficiency.</p>
-<h2 id="overview-of-aes">Overview of AES</h2>
+<h2 id="overview-of-aes">Overview of AES<a href="#overview-of-aes" class="sec-link">¶</a></h2>
 <p>Now that we’re done with basic Galois field theory, it’s time to take a look at
 how AES is implemented.</p>
 <p>AES can be represented by two functions, <span class="math inline">\(E(k, p)\)</span> and <span class="math inline">\(D(k, c)\)</span> where <span class="math inline">\(k\)</span> is
@@ -121,7 +117,7 @@ performed, and in the last round, <code>MixColumns</code> is omitted.</p>
 <li>AES-192: 192 bit key, 12 rounds</li>
 <li>AES-256: 256 bit key, 14 rounds</li>
 </ol>
-<h3 id="substitution-permutation-network">Substitution Permutation Network</h3>
+<h3 id="substitution-permutation-network">Substitution Permutation Network<a href="#substitution-permutation-network" class="sec-link">¶</a></h3>
 <p>AES has a structure known as a <a href="https://en.wikipedia.org/wiki/Substitution-permutation_network" title="Substitution-permutation network">substitution-permutation network (SPN)</a>,
 which takes in plaintext and keys as inputs.</p>
 <figure>
@@ -154,7 +150,7 @@ section.</p>
 P-box is a <a href="https://en.wikipedia.org/wiki/Transposition_cipher" title="Transposition cipher">transposition cipher</a>. Both ciphers hardly
 offer any cryptographic strength, as they reveal statistical properties.
 However, when combined together, they provide powerful cryptographic strength.</p>
-<h3 id="confusion-and-diffusion">Confusion and Diffusion</h3>
+<h3 id="confusion-and-diffusion">Confusion and Diffusion<a href="#confusion-and-diffusion" class="sec-link">¶</a></h3>
 <p><a href="https://en.wikipedia.org/wiki/Confusion_and_diffusion" title="Confusion and diffusion">Confusion and diffusion</a> are key properties of a
 secure cipher (as identified by Claude Shannon, considered the father of
 information theory). <em>Confusion</em> refers to the property that each character of
@@ -176,7 +172,7 @@ several parts of the round keys, which in turn depend on the key. This satisfies
 the property of confusion.</p>
 <p>The power of the SPN lies in how it allows for both properties to be exhibited,
 despite being so simple and efficient.</p>
-<h3 id="key-schedule">Key Schedule</h3>
+<h3 id="key-schedule">Key Schedule<a href="#key-schedule" class="sec-link">¶</a></h3>
 <p>Each round has a certain key of its own, derived from the key given. The
 algorithm to obtain the round keys is called the <a href="https://en.wikipedia.org/wiki/Key_schedule" title="Key schedule">key schedule</a>.</p>
 <p>With a larger key size, AES has a larger number of rounds. The reason is that
@@ -202,7 +198,7 @@ for a SPN to be secure.</p>
 StackExchange</a> on why a simpler key schedule is used, and
 <a href="http://crypto.stackexchange.com/a/1709" title="Is the AES Key Schedule weak?">poncho’s answer</a> on why making the key schedule
 non-invertible will not add much security.</p>
-<h3 id="subbytes"><code>SubBytes</code></h3>
+<h3 id="subbytes"><code>SubBytes</code><a href="#subbytes" class="sec-link">¶</a></h3>
 <figure>
 <img src="../../public/crypto/why-aes-is-secure/aes-subbytes.svg" alt="AES SubBytes (Credits: Wikimedia)" />
 <figcaption aria-hidden="true">AES SubBytes (Credits: <a href="https://commons.wikimedia.org/wiki/File:AES-SubBytes.svg">Wikimedia</a>)</figcaption>
@@ -226,7 +222,7 @@ This allows it to be resistant to <a href="https://en.wikipedia.org/wiki/Linear_
 <a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis" title="Differential cryptanalysis">differential cryptanalysis</a>, as well as algebraic
 attacks.</p>
 <p>For more details on the design of the S-box, look at <a href="https://en.wikipedia.org/wiki/Rijndael_S-box" title="Rijndael S-box">Rijndael S-box</a>.</p>
-<h3 id="shiftrows-and-mixcolumns"><code>ShiftRows</code> and <code>MixColumns</code></h3>
+<h3 id="shiftrows-and-mixcolumns"><code>ShiftRows</code> and <code>MixColumns</code><a href="#shiftrows-and-mixcolumns" class="sec-link">¶</a></h3>
 <p>These two operations are what permutates the bits (techincally speaking,
 <code>MixColumns</code> does more than just permutations).</p>
 <figure>
@@ -262,10 +258,10 @@ the input bytes would change at least <span class="math inline">\(m-k+1\)</span>
 SPN, this P-box helps to ensure <em>diffusion</em>, and does it very well. It
 propagates changes in the plaintext throughout, making differential
 cryptanalysis tough.</p>
-<h3 id="addroundkey"><code>AddRoundKey</code></h3>
+<h3 id="addroundkey"><code>AddRoundKey</code><a href="#addroundkey" class="sec-link">¶</a></h3>
 <p>This is just a XOR operation as described in
 <a href="#substitution-permutation-network">the section on SPNs</a>.</p>
-<h2 id="conclusions-on-aes">Conclusions on AES</h2>
+<h2 id="conclusions-on-aes">Conclusions on AES<a href="#conclusions-on-aes" class="sec-link">¶</a></h2>
 <p>AES remains a very strong cipher. Bruce Schneier, a developer of Twofish, has
 written in 2000:</p>
 <blockquote>
@@ -294,31 +290,32 @@ titled <a href="http://www.springer.com/gp/book/9783540425809" title="The Design
 <hr />
 
 <aside>
-  <small>
-    <p>
-      <em>
-        You can view the history of changes made to this post at
-        <a href="https://github.com/wei2912/wei2912.github.io/blame/master/posts/crypto/why-aes-is-secure.md">this website's GitHub repository</a>.
-      </em>
-    </p>
-  </small>
+    <small>
+        <p>
+            <em>
+                You can view the history of changes made to this post at
+                <a href="https://github.com/wei2912/wei2912.github.io/blame/master/posts/crypto/why-aes-is-secure.md">this website's GitHub repository</a>.
+            </em>
+        </p>
+    </small>
 </aside>
 
 <script src="https://utteranc.es/client.js" repo="wei2912/wei2912.github.io" issue-term="title" label="comments" theme="github-light" crossorigin="anonymous" async></script>
 
 <hr />
 
-    <footer>
-      <small>
-        <p>
-          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-            <img alt="Creative Commons License" style="border-width: 0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /> </a><br />
-          This work is licensed under a
-          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />
-          The source of the website is available at
-          <a href="https://github.com/wei2912/wei2912.github.io">wei2912/wei2912.github.io</a>.<br />
-        </p>
-      </small>
-    </footer>
-  </body>
+        <footer>
+            <small>
+                <p>
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                        <img alt="Creative Commons License" style="border-width: 0" src="https://licensebuttons.net/l/by/4.0/88x31.png" /> </a><br />
+                    This work is licensed under a
+                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
+                        License</a>.<br />
+                    The source of the website is available at
+                    <a href="https://github.com/wei2912/wei2912.github.io">wei2912/wei2912.github.io</a>.<br />
+                </p>
+            </small>
+        </footer>
+    </body>
 </html>
