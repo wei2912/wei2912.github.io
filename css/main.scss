@@ -10,14 +10,17 @@ $serif: "Merriweather", serif;
 $sans-serif: "Fira Sans", sans-serif;
 $monospace: "Fira Mono", monospace;
 
+html {
+    font-size: 18px;
+}
+
 body {
     background: $background;
     color: $main-text;
     font-family: $sans-serif;
-    font-size: 18px;
     font-weight: 300;
     line-height: 1.5;
-    margin: 1em auto 2em;
+    margin: 1rem auto 2rem;
     padding: 50px;
     max-width: 720px;
 }
@@ -143,14 +146,14 @@ hr {
     margin: 0 0 20px;
 }
 
-@media print, screen and (max-width: 1024px) {
-    body {
-        width: auto;
-    }
-}
-
 @media print, screen and (max-width: 640px) {
+    html {
+        font-size: 16px;
+    }
+
     body {
+        padding-left: 8vw;
+        padding-right: 8vw;
         word-wrap: break-word;
     }
 
@@ -161,33 +164,29 @@ hr {
 }
 
 @media print {
-    body {
-        padding: 0.4in;
+    html {
         font-size: 12pt;
-        color: #444;
+    }
+
+    body {
+        padding: 0;
+        background: #fff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    span,
+    pre,
+    li {
+        break-inside: avoid;
     }
 
     .utterances {
-        display: none;
-    }
-}
-
-// Section Links
-
-.sec-link {
-    margin-left: 0.5rem;
-}
-:is(h1, h2, h3, h4, h5, h6) .sec-link {
-    text-decoration: none;
-    color: grey;
-    visibility: hidden;
-}
-:is(h1, h2, h3, h4, h5, h6):hover .sec-link {
-    visibility: visible;
-}
-
-@media print {
-    .sec-link {
         display: none;
     }
 }
@@ -322,6 +321,10 @@ nav#toc > input:checked + ul {
 }
 
 @media print {
+    nav#toc label {
+        display: none;
+    }
+
     nav#toc > input + ul {
         display: block;
     }
@@ -345,12 +348,8 @@ nav#toc > input:checked + ul {
         display: none;
     }
 
-    nav#toc > ul {
+    nav#toc > input + ul {
         display: block;
-    }
-
-    nav#toc code {
-        font-size: var(--nav-toc-code-font-size);
     }
 }
 
