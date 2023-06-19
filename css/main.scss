@@ -146,7 +146,7 @@ hr {
     margin: 0 0 20px;
 }
 
-@media print, screen and (max-width: 640px) {
+@media screen and (max-width: 640px) {
     html {
         font-size: 16px;
     }
@@ -353,161 +353,89 @@ nav#toc > input:checked + ul {
     }
 }
 
-// Solarized Light
-// adapted from https://github.com/jez/tufte-pandoc-css/blob/master/pandoc-solarized.css
+// Gruvbox Light, lightly modified to achieve a colour contrast of >= 4.5
+// adapted from https://www.jonashietala.se/blog/2019/01/25/site_restyle_and_update/#changes-to-code-display
+// and https://github.com/treeman/jonashietala/blob/857c2944ef2807106619df8f1be9a820ea8080f9/css/code.scss
 
-div.sourceCode,
-pre:not(.sourceCode) {
-    background: #fdf6e3;
+// Light Background
+$gb-lm-bg: #f9f5d7;
+
+// Light Foreground
+$gb-lm-fg: #282828;
+$gb-lm-fg4: #7a6d62;
+
+// Light Colors
+$gb-lm-light-red: #9d0006;
+$gb-lm-light-green: #726d0d;
+$gb-lm-light-yellow: #976411;
+$gb-lm-light-blue: #076678;
+$gb-lm-light-purple: #8f3f71;
+$gb-lm-light-aqua: #427b58;
+$gb-lm-light-orange: #af3a03;
+$gb-lm-light-gray: #7a6d62;
+
+pre {
+    background-color: $gb-lm-bg;
+    color: $gb-lm-fg;
 }
-pre code {
-    color: #657b83;
-}
-code span.kw {
-    color: #859900;
-    font-weight: normal;
-    font-style: normal;
-} /* Keyword */
-code span.dt {
-    color: #b58900;
-    font-weight: normal;
-    font-style: normal;
-} /* DataType */
-code span.dv {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* DecVal */
-code span.bn {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* BaseN */
-code span.fl {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* Float */
-code span.ch {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* Char */
-code span.st {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* String */
-code span.co {
-    color: #93a1a1;
-    font-weight: normal;
+// Just eyeballed which classes comes up, couldn't find a good reference
+code.sourceCode span.kw {
+    color: $gb-lm-light-aqua;
+} // Keyword
+code.sourceCode span.dt {
+    color: $gb-lm-light-yellow;
+} // Datatype
+code.sourceCode span.dv {
+    color: $gb-lm-light-purple;
+} // DecVal
+code.sourceCode span.bn {
+    color: $gb-lm-light-purple;
+} // BaseN
+code.sourceCode span.fl {
+    color: $gb-lm-light-purple;
+} // Float
+code.sourceCode span.ch {
+    color: $gb-lm-light-purple;
+} // Char
+code.sourceCode span.st {
+    color: $gb-lm-light-green;
+} // String
+code.sourceCode span.co {
+    color: $gb-lm-fg4;
     font-style: italic;
-} /* Comment */
-code span.ot {
-    color: #268bd2;
-    font-weight: normal;
-    font-style: normal;
-} /* Other */
-code span.al {
-    color: #dc322f;
-    font-weight: normal;
-    font-style: normal;
-} /* Alert */
-code span.fu {
-    color: #268bd2;
-    font-weight: normal;
-    font-style: normal;
-} /* Function */
-code span.er {
-    color: #dc322f;
-    font-weight: normal;
-    font-style: normal;
-} /* Error */
-code span.wa {
-    color: #cb4b16;
-    font-weight: normal;
-    font-style: italic;
-} /* Warning */
-code span.cn {
-    color: #2aa198;
-    font-weight: normal;
-    font-style: normal;
-} /* Constant */
-code span.sc {
-    color: #dc322f;
-    font-weight: normal;
-    font-style: normal;
-} /* SpecialChar */
-code span.vs {
-    color: #657b83;
-    font-weight: normal;
-    font-style: normal;
-} /* VerbatimString */
-code span.ss {
-    color: #dc322f;
-    font-weight: normal;
-    font-style: normal;
-} /* SpecialString */
-code span.im {
-    color: #657b83;
-    font-weight: normal;
-    font-style: normal;
-} /* Import */
-code span.va {
-    color: #268bd2;
-    font-weight: normal;
-    font-style: normal;
-} /* Variable */
-code span.cf {
-    color: #859900;
-    font-weight: normal;
-    font-style: normal;
-} /* ControlFlow */
-code span.op {
-    color: #859900;
-    font-weight: normal;
-    font-style: normal;
-} /* Operator */
-code span.bu {
-    color: #657b83;
-    font-weight: normal;
-    font-style: normal;
-} /* BuiltIn */
-code span.ex {
-    color: #657b83;
-    font-weight: normal;
-    font-style: normal;
-} /* Extension */
-code span.pp {
-    color: #cb4b16;
-    font-weight: normal;
-    font-style: normal;
-} /* Preprocessor */
-code span.at {
-    color: #657b83;
-    font-weight: normal;
-    font-style: normal;
-} /* Attribute */
-code span.do {
-    color: #93a1a1;
-    font-weight: normal;
-    font-style: italic;
-} /* Documentation */
-code span.an {
-    color: #93a1a1;
-    font-weight: normal;
-    font-style: italic;
-} /* Annotation */
-code span.cv {
-    color: #93a1a1;
-    font-weight: normal;
-    font-style: italic;
-} /* CommentVar */
-code span.in {
-    color: #93a1a1;
-    font-weight: normal;
-    font-style: italic;
-} /* Information */
-a.sourceLine::before {
-    text-decoration: none;
-}
+} // Comment
+code.sourceCode span.ot {
+    color: $gb-lm-light-aqua;
+} // OtherToken
+code.sourceCode span.fu {
+    color: $gb-lm-light-green;
+} // Function
+code.sourceCode span.re {
+    color: $gb-lm-fg4;
+} // Region marker
+code.sourceCode span.er {
+    color: $gb-lm-fg;
+    font-weight: bold;
+} // Error red
+code.sourceCode span.al {
+    color: $gb-lm-fg;
+    font-weight: bold;
+} // Alert red
+code.sourceCode span.im {
+    color: $gb-lm-light-orange;
+} // @font-face, "foo.h" in include pragma
+code.sourceCode span.pp {
+    color: $gb-lm-light-aqua;
+} // pragma directive
+code.sourceCode span.cf {
+    color: $gb-lm-light-red;
+} // for
+code.sourceCode span.sc {
+    color: $gb-lm-light-orange;
+} // \n
+code.sourceCode span.op {
+    color: $gb-lm-light-gray;
+} // Operator
+code.sourceCode span.cn {
+    color: $gb-lm-light-blue;
+} // CSS hash value color
