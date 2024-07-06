@@ -15,12 +15,6 @@ where I post updates on blog posts and other related content._
 These articles are intended to let people dip their toes into unfamiliar
 technical topics, hopefully beyond a superficial level of understanding.
 
-### Regularisation & Redundancy: Examining Generalisation in Deep Learning #ml-theory
-
-(WIP) A brief look into generalisation in deep learning (namely in Convolutional
-Neural Networks), examining recent empirical findings which run contrary to
-common intuition.
-
 ### [Why AES is Secure](/posts/crypto/why-aes-is-secure.html) #crypto
 
 (January 1, 2017) An explanation of how AES, a commonly used modern
