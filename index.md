@@ -4,8 +4,8 @@ title: wei2912's blog
 
 # [wei2912](https://github.com/wei2912)'s blog
 
-_I maintain a Mastodon account at
-<a rel="me" href="https://sigmoid.social/@wei2912">@wei2912@sigmoid.social</a>,
+_I maintain a Bluesky account at
+<a rel="me" href="https://bsky.app/profile/wei2912.bsky.social">@wei2912.bsky.social</a>,
 where I post updates on blog posts and other related content._
 
 ---
