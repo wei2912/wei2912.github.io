@@ -39,7 +39,7 @@ jobs:
                   $HOME/.local/bin/stack exec blog build
 
             - name: Upload build
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@v5
               with:
                   name: blog-${{ github.sha }}
                   path: _site/
