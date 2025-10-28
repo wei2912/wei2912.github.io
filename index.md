@@ -35,12 +35,12 @@ what functional programming languages have to offer over imperative languages.
 This blog is hosted on [GitHub Pages](https://pages.github.com/) and built with
 these software:
 
--   [Hakyll](https://jaspervdj.be/hakyll), a static site generator written in
-    Haskell which allows for great flexibility in the building of pages
--   [KaTeX](https://katex.org), a renderer for
-    [LaTeX](https://www.latex-project.org/) math equations
--   [Utterances](https://utteranc.es/), a lightweight comments widget built on
-    GitHub issues
+- [Hakyll](https://jaspervdj.be/hakyll), a static site generator written in
+  Haskell which allows for great flexibility in the building of pages
+- [KaTeX](https://katex.org), a renderer for
+  [LaTeX](https://www.latex-project.org/) math equations
+- [Utterances](https://utteranc.es/), a lightweight comments widget built on
+  GitHub issues
 
 The design of this blog was inspired by
 [Mike Bostock](https://bost.ocks.org/mike)'s website.
