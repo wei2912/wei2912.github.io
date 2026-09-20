@@ -29,7 +29,7 @@ effective**, and **can smaller or simpler architectures do as well?**
 [topml]:
     https://arxiv.org/abs/2109.02355
     "A Farewell to the Bias-Variance Tradeoff? An
-    Overview of the Theory of Overparameterized Machine Learning"
+Overview of the Theory of Overparameterized Machine Learning"
 [cnn]:
     https://en.wikipedia.org/wiki/Convolutional_neural_network
     "Convolutional neural network"
