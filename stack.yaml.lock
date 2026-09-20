@@ -13,7 +13,7 @@ packages:
     hackage: pandoc-sidenote-0.23.0.0
 snapshots:
 - completed:
-    sha256: e63b43d506918278d05cd1448bd19352ab2faa9b8e9d64ce527b56f1a7fba149
-    size: 650255
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/20/25.yaml
-  original: lts-20.25
+    sha256: 0f728e30e843d7f00460ad56858b995a3b227fca683659c7df9f2fc3988a3ce1
+    size: 732465
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/24/59.yaml
+  original: lts-24.59
