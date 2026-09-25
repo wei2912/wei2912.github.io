@@ -6,7 +6,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - uses: actions/cache@v4
               name: Cache Stack
               with:
@@ -48,7 +48,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - name: Download build
               uses: actions/download-artifact@v4
               with:
